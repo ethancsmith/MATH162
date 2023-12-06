@@ -1,0 +1,122 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Alternating series}{\textit{Thomas' Calculus} \textsection 10.6}
+
+\begin{definition}
+We say that $\sum a_n$ is an \textbf{alternating series} if the sequence of terms alternates between positive and negative values, 
+i.e., if $a_n = \pm(-1)^n|a_n|$ and $|a_n|>0$ for all $n$. 
+\end{definition}
+
+\begin{theorem}[Alternating series test]
+If $\sum a_n$ is an alternating series so that
+\begin{itemize}
+\item $|a_n|$ is nonincreasing for all $n$ sufficiently large, and
+\item $|a_n|\to 0$ as $n\to\infty$,
+\end{itemize}
+then $\sum a_n$ converges.
+\end{theorem}
+
+\begin{example}
+The series $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$ is called the \textbf{alternating harmonic series}.
+Explain why the series converges.
+\end{example}
+
+\vfill
+
+\begin{definition}
+We say that $\sum a_n$ is \textbf{conditionally convergent} if $\sum a_n$ is convergent but $\sum |a_n|$ is divergent. 
+\end{definition}
+
+\newpage
+
+\begin{example}
+Show that the series $\DS\sum_{n=0}^\infty\frac{(-1)^n 10n}{n^2+16}$ converges.
+\end{example}
+
+\newpage
+
+\begin{remark}
+Recall that if $\sum a_n$ is a convergent series, then the $N$th partial sum
+\begin{equation*}
+S_N = \sum_{n\le N} a_n
+\end{equation*}
+approximates the sum of the series, and the $N$th remainder
+\begin{equation*}
+ R_N = \sum_{n=N+1}^\infty a_n
+\end{equation*}
+is the error in the approximation.
+\end{remark}
+
+\begin{theorem}[Alternating series estimation theorem]
+If $\DS\sum_{n=0}^\infty a_n$ is an alternating series so that
+\begin{itemize}
+\item $|a_n|$ is nonincreasing for all $n\ge 0$, and
+\item $|a_n|\to 0$ as $n\to\infty$,
+\end{itemize}
+then
+\begin{enumerate}
+\item $S_N$ underestimates the sum of the series if $a_{N+1}>0$, and
+\item $S_N$ overestimates the sum of the series if $a_{N+1}<0$.
+\end{enumerate}
+Moreover, 
+\begin{equation*}
+\Big| R_N \Big| = \left| S_N - \sum_{n=0}^\infty a_n\right| < \Big| a_{N+1}\Big|.
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+We know that $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^3}$ converges to something.
+Thanks to Roger Ap\'ery we know that it is an irrational number, but that is about all we know about this number.
+How many terms do we need to include so that we are sure that our approximation to the sum is accurate to within $10^{-3}$?
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item When performing a large-scale calculation, it is often possible to speed-up the computation by ``reordering the work."
+\item The following theorem tells us that it is okay to reorder the work of summing an absolutely convergent series.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Series rearrangement theorem]
+If $\sum a_n$ converges absolutely and the sequence $\{b_n\}$ is any (re)arrangement of the sequence of terms $\{a_n\}$, then $\sum b_n$ converges absolutely, and $\sum b_n = \sum a_n$.
+\end{theorem}
+
+\begin{example}
+Recall that Euler showed that
+\begin{equation*}
+\sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6}.
+\end{equation*}
+Use this fact together with the rearrangement theorem to compute the value of $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Which of $\DS\sum_{n=1}^\infty\frac{1}{n^2}$ and  $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$ converges faster?
+In other words, if you wanted to approximate 
+\begin{equation*}
+\pi^2 = 6 \sum_{n=1}^\infty\frac{1}{n^2} = 12\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2},
+\end{equation*}
+which sum requires the fewest additions to achieve the same accuracy?
+\end{example}
+
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item The rearrangement theorem is not true if $\sum a_n$ is conditionally convergent
+\item With enough skill, it possible to rearrange the terms of a conditionally convergent series so that the resulting series diverges or converges to whatever we want.
+\item That means that we need to be very careful when manipulating conditionally convergent series so that we do not deceive ourselves.
+\end{itemize}
+\end{remark}
+
+\begin{example}
+Later we will show that
+\begin{equation*}
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n} = \ln 2.
+\end{equation*}
+Show how a misuse of the rearrangement theorem can lead to an \underline{invalid proof} that $2\ln 2 = \ln 2$.
+\end{example}

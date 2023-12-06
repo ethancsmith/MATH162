@@ -1,0 +1,98 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Convergence of Taylor series}{\textit{Thomas' Calculus} \textsection 10.9}
+
+\begin{definition}
+Let $f$ be a function with $d$ derivatives at $x=a$, and let 
+\begin{equation*}
+P_f(x; d, a) = \sum_{n=0}^d\frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{equation*}
+denote the Taylor polynomial of order $d$ about $x=a$ for $f$.
+The \textbf{remainder} is defined by
+\begin{equation*}
+R_f(x;d,a) = f(x) - P_f(x;d,a).
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+The remainder is the error in the approximation $f(x)\approx P_f(x;d,a)$.
+\end{remark}
+
+\begin{theorem}[Taylor's theorem]
+Let $f$ be a function with derivatives of all orders at $x=a$, and let $I$ be an interval containing $x=a$.
+If
+\begin{equation*}
+\lim_{d\to\infty}R_f(x; d, a) = 0
+\end{equation*}
+for all $x\in I$, then
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n
+\end{equation*}
+for all $x\in I$.
+\end{theorem}
+
+\begin{theorem}[Lagrange's remainder theorem]
+Let $f$ be a function with $d+1$ derivatives at $x=a$, and let $I$ be an interval containing $x=a$.
+Then for every $x\in I$, there is a real number $c$ between $x$ and $a$ so that
+\begin{equation*}
+R_f(x;d,a) = \frac{f^{(d+1)}(c)}{(d+1)!}(x-a)^{d+1}.
+\end{equation*}
+\end{theorem}
+
+\begin{remark}\,
+\begin{itemize}
+\item We can use this theorem to \dots
+\begin{enumerate}
+\item determine how large $d$ needs to be to guarantee desired accuracy for Taylor approximations, and
+\item determine open intervals for which a function is equal to its Taylor series.
+\end{enumerate}
+\item The difficulty in applying the theorem is that we typically have no idea what $c$ is.
+\item We only know that $c$ is between $x$ and $a$, and so we have to identify and then assume the worst case.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+The following identities are true:
+\begin{align}
+\E^x &= \sum_{n=0}^\infty \frac{x^n}{n!}\quad (-\infty < x <\infty),\\
+\sin x &=\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{(2n+1)!}\quad (-\infty < x < \infty),\\
+\cos x &=\sum_{n=0}^\infty (-1)^n\frac{x^{2n}}{(2n)!}\quad (-\infty < x <\infty),\\
+\arctan x &=\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}\quad (-1\le x\le 1),\\
+\ln(1+ x) &= \sum_{n=1}^\infty (-1)^{n+1}\frac{x^n}{n}\quad (-1< x\le 1).
+\end{align}
+\end{theorem}
+
+\newpage 
+
+\begin{example}
+Use known series to compute a series expansion for $f(x) = \frac{1}{3}(2x + x\cos x)$.
+\end{example}
+
+\newpage 
+
+\begin{example}
+Use known series to compute a series expansion for $f(x) = \cos(2x)$.
+\end{example}
+
+\newpage 
+
+\begin{example}
+Use known series to compute a series expansion for $f(x) = \sinh(x)$.
+\end{example}
+
+\newpage 
+
+\begin{example}
+Use known series to compute the first 4 terms of the Maclaurin series for $f(x) = \E^x\cos x$.
+\end{example}
+
+\newpage
+
+\begin{example}
+For what values of $x$ is the error in the approximation
+\begin{equation*}
+\sin x \approx x - \frac{x^3}{3!}
+\end{equation*}
+smaller than $3\cdot 10^{-4}$?
+%(Hint: The Maclaurin series for $\sin x$ is alternating for all $x$.)
+\end{example}

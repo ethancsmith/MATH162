@@ -1,0 +1,293 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Infinite sequences}{\textit{Thomas' Calculus} \textsection 10.1}
+
+\begin{definition}\,
+\begin{itemize}
+\item A \textbf{sequence} is a function whose domain is a subset of $\Z$ (the set of whole numbers).
+\item The values of the function are called \textbf{terms} of the sequence.
+\item An \textbf{infinite sequence} is a sequence whose domain is infinite.
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+In practice, we view a sequence as an ordered list of real numbers
+\begin{equation*}
+a_1, a_2, a_3,\dots.
+\end{equation*}
+In calculus, we are mostly interested in sequences that can be described by simple rules/formulas or by recursion.
+\end{remark}
+
+\begin{definition}
+Let $\{a_n\}$ be an infinite sequence, and let $L$ be a real number.
+\begin{itemize}
+\item We say that $\{a_n\}$ \textbf{converges} to $L$, and we write $a_n\to L \text{ as } n\to\infty$ or
+\begin{equation*}
+\lim_{n\to\infty}a_n = L,
+\end{equation*}
+if for every $\epsilon>0$, there is an integer $N$ so that
+\begin{equation*}
+n>N \implies |a_n - L|<\epsilon.
+\end{equation*}
+\item If $\{a_n\}$ does not converge to any real number $L$, then we say that $\{a_n\}$ \textbf{diverges}.
+\end{itemize}
+\end{definition}
+
+\begin{remark}\,
+\begin{itemize}
+\item For many applications, the notation $\DS\lim_{n\to\infty} a_n= L$ makes the interesting part of the limit implicit.
+\item Often (though not always) it is the interplay between the $\epsilon$ and the $N$ in the definition that is truly interesting.
+\item Imagine a sequence as list of approximate answers to an interesting question (e.g., what really is $\ln(2)$?).
+\item We should think of the $\epsilon$ as an acceptable ``error tolerance" that is subject to change depending on the day-to-day whims of our customer (or zany math prof).
+\item The only thing the customer is not allowed to ask for is zero error.  Any $\epsilon>0$ is allowed.
+\item We should think of the $N$ as the ``cutoff" past which all approximations are guaranteed to be within requirements (i.e., have acceptable errors).
+\item To say $\DS\lim_{n\to\infty} a_n= L$, is to say that no matter how unreasonably small we are asked to get the errors, we can always ``win the game" of finding a finite cutoff $N$ so that if we ``turn $n$ up past $N$" the error is guaranteed to be within tolerance.
+\end{itemize}
+\end{remark}
+
+\newpage
+
+\begin{example}
+Let $T_n$ denote the $n$-step trapezoidal approximation to $\ln 2 = \int_1^2\frac{\dee t}{t}$ for $n\ge 1$.
+Then
+\begin{equation*}
+T_1 = \frac{3}{2},\quad
+T_2 = \frac{13}{6},\quad
+T_3 =\frac{57}{20},\quad
+T_4=\frac{743}{210},\quad
+T_5 = \frac{2131}{504},\quad \dots.
+\end{equation*}
+The trapezoidal approximation theorem tells us that
+\begin{equation*}
+\left| T_n - \ln 2\right| \le \frac{1}{6n^2}.
+\end{equation*}
+Use this fact to show that $T_n\to \ln 2$ as $n\to\infty$.
+\end{example}
+
+\newpage
+
+\begin{definition}
+Let $\{a_n\}$ be an infinite sequence, and let $L$ be a real number.
+\begin{itemize}
+\item We say that $\{a_n\}$ \textbf{diverges} to $\infty$, and we write $a_n\to\infty$ as $n\to\infty$ or
+\begin{equation*}
+\lim_{n\to\infty}a_n = \infty
+\end{equation*}
+if for every $M>0$, there is an integer $N$ so that
+\begin{equation*}
+n>N\implies a_n>M.
+\end{equation*}
+\item We say that $\{a_n\}$ \textbf{diverges} to $-\infty$, and we write $a_n\to -\infty$ as $n\to\infty$ or
+\begin{equation*}
+\lim_{n\to\infty}a_n = -\infty
+\end{equation*}
+if for every $M<0$, there is an integer $N$ so that
+\begin{equation*}
+n>N\implies a_n<M.
+\end{equation*}
+\end{itemize}
+\end{definition}
+
+\begin{example}
+If $n$ is a nonnegative integer, then $n$-\textbf{factorial} is 
+\begin{equation*}
+n! = \prod_{j=0}^{n-1}\left(n-j\right).
+\end{equation*}
+List the first 5 terms, and then determine whether the sequence converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{theorem}
+For all integers $n\ge 1$, 
+\begin{equation*}
+\E\left(\frac{n}{\E}\right)^n\le n!\le n^{n-1}.
+\end{equation*}
+\end{theorem}
+\begin{remark}
+Stirling is famous for proving a much more precise relationship, viz., for every $\epsilon>0$, there is an $N>0$ so that
+\begin{equation*}
+(1-\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n\le n!\le (1+\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n
+\end{equation*}
+for all $n>N$.
+\end{remark}
+\begin{proof}\,
+
+\vspace{6in}
+\end{proof}
+
+
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item Sequences are discrete (not continuous) and so they can't have derivatives.
+\item That's bad news for L'H\^opital's rule, but the following theorem tells us that if our sequence is the restriction of a function to integer inputs, then pretty much everything that we're used doing with limits at $\infty$ for functions still works including L'H\^opital's rule (when it applies).
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+Let $\{a_n\}$ be an infinite sequence, and let $f(x)$ be a function that is defined for all sufficiently large $x$.
+If $f(n) = a_n$ for all sufficiently large integers $n$, then
+\begin{equation*}
+\lim_{x\to\infty}f(x) = L \implies \lim_{n\to\infty} a_n=  L.
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Compute the following.
+\begin{enumerate}
+\item $\DS\lim_{n\to\infty}\frac{n}{n+1}$
+\vfill
+\item $\DS\lim_{n\to\infty}\frac{\ln n}{n}$
+\vfill
+\item $\DS\lim_{n\to\infty}\left(\frac{n+1}{n-1}\right)^n$
+\vfill
+\end{enumerate}
+\end{example}
+
+
+\newpage
+
+\begin{theorem}
+If $\{a_n\}$ is a sequence of real numbers and $\DS\lim_{n\to\infty}|a_n|=0$, then $\DS\lim_{n\to\infty}a_n=0$.
+\end{theorem}
+
+\begin{example}
+Show that the sequence $\{a_n\}$ whose terms are defined by 
+\begin{equation*}
+a_n = \frac{(-1)^n}{n}\quad (n\ge 1)
+\end{equation*}
+converges.
+\end{example}
+
+\vfill
+
+
+\begin{example}
+Does the sequence $\{a_n\}$ whose terms are defined by
+\begin{equation*}
+a_n=(-1)^n\quad (n\ge 0)
+\end{equation*}
+converge or diverge?
+\end{example}
+
+\vfill
+
+\newpage
+
+\begin{theorem}[Squeeze/sandwich theorem]
+Let $\{a_n\}$, $\{b_n\}$, and $\{c_n\}$ be sequences of real numbers.
+If $a_n\le b_n\le c_n$ for all $n$ sufficient large, then
+\begin{equation*}
+\lim_{n\to\infty}a_n = L = \lim_{n\to\infty}c_n \implies \lim_{n\to\infty}b_n= L.
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Determine $\DS\lim_{n\to\infty}\frac{\cos n}{n}$.
+\end{example}
+\vfill
+
+\begin{example}
+Determine if the sequence $\DS a_n=\frac{n!}{n^n}$ converges.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{example}
+For what values of $x$ is the sequence $a_n=x^n$ convergent?
+\end{example}
+\vfill
+
+\newpage
+
+\begin{theorem}
+For every (fixed) $x\in\R$,
+\begin{equation*}
+\lim_{n\to\infty}\frac{x^n}{n!} = 0.
+\end{equation*}
+\end{theorem}
+\begin{proof}\,
+
+\vspace{6in}
+\end{proof}
+
+\begin{remark}
+It is sometimes helpful to think about the above theorem in the following equivalent forms.
+\begin{enumerate}
+\item If $x\in\R$, then $x^n\lll n!$ as $n\to\infty$.
+\item If $x\in\R$, then for every $\epsilon>0$, there is an $N>0$ so that
+\begin{equation*}
+n>N\implies |x|^n \le\epsilon n!.
+\end{equation*}
+\end{enumerate}
+\end{remark}
+
+\newpage
+
+\begin{definition}
+Let $\{a_n\}$ be a sequence of real numbers.
+\begin{itemize}
+\item We say that $\{a_n\}$ is \textbf{bounded above} if there is a real number $M$ so that $a_n\le M$ for all $n$, in which case we say that $M$ is an \textbf{upper bound} for $\{a_n\}$.
+\item If $L$ is an upper bound for $\{a_n\}$ and no smaller number is also an upper bound for $\{a_n\}$, then we say that $L$ is the \textbf{least upper bound} for $\{a_n\}$.
+\item We say that $\{a_n\}$ is \textbf{bounded below} if there is a real number $m$ so that $a_n\ge m$ for all $n$, in which case we say that $m$ is an \textbf{lower bound} for $\{a_n\}$.
+\item If $G$ is a lower bound for $\{a_n\}$ and no larger number is also a lower bound for $\{a_n\}$, then we say that $G$ is the \textbf{greatest lower bound} for $\{a_n\}$.
+\item We say that $\{a_n\}$ is \textbf{bounded} if it is bounded above and below.
+If $\{a_n\}$ is not bounded, we say that it is \textbf{unbounded}.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Determine if the following sequences are bounded.
+\begin{enumerate}
+\item $a_n = n\quad (n\ge 0)$
+\vfill
+\item $a_n=(-1)^n n\quad (n\ge 0)$
+\vfill
+\item $a_n =\DS \frac{n}{n+1}\quad (n\ge 0)$
+\vfill
+\end{enumerate}
+\end{example}
+
+
+\newpage
+
+\begin{definition}
+Let $\{a_n\}$ be a sequence of real numbers.
+\begin{itemize}
+\item We say that the sequence is \textbf{nondecreasing} if $a_n\le a_{n+1}$ for all $n$.
+\item We say that the sequence is \textbf{nonincreasing} if $a_n\ge a_{n+1}$ for all $n$.
+\item If the sequence is nondecreasing or nonincreasing, then we say that it is \textbf{monotonic}.
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Determine whether each sequence below is monotonic
+\begin{enumerate}
+\item $a_n=n\quad (n\ge 0)$
+\vfill
+\item $\DS a_n=\frac{n}{n+1}\quad (n\ge 0)$
+\vfill
+\item $a_n=3\quad (n\ge 0)$
+\vfill
+\item $a_n=(-1)^n\quad (n\ge 0)$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{theorem}[Monotonic sequence theorem]
+Let $\{a_n\}$ be a monotonic sequence.  
+Then
+\begin{equation*}
+\{a_n\} \text{ is bounded} \iff \{a_n\} \text{ is convergent}.
+\end{equation*}
+\end{theorem}
+\begin{proof}[Proof when $\{a_n\}$ is nondecreasing ($\implies$)]\,
+
+\vspace{7in}
+\end{proof}

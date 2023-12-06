@@ -1,0 +1,97 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Partial fraction decomposition}{\textit{Thomas' Calculus} \textsection 8.5}
+
+\begin{example}
+Use the fact that
+\begin{equation*}
+\frac{5x-3}{x^2-2x-3} = \frac{3}{x-3} + \frac{2}{x+1}
+\end{equation*}
+to compute $\DS \int\frac{5x-3}{x^2-2x-3} \dee x$.
+\end{example}
+
+
+\vfill
+\begin{remark}
+The process of ``un-common-denominatorizing" a rational function is known as \textit{partial fraction decomposition}.
+We will apply the following strategy to integrate a rational function $f(x)/g(x)$.
+\begin{enumerate}
+\item Use polynomial long division to write 
+\begin{equation*}
+\frac{f(x)}{g(x)} = q(x) + \frac{r(x)}{g(x)},
+\end{equation*}
+where $\deg(r)<\deg(g)$.
+\item Factor the denominator $g(x)$ into linear factors (of the form $ax+b$) and irreducible quadratic factors (of the form $ax^2+bx+c$ with $b^2-4ac<0$).
+\item Write the remaining proper rational function $r(x)/g(x)$ as a sum of terms of the form
+\begin{equation*}
+\frac{A}{(ax+b)^i}\quad\text{or}\quad\frac{Ax+B}{(ax^2+bx+c)^i}.
+\end{equation*}
+\end{enumerate}
+\end{remark}
+
+\newpage
+
+\begin{remark}
+If the denominator $g(x)$ factors into a product of distinct linear factors
+\begin{equation*}
+\begin{split}
+g(x) &= \prod_{j=1}^k(a_jx+b_j)\\
+& = (a_1x+b_1)(a_2x+b_2)\cdots (a_kx+b_k),
+\end{split}
+\end{equation*}
+then we solve for constants $A_1, A_2,\dots, A_k$ so that
+\begin{equation*}
+\begin{split}
+\frac{r(x)}{g(x)} &= \sum_{j=1}^k\frac{A_j}{a_jx+b_j}\\ 
+&= \frac{A_1}{a_1x+b_1} + \frac{A_2}{a_2x+b_2} + \dots +\frac{A_k}{a_kx+b_k}. 
+\end{split}
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Evaluate $\DS\int\frac{x^2+2x-1}{2x^3+3x^2-2x}\dee x$.
+\end{example}
+
+\newpage
+\,
+\newpage
+
+\begin{remark}
+If the denominator $g(x)$ factors into a product of linear factors with some repeated factors, say $(ax+b)^e$ divides $g(x)$, 
+then instead of just the term $\frac{A}{ax+b}$, we must include $e$ terms
+\begin{equation*}
+\sum_{i=1}^e\frac{A_{i}}{(ax+b)^i} = \frac{A_{1}}{ax+b} + \frac{A_{2}}{(ax+b)^2}+\dots +\frac{A_{e}}{(ax+b)^e}.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Compute $\DS\int\frac{x^4-2x^2+4x+1}{x^3-x^2-x+1}\dee x$.
+\end{example}
+
+\newpage
+\,
+\newpage
+
+\begin{remark}
+If $g(x)$ contains a (possibly repeated) irreducible quadratic factor $(ax^2+bx+c)^e$, then we must also include $e$ terms of the form
+\begin{equation*}
+\sum_{i=1}^e\frac{A_{i}}{(ax^2+bx+c)^i} = \frac{A_{1}x+B_1}{ax^2+bx+c} + \frac{A_{2}x+B_2}{(ax^2+bx+c)^2}+\dots +\frac{A_{e}x+B_e}{(ax^2+bx+c)^e}.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Calculate $\DS\int\frac{\dee x}{x(x^2+1)^2}$.
+\end{example}
+
+\newpage
+\,
+\newpage
+
+\begin{remark}
+Sometimes a nonrational integrand may be transformed to a rational one by an appropriate change of variables.
+Then the method of partial fractions may be used to integrate the result.
+\end{remark}
+
+\begin{example}
+Evaluate $\DS\int\frac{\sqrt{x+4}}{x}\dee x$ by first transforming the integrand to a rational expression.
+\end{example}

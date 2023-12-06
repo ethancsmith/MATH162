@@ -1,0 +1,58 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Taylor series}{\textit{Thomas' Calculus} \textsection 10.8}
+
+\begin{definition}
+Suppose that $f$ is $d$ times differentiable at $x=a$.
+Then the \textbf{Taylor polynomial of order $d$ about $x=a$ for $f$} is
+\begin{equation*}
+P_f(x; d, a) = \sum_{n=0}^d\frac{f^{(n)}(a)}{n!}(x-a)^n.
+\end{equation*}
+\end{definition}
+\begin{remark}
+The Taylor polynomial of order $1$ about $x=a$ is the linearization of $f$ at $x=a$.
+It would be reasonable to hope that Taylor polynomials provide good approximations to $f(x)$ near $x=a$.
+We will take up this topic later.
+\end{remark}
+
+\vfill 
+
+\begin{definition}
+Suppose that $f$ has derivatives of all orders at $x=a$.
+Then the \textbf{Taylor series of order $d$ about $x=a$ for $f$} is
+\begin{equation*}
+T_f(x; a) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.
+\end{equation*}
+The special case when $a=0$ is also called a \textbf{Maclaurin series}.
+\end{definition}
+
+\begin{remark}
+The Taylor polynomial of order $d$ is the $d$th partial sum of the Taylor series.
+\end{remark}
+
+\vfill
+
+\newpage
+
+\begin{example}
+Compute the Taylor polynomial of order $3$ about $x=2$ for $f(x) = 1/x$.
+Then compute the Taylor series.
+\end{example}
+
+\newpage
+
+\begin{example}
+Compute the Maclaurin series for $f(x) = \exp x$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Compute the Maclaurin series for $f(x) = \cos x$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Compute the Maclaurin series for $f(x) =\sqrt{1+x}$.
+\end{example}

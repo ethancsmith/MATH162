@@ -1,0 +1,132 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Parametric equations}{\textit{Thomas' Calculus} \textsection 11.1}
+
+\begin{definition}
+Suppose that $x=f(t)$ and $y=g(t)$ are functions of some third variable $t$, called a \textbf{parameter}.
+We say that $x$ and $y$ are given by \textbf{parametric equations}.
+The set of points $(x,y)$ traced in the plane as $t$ varies is called a \textbf{parametric curve}.
+\end{definition}
+
+\begin{example}
+Consider the curve given by the parametric equations
+\begin{align*}
+x&=t^2-2t,\\
+y&=t+1
+\end{align*}
+for $t\in [0,\infty)$.
+Plot the points on the curve corresponding to $t=0, 1, 2, 3$.
+Then eliminate the parameter to and identify the curve and finish the sketch.
+\end{example}
+
+\newpage
+
+\begin{example}
+Consider the curve given by the parametric equations
+\begin{align*}
+x &= t + \frac{1}{t},\\
+y &= t - \frac{1}{t} \quad (t>0).
+\end{align*}
+Eliminate the parameter to identify the curve.
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{enumerate}
+\item One advantage of parametric equations is their ``explicit" (as opposed to ``implicit") nature.
+\begin{enumerate}
+\item To find a point on the curve given by 
+\begin{equation*}
+\frac{x^2}{16}+\frac{y^2}{9}=1,
+\end{equation*}
+we have to pick a value for one of the variables and then \underline{try} to solve for the other.
+\item To find a point on the curve given by
+\begin{align*}
+x &=  4\cos t,\\
+y &=  3\sin t\quad (0\le t\le 2\pi)
+\end{align*}
+we simply choose any $t\in [0,2\pi]$, and we immediately get a point on the curve every time.
+\end{enumerate}
+\item Another advantage of parametrization is that it imposes ``orientation" on a curve (direction of traverse) which some applications require.
+For example, we may want to model the``position" of some object that depends on some non-spatial parameter (e.g., time).
+\item A third advantage of parametrization is that each coordinate is given as a function of the parameter $t$, and it is far easier to apply the tools of calculus to functions.
+\end{enumerate}
+\end{remark}
+
+\newpage
+
+\begin{example}
+Two particles start at the same instant in time.
+The first travels along the path 
+\begin{equation*}
+C_1: x = \frac{16}{3}-\frac{8}{3}t,\quad y = 4t-5 \quad (t\ge 0)
+\end{equation*}
+while the second travels along the path 
+\begin{equation*}
+C_2: x = 2\sin\left(\frac{\pi}{2}t\right),\quad y = -3\cos\left(\frac{\pi}{2}t\right) \quad (t\ge 0).
+\end{equation*}
+At what points, if any, do the paths intersect?  At what points, if any, do the particles collide?
+\end{example}
+
+\newpage
+
+\begin{remark}
+The following ``bread and butter" parametrizations are important to know.
+\begin{itemize}
+\item
+Given distinct points $(a,b), (c,d)\in\R^2$, the unique line passing through $(a,b)$ and $(c,d)$ may be parametrized by the equations
+\begin{align*}
+x & = a(1-t) + ct,\\
+y &=  b(1-t) + dt
+\end{align*}
+for $t\in (-\infty, \infty)$.
+%\begin{remark}
+%The line segment \underline{from} $(a,b)$ \underline{to} $(c,d)$ is traversed as $t$ varies in $[0,1]$.
+%\end{remark}
+\item
+Given $a, b\in \R$, the ellipse
+\begin{equation*}
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
+\end{equation*}
+is parametrized with counterclockwise orientation by the equations
+\begin{align*}
+x & = a\cos t,\\
+y &= b\sin t
+\end{align*}
+for $t\in [0,2\pi]$.
+\item
+Given $a, b\in \R$, the the hyperbola
+\begin{equation*}
+\frac{x^2}{a^2}-\frac{y^2}{b^2}=1
+\end{equation*}
+is parametrized by the equations
+\begin{align*}
+x & = a\sec t,\\
+y &= b\tan t
+\end{align*}
+for $t\in [0,2\pi]$.
+\item
+Given $a, b\in \R$, the right branch of the hyperbola
+\begin{equation*}
+\frac{x^2}{a^2}-\frac{y^2}{b^2}=1
+\end{equation*}
+is parametrized by the equations
+\begin{align*}
+x & = a\cosh t,\\
+y &= b\sinh t
+\end{align*}
+for $t\in (-\infty,\infty)$.
+\item If $y=f(x)$ is a function of $x$, then the curve
+\begin{equation*}
+y=f(x)\quad (a\le x\le b)
+\end{equation*}
+is parametrized by the equations
+\begin{align*}
+x &= t,\\
+y &=f(t)
+\end{align*}
+for $t\in [a,b]$.
+\end{itemize}
+\end{remark}
+

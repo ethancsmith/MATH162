@@ -1,0 +1,172 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{The natural logarithm}{\textit{Thomas' Calculus} \textsection 7.2}
+
+\begin{theorem}[The fundamental theorem of calculus, part I]
+If $f$ is continuous on $[a,b]$, then there is a solution to the differential equation
+\begin{equation*}
+y'=f(x).
+\end{equation*}
+In particular, $y=\DS\int_a^xf(t)\dee t$ is the unique solution so that $y(a)=0$.
+\end{theorem}
+
+\begin{remark}\,
+\begin{itemize}
+\item Recall that if $r\ne -1$, then $y= \frac{x^{r+1}}{r+1}$ is a solution to the differential equation $y'=x^r$.
+\item There has to be a solution when $r=-1$ since $f(x)=1/x$ is continuous everywhere except for $x=0$, but it is also clear that $y=\frac{x^{r+1}}{r+1}$ \underline{does not work}!
+\item So, what are we to do?
+\item Answer: just invent a name for the solution we know must exist, and then try to figure out how it behaves.
+\end{itemize}
+\end{remark}
+
+\begin{definition}
+The \textbf{natural logarithm} is the function defined by the rule
+\begin{equation*}
+\ln(x) = \int_1^x\frac{\dee t}{t}\quad (x>0).
+\end{equation*}
+\end{definition}
+
+\begin{corollary}
+The natural logarithm is the solution to the IVP
+\begin{align*}
+y' & = \frac{1}{x},\\
+y(1) &=0.
+\end{align*}
+In particular, we have
+\begin{equation*}
+\frac{\dee}{\dee x}\ln x = \frac{1}{x},\quad (x>0).
+\end{equation*}
+\end{corollary}
+
+\begin{remark}
+A lot of interesting functions are ``invented" in this way:
+\begin{enumerate}
+\item Some STEM application leads us to build a model that requires the solution to some differential equation (or some other problem).
+\item Some theorem (e.g., FTC1) tells us that a solution exists, but it's not any of the functions that we've seen so far.
+\item Give it a new name and study it.
+\end{enumerate}
+\end{remark}
+
+\begin{corollary}
+The natural logarithm is continuous, differentiable, strictly increasing, and concave down on its entire domain $(0,\infty)$.
+\end{corollary}
+
+\newpage 
+
+\begin{theorem}[Properties of the logarithm]
+For all real $a,b>0$ and rational $r$, we have
+\begin{align}
+ \ln ab &= \ln a + \ln b,\label{log of product}\\
+ \ln\frac{a}{b} &= \ln a - \ln b,\\
+ \ln\frac{1}{a} &= -\ln a,\\
+ \ln a^r &= r\ln a.
+\end{align}
+\end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Proof of~\eqref{log of product}]{
+Let $a,b>0$.
+Differentiating with respect to $a$, we observe that on the one hand
+\begin{equation*}
+\frac{\dee}{\dee a}\ln a = \frac{1}{a},
+\end{equation*}
+and on the other hand, the chain rule gives
+\begin{equation*}
+\frac{\dee}{\dee a}\ln ab = \frac{1}{ab}\frac{\dee}{\dee a}(ab) = \frac{b}{ab} = \frac{1}{a}.
+\end{equation*}
+Whence it follows that 
+\begin{equation*}
+\ln ab = \ln a + C
+\end{equation*}
+for some constant (with respect to $a$) $C$.
+Evaluating each side of this equation at $a=1$, we observe that
+\begin{equation*}
+\ln b = \ln 1 + C = C.
+\end{equation*}
+Substituting $C=\ln b$ above, we have
+\begin{equation*}
+\ln ab = \ln a + \ln b.\qedhere
+\end{equation*}
+}
+\else
+\begin{proof}[Proof of~\eqref{log of product}]\,
+
+\vspace{6in}
+\end{proof}
+\fi
+
+\newpage
+
+\begin{remark}
+If $y$ is a positive, differentiable function of $x$, then the chain rule gives the formula
+\begin{equation*}
+\frac{\dee }{\dee x}\ln y = \frac{y'}{y}.
+\end{equation*}
+This expression is called the \textbf{logarithmic derivative} of $y$.
+Logarithmic derivatives have many applications including the computation of ordinary derivatives.
+\end{remark}
+
+\begin{example}
+Suppose that $y = \frac{(x^2+1)(x+3)^{1/2}}{x-1}$ for $x>1$.
+Compute $\dee y/\dee x$ without using the product rule or the quotient rule.
+\end{example}
+
+\vfill
+
+\begin{example}
+Compute $\dee y/\dee x$ if $y=x^x$ for $x>0$.
+\end{example}
+
+\vfill
+
+\newpage
+
+\begin{theorem}
+If $n$ is a positive integer, then $\ln 2^n > n/2$.
+\end{theorem}
+\begin{proof}\,
+
+\vspace{2.5in}
+\end{proof}
+
+\begin{corollary}
+The range of the natural logarithm is $(-\infty, \infty)$, and moreover
+\begin{align*}
+\lim_{x\to \infty}\ln x &= \infty,\\
+\lim_{x\to 0^+}\ln x &=-\infty.
+\end{align*}
+\end{corollary}
+\begin{proof}\,
+
+\vspace{2.5in}
+\end{proof}
+
+\begin{corollary}
+The range of the natural logarithm is $(-\infty,\infty)$.
+\end{corollary}
+
+\begin{definition}
+\textbf{Euler's number} (a.k.a. \textbf{Napier's constant}) is the number $\E$ defined by the equation $\ln(\E)=1$.
+\end{definition}
+
+\newpage
+
+\begin{theorem}
+On any interval not containing zero, we have
+\begin{equation*}
+\int\frac{\dee x}{x} = \ln|x| + C.
+\end{equation*}
+\end{theorem}
+
+\begin{corollary}
+Where the integrands are continuous, we have
+\begin{align}
+\int\tan x \dee x &= \ln |\sec x| + C,\\
+\int\cot x \dee x &= \ln|\sin x| + C,\\
+\int\sec x \dee x &=\ln |\sec x + \tan x| + C,\\
+\int\csc x \dee x &= -\ln |\csc x + \cot x| + C.
+\end{align}
+\end{corollary}
+\begin{proof}\,
+
+\vspace{5in}
+\end{proof}

@@ -1,0 +1,177 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Improper integrals}{\textit{Thomas' Calculus} \textsection 8.8}
+
+\begin{remark}\,
+\begin{itemize}
+\item When we defined the definite integral $\DS\int_a^bf(x)\dee x$ as a limit of Riemann sums, we assumed that $[a,b]$ was a finite length interval and that $f$ was continuous on $[a,b]$.
+\item Occasionally, it is possible to somewhat relax these two conditions.
+Such integrals are referred to as \textbf{improper integrals}.
+\end{itemize}
+\end{remark}
+
+\begin{definition}[Improper integrals of type I]\,
+\begin{itemize}
+\item If $\DS\int_a^tf(x)\dee x$ exists for every $t\ge a$, then we define
+\begin{equation*}
+\int_a^\infty f(x)\dee x = \lim_{t\to\infty}\int_a^t f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\item If $\DS\int_t^bf(x)\dee x$ exists for every $t\le b$, then we define
+\begin{equation*}
+\int_{-\infty}^b f(x)\dee x = \lim_{t\to-\infty}\int_t^b f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\end{itemize}
+We say that the integrals above are \textbf{convergent} when they exist; otherwise we say that they are \textbf{divergent}.
+\begin{itemize}
+\item If there is a real number $c$ so that both $\DS\int_c^\infty f(x)\dee x$ and $\DS\int_{-\infty}^cf(x)\dee x$ are both convergent, then we define
+\begin{equation*}
+\int_{-\infty}^\infty f(x)\dee x = \int_{-\infty}^cf(x)\dee x + \int_c^\infty f(x)\dee x.
+\end{equation*}
+\end{itemize}
+\end{definition}
+
+\newpage
+
+\begin{example}
+What is the area of the region under the curve $y=\DS\frac{\ln x}{x^2}$ over the interval $[1,\infty)$?
+\end{example}
+
+\newpage
+
+\begin{theorem}
+Let $p\in\R$.
+The integral $\DS\int_1^\infty\frac{\dee x}{x^p}$ converges if and only if $p>1$.
+\end{theorem}
+\begin{proof}\,
+
+\vspace{5in}
+\end{proof}
+
+\newpage
+
+\begin{example}
+Evaluate $\DS\int_{-\infty}^\infty\frac{\dee x}{1+x^2}$.
+\end{example}
+
+\newpage
+
+\begin{theorem}[Test for divergence]
+If $\int_a^\infty f(x)\dee x$ converges, then $f(x)\to 0$ as $x\to\infty$.
+\end{theorem}
+\begin{remark}
+In practice, we use the test for divergence in the form of its contrapositive, viz.,
+\begin{equation*}
+\lim_{x\to\infty} f(x)\ne 0 \implies \int_a^\infty f(x)\dee x \text{ diverges}.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Show that $\DS\int_1^\infty \left(1-\frac{1}{x}\right)^{x}\dee x$ diverges.
+\end{example}
+
+\newpage
+
+\begin{definition}[Improper integrals of type II]\,
+\begin{itemize}
+\item If $f$ is continuous on $[a,b)$ but discontinuous at $x=b$, then we define
+\begin{equation*}
+\int_a^b f(x)\dee x = \lim_{t\to b^-}\int_a^t f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\item If $f$ is continuous on $(a,b]$ but discontinuous at $x=a$, then we define
+\begin{equation*}
+\int_{a}^b f(x)\dee x = \lim_{t\to a^+}\int_t^b f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\end{itemize}
+We say that the integrals above are \textbf{convergent} when they exist; otherwise we say that they are \textbf{divergent}.
+\begin{itemize}
+\item If $f$ is continuous on $[a,b]$ except for a discontinuity at $c\in (a,b)$, then we define
+\begin{equation*}
+\int_{a}^b f(x)\dee x = \int_{a}^cf(x)\dee x + \int_c^b f(x)\dee x.
+\end{equation*}
+\end{itemize}
+\end{definition}
+
+\begin{example}
+Determine $\DS\int_2^5\frac{\dee x}{\sqrt{x-2}}$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Calculate $\DS\int_0^{\pi/2}\sec x\dee x$.
+\end{example}
+\vfill
+
+\begin{example}
+Evaluate $\DS\int_0^3\frac{\dee x}{x-1}$.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{theorem}[Direct comparison test for integrals]
+Suppose that $f$ and $g$ are continuous functions on the interval $[a,\infty)$.
+\begin{enumerate}
+\item If $0\le f(x)\le g(x)$ for all $x\ge a$ and $\int_a^\infty g(x)\dee x$ converges, then $\int_a^\infty f(x)\dee x$ also converges.
+\item If $0\le g(x)\le f(x)$ for all $x\ge a$ and $\int_a^\infty g(x)\dee x$ diverges, then $\int_a^\infty f(x)\dee x$ also diverges.
+\end{enumerate}
+\end{theorem}
+\begin{proof}\,
+
+\vspace{5in}
+\end{proof}
+
+\newpage
+
+
+\begin{example}
+Determine if $\DS\int_0^\infty \E^{-x^2}\dee x$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{remark}
+The idea of the direct comparison test can also be applied to improper integrals of type II.
+\end{remark}
+
+\begin{example}
+Determine if $\DS\int_0^{\pi/2}\frac{\cos x}{\sqrt x}\dee x$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item The test for divergence tells us that if $\int_a^\infty f(x)\dee x$ is going to have a chance at convergence, then we must have $f(x)\to 0$ as $x\to\infty$.
+\item The difference between convergence and divergence for the integral is ``how fast" $f(x)$ tends toward zero.
+\item The comparison tests are about determining convergence by comparing the relative sizes of the integrands.
+\item For the direct comparison test we have to be careful to get the inequalities correct for \textit{all sufficiently large} $x$.
+\item The limit comparison tests allows for ``cruder" comparison using limits.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Limit comparison test for integrals]
+Suppose that $f$ and $g$ are positive and continuous on $[a,\infty)$.
+\begin{enumerate}
+\item If $f(x) \asymp g(x)$ as $x\to\infty$ (in particular, if $\DS\lim_{x\to\infty}\frac{f(x)}{g(x)}=L>0$), 
+then $\int_a^\infty f(x)\dee x$ and $\int_a^\infty g(x)\dee x$ both converge or both diverge.
+\item If $f(x) \lll g(x)$ as $x\to\infty$ (i.e., if $\DS\lim_{x\to\infty}\frac{f(x)}{g(x)}=0$) and $\int_a^\infty g(x)\dee x$ converges, 
+then $\int_a^\infty f(x)\dee x$ converges.
+\item If $f(x) \ggg g(x)$ as $x\to\infty$ (i.e., if $\DS\lim_{x\to\infty}\frac{f(x)}{g(x)}=\infty$) and $\int_a^\infty g(x)\dee x$ diverges, 
+then $\int_a^\infty f(x)\dee x$ diverges.
+\end{enumerate}
+\end{theorem}
+
+\begin{example}
+Determine if $\DS\int_1^\infty\frac{1-\E^{-x}}{x}\dee x$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if $\DS\int_4^\infty\frac{x\dee x}{(3x^2+4)^{5/2}}$ converges or diverges.
+\end{example}

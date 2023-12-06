@@ -1,0 +1,107 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{The comparison tests}{\textit{Thomas' Calculus} \textsection 10.4}
+
+\begin{theorem}[Direct comparison test]\,
+\begin{enumerate}
+\item If $0\le a_n\le b_n$ for all $n\ge N$ and $\DS\sum_{n\ge N} b_n$ converges, then $\DS\sum_{n\ge N}a_n$ converges.
+\item If $0\le b_n\le a_n$ for all $n\ge N$ and $\DS\sum_{n\ge N} b_n$ diverges, then $\DS\sum_{n\ge N}a_n$ diverges.\label{direct comparison test}
+\end{enumerate}
+\end{theorem}
+%\begin{proof}[Proof of~\eqref{direct comparison test}]\,
+%
+%\vspace{6in}
+%\end{proof}
+
+\begin{remark}
+There is an art to applying the direct comparison test, but there is strategy to this art.
+\begin{enumerate}
+\item Ask yourself what ``simpler" series $\sum b_n$ has terms that look similar to $\sum a_n$.
+\item If $\sum b_n$ is known to converge, try to show that $0\le a_n\le b_n$ eventually.  If you succeed, then $\sum a_n$ also converges.
+\item If $\sum b_n$ is known to diverge, try to show that $0\le b_n\le a_n$ eventually. If you succeed, then $\sum a_n$ also diverges.
+\end{enumerate}
+As with any art, mastery comes with much experience, and experience is only got by a lot of practice.
+\end{remark}
+
+\newpage
+
+\begin{example}
+Determine if $\DS\sum_{n=1}^\infty\frac{5}{10n-1}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\frac{1}{n!}$  converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\frac{1}{2^n+\sqrt n}$  converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item The test for divergence tells us that if $\sum a_n$ is going to have a chance at convergence, then we must have $a_n\to 0$ as $n\to\infty$.
+\item The difference between series convergence and divergence is ``how fast" the terms $a_n$ tend to zero.
+\item All the other series tests are trying to get a sense of whether the terms $a_n$ are going to zero ``fast enough" to ensure convergence.
+\item The comparison tests are about determining convergence by comparing the relative sizes of the terms.
+\item For the direct comparison test we have to be careful to get the inequalities correct for all sufficiently large $n$.
+\item The limit comparison test allows for ``cruder" comparison using limits (relative orders at infinity).
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Limit comparison test]
+Suppose that $a_n, b_n>0$ for all $n\ge N$.
+\begin{enumerate}
+\item If $a_n\asymp b_n$ as $n\to\infty$, in particular if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=L\in (0,\infty)$, 
+then $\sum a_n$ and $\sum b_n$ both converge or both diverge.
+\item If $a_n\lll b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=0$) and $\sum b_n$ converges, then $\sum a_n$ converges.
+\item If $a_n\ggg b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=\infty$) and $\sum b_n$ diverges, then $\sum a_n$ diverges.
+\end{enumerate}
+\end{theorem}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=1}^\infty\frac{2n+1}{(n+1)^2}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=1}^\infty\frac{1}{2^n-1}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=1}^\infty\frac{\ln n}{n^{3/2}}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=1}^\infty\frac{1+n\ln n}{n^2+5}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=2}^\infty\frac{1}{(\ln n)^{\ln n}}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=10}^\infty\frac{1}{(\ln n)^{\ln\ln n}}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=10}^\infty\frac{1}{n^{\arctan n}}$ converges or diverges.
+\end{example}

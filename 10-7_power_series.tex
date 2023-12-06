@@ -1,0 +1,105 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Power series}{\textit{Thomas' Calculus} \textsection 10.7}
+
+\begin{definition}
+Given an infinite sequence $\{c_n\}_{n=0}^\infty$ of ``coefficients," an expression of the form
+\begin{equation*}
+\sum_{n=0}^\infty c_n(x-a)^n = c_0 + c_1(x-a) + c_2(x-a)^2+\dots
+\end{equation*}
+is called a \textbf{power series in $x$ about $x=a$}.
+\end{definition}
+
+\begin{remark}\,
+\begin{itemize}
+\item Given a power series, we can define a function
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty c_n(x-a)^n.
+\end{equation*}
+\item The domain of the function is the set of $x$ for which the series converges.
+\item The only $x$ for which convergence is guaranteed \textit{a priori} is $x=a$ where we have $f(a)=c_0$.
+\end{itemize}
+\end{remark}
+
+\vfill
+
+\begin{theorem}
+Given a power series $\sum c_n(x-a)^n$, there are only 3 possibilities.
+\begin{enumerate}
+\item There is an $R>0$ so that the series converges absolutely when $|x-a|<R$ and diverges when $|x-a|>R$.
+\item The series converges for all $x\in\R$.
+\item The series converges only for $x=a$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+In the first case of the theorem, the series may or may not converge at the endpoints $x=a\pm R$.
+\end{remark}
+
+\begin{definition}\,
+The \textbf{interval of convergence} is the set of $x$ for which the power series converges.
+\begin{enumerate}
+\item In the first case of the theorem, the number $R$ is called the \textbf{radius of convergence}.
+\item In the second case of the theorem, we say that the series has \textbf{radius of convergence} $R=\infty$.
+\item In the third case of the theorem, we say that the series has \textbf{radius of convergence} $R=0$.
+\end{enumerate}
+\end{definition}
+
+\newpage
+
+\begin{example}
+For what values of $x$ does the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\frac{x^n}{n}$ converge?
+\end{example}
+
+\newpage
+
+\begin{example}
+For what values of $x$ does the power series $\DS\sum_{n=0}^\infty n!x^n$ converge?
+\end{example}
+
+\newpage
+
+\begin{example}
+For what values of $x$ does the power series $\DS\sum_{n=0}^\infty \frac{x^n}{n!}$ converge?
+\end{example}
+
+\newpage
+
+\begin{remark}
+Once we know where a power series converges, we can try to determine its sum.
+\end{remark}
+
+\begin{example}
+Determine the interval of convergence for each of the power series
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty x^n\quad\text{ and }\quad g(x) =\sum_{n=0}^\infty (-1)^{n+1}(x-2)^n.
+\end{equation*}
+How do they relate to the function $F(x)=\DS\frac{1}{1-x}$?
+\end{example}
+
+\newpage
+
+\begin{theorem}
+If the power series
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty c_n(x-a)^n
+\end{equation*}
+has radius of convergence $R>0$, then
+\begin{align*}
+\frac{\dee }{\dee x}f(x) &= \sum_{n=1}^\infty nc_n(x-a)^{n-1},\\
+\int f(x)\dee x &= C+\sum_{n=0}^\infty \frac{c_n}{n+1}(x-a)^{n+1}
+\end{align*}
+wherever $|x-a|<R$.
+\end{theorem}
+
+\begin{example}
+Determine the interval of convergence for $\DS\sum_{n=1}^\infty\frac{x^n}{n}$.
+Then determine the sum of the series for each $x$ in the interval of convergence.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine the interval of convergence for $\DS\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$.
+Then determine the sum of the series for each $x$ in the interval of convergence.
+\end{example}

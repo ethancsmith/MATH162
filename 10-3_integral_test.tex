@@ -1,0 +1,170 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Integral test}{\textit{Thomas' Calculus} \textsection 10.3}
+
+\begin{definition}
+Given an infinite series $\DS\sum_{n=0}^\infty a_n$, the sequence of \textbf{remainders} (or \textbf{tails}) is
+\begin{equation*}
+R_N = \sum_{n=N+1}^\infty a_n \quad (N\ge 0).
+\end{equation*}
+\end{definition}
+
+\begin{remark}\,
+\begin{itemize}
+\item An infinite series converges if and only if one of its tails converges.
+ \item This is because 
+ \begin{equation*}
+ \sum_{n=0}^\infty a_n = \sum_{n=0}^N a_n + \sum_{n=N+1}^\infty a_n = s_N + R_N
+ \end{equation*}
+ and $s_N$ is just the sum of finitely many real numbers.
+ \item So, if we just want to know if the full series converges or diverges, it doesn't matter where we start $n$.
+ \item If we know that the full series converges, then we can use the $N$th partial sum as an approximation for the series and the the $N$th remainder is the error in this approximation.
+ \end{itemize}
+\end{remark}
+
+\newpage
+
+\begin{theorem}[Integral test]
+Suppose that $f$ is positive, continuous, and decreasing for all $x\ge a$.
+Then
+\begin{equation*}
+\sum_{n=a}^\infty f(n) \text{ converges }\iff \int_a^\infty f(x)\dee x \text{ converges.}
+\end{equation*}
+\end{theorem}
+\begin{remark}
+As usual, it is important to tell the truth in our writing and distinguish between objects that are related but not necessarily equal.
+The integral and the sum are related (if one converges then so does the other), but they are different objects and are most likely not equal.
+\end{remark}
+\textit{Proof.}
+
+\newpage
+
+\,
+
+\vspace{8in}
+
+\qed
+
+\newpage
+
+\begin{definition}
+A $p$\textbf{-series} is a series of the form
+\begin{equation*}
+\sum_{n=1}^\infty \frac{1}{n^p},
+\end{equation*}
+where $p\in\R$.
+The special case when $p=1$ is called the \textbf{harmonic series}.
+\end{definition}
+
+\begin{theorem}[$p$-series test]
+The $p$-series converges if and only if $p>1$.
+In particular, the harmonic series diverges.
+\end{theorem}
+\begin{remark}\,
+\begin{itemize}
+\item Euler developed a technique to determine the value of the series when $p$ is a positive even number.  For example, he showed
+\begin{equation*}
+\sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6}.
+\end{equation*}
+\item To this day, no one knows the precise value of the series for odd $p\ge 3$.
+\item Euler also showed that the divergence of the harmonic series can be used to give a novel proof that there are infinitely many prime numbers.
+\item Riemann would later change the real variable $p$ to a complex variable $s$, and show how the series is connected to a much deeper theory of prime numbers.
+\end{itemize}
+\end{remark}
+\begin{proof}\,
+
+\vspace{4in}
+\end{proof}
+
+\newpage
+
+\begin{example}
+Determine whether the following converge or diverge.
+\begin{enumerate}
+\item $\DS\sum_{n=1}^\infty\frac{1}{n^2+1}$
+\vfill
+\item $\DS\sum_{n=1}^\infty n\E^{-n^2}$
+\vfill
+\item $\DS\sum_{n=1}^\infty\frac{1}{2^{\ln n}}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item If we know that a series $\DS\sum_{n=0}^\infty a_n$ converges, then we can approximate its sum by the $N$th partial sum, i.e., 
+\begin{equation*}
+\sum_{n=0}^\infty a_n \approx s_N = \sum_{n=0}^N a_n
+\end{equation*}
+when $N$ is large.
+\item The error in this approximation 
+\begin{equation*}
+R_N = \sum_{n=0}^\infty a_n - s_N = \sum_{n=N+1}^\infty a_n
+\end{equation*}
+is called the \textbf{$N$-th remainder} (or \textbf{tail of the series}).
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Integral test estimation theorem]
+Suppose that $f$ is positive, continuous, and decreasing for all $x\ge N$, and let $a_n=f(n)$.
+If $\DS\sum_{n=0}^\infty f(n)$ converges, then 
+\begin{equation*}
+0\le  \int_{N+1}^\infty f(x)\dee x\le R_N\le \int_{N}^\infty f(x)\dee x.
+\end{equation*}
+\end{theorem}
+
+\vfill
+
+\begin{remark}
+Because the integral test estimation theorem gives a nonnegative lower bound on the $N$th remainder, we can use it to improve our $N$th partial sum approximation.
+\end{remark}
+
+\begin{corollary}
+Suppose that $f$ is positive, continuous, and decreasing for all $x\ge N$.
+If $\DS\sum_{n=0}^\infty f(n)$ converges, then 
+\begin{equation*}
+\sum_{n=0}^Nf(n) +  \int_{N+1}^\infty f(x)\dee x\le \sum_{n=0}^\infty f(n)\le \sum_{n=0}^Nf(n) +  \int_{N}^\infty f(x)\dee x.
+\end{equation*}
+\end{corollary}
+
+\newpage
+
+\begin{example}
+Although we know that $\DS\sum_{n=1}^\infty\frac{1}{n^3}$ exists (i.e., is a finite real number), we don't know very much about it except that Ap\'ery proved that it is an irrational number.
+\begin{enumerate}
+\item Bound the error in the approximation
+\begin{equation*}
+\sum_{n=1}^\infty\frac{1}{n^3} \approx \sum_{n=1}^{10}\frac{1}{n^3} = \frac{19164113947}{16003008000} = 1.19753\dots.
+\end{equation*}
+\vfill
+\item  Now bound the error in the approximation
+\begin{equation*}
+\sum_{n=1}^{\infty}\frac{1}{n^3}\approx \sum_{n=1}^{10}\frac{1}{n^3} + \int_{11}^\infty\frac{\dee x}{x^3} =  \frac{2326859291587}{1936363968000} = 1.20166\dots.
+\end{equation*}
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item The proof of the integral test really shows that if $f$ is positive, continuous, and decreasing for all $x\ge a$, then
+\begin{equation*}
+\sum_{n=a}^N f(n) \asymp \int_a^N f(x)\dee x\quad \text{as }N\to\infty.
+\end{equation*}
+\item This means that even in the case of divergence, the integral test may have more to say.
+\end{itemize}
+\end{remark}
+\begin{example}
+Determine the rate at which the harmonic series diverges to $\infty$.
+\end{example}
+
+\vfill
+
+\begin{remark}
+Euler showed that $\DS\lim_{N\to \infty}\left(\sum_{n=1}^N\frac{1}{n} - \ln(N)\right)$ exists.
+Today the value of the limit is denoted by $\gamma$ and called the \textit{Euler--Mascheroni constant}.
+\end{remark}

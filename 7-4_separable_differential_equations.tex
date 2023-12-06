@@ -1,0 +1,70 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Separable differential equations}{\textit{Thomas' Calculus} \textsection 7.4}
+
+\begin{definition}
+An \textbf{ordinary differential equation} (ODE) is an equation relating an unknown function $y$, its derivatives, and some given functions of its independent variable.
+To solve the equation is to find all functions $y$ which satisfy the equation, though in practice it is sometimes sufficient to find a single solution.
+\end{definition}
+
+\begin{remark}
+The full solution set to a differential equation of the form
+\begin{equation*}
+\frac{\dee y}{\dee x} = f(x)
+\end{equation*}
+is (by definition) the indefinite integral $y = \int f(x)\dee x$.
+\end{remark}
+
+\begin{definition}
+A quantity $y$ is said to exhibit \textbf{exponential change} if its rate of change is proportional to its size at a given time $t$, i.e., 
+\begin{equation}\label{exponential change de}
+\frac{\dee y}{\dee t} = ky
+\end{equation}
+for some constant $k$.
+\end{definition}
+
+\begin{remark}
+Examples of exponential change include unchecked population growth, amount of a decaying radioactive substance, and the temperature difference between a hot object and its surrounding medium.
+\end{remark}
+
+\begin{example}
+Explain the name ``exponential change" by solving the differential equation~\eqref{exponential change de}.
+\end{example}
+
+\newpage
+
+\begin{definition}
+A differential equation is said to be \textbf{separable} if it takes the form
+\begin{equation}\label{separable de}
+\frac{\dee y}{\dee x} = g(x)h(y),
+\end{equation}
+where $g$ is a function of $x$ alone and $h$ is a function of $y$ alone.
+\end{definition}
+
+\begin{remark}\,
+Many separable equations~\eqref{separable de} can be solved (at least implicitly) by first observing that
+\begin{equation*}
+\dee y = \frac{\dee y}{\dee x}\dee x = g(x)h(y)\dee x
+\end{equation*}
+so that
+\begin{equation*}
+\int\frac{\dee y}{h(y)} = \int g(x)\dee x.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Solve the ODE
+\begin{equation*}
+\frac{\dee y}{\dee x} = (1+y)\E^x\quad (y>-1).
+\end{equation*}
+\end{example}
+
+\newpage
+
+\begin{example}
+Solve the ODE
+\begin{equation*}
+y(x+1)\frac{\dee y}{\dee x} = x(y^2+1).
+\end{equation*}
+\end{example}
+

@@ -1,0 +1,131 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Integration by parts}{\textit{Thomas' Calculus} \textsection 8.2}
+
+\begin{mdframed}
+\begin{minipage}{0.5\linewidth}
+\begin{enumerate}
+%\item $\DS\int \big(f(x) + g(x)\big)\dee x = \int f(x)\dee x + \int g(x)\dee x$
+\item $\DS\int x^n\dee x = \frac{x^{n+1}}{n+1}+C\quad (n\ne -1)$
+\item $\DS\int\frac{\dee x}{x} = \ln|x| + C$
+\item $\DS\int\E^x\dee x = \E^x + C$
+\item $\DS\int\sinh x\dee x = \cosh x+C$
+\item $\DS\int\cosh x\dee x=\sinh x + C$
+\item $\DS\int\frac{\dee x}{\sqrt{1-x^2}} = \arcsin x + C$
+\item $\DS\int\frac{\dee x}{1+x^2} = \arctan x + C$
+\item $\DS\int\frac{\dee x}{x\sqrt{x^2-1}} = \arcsec|x|+C$
+\item $\DS\int\frac{\dee x}{\sqrt{1+x^2}} = \sinh^{-1} x + C$
+\item $\DS\int\frac{\dee x}{\sqrt{x^2-1}} = \cosh^{-1} x + C$
+\end{enumerate}
+\end{minipage}
+\begin{minipage}{0.5\linewidth}
+\begin{enumerate}
+\setcounter{enumi}{10}
+\item $\DS\int\sin x\dee x=-\cos x + C$
+\item $\DS\int\cos x\dee x=\sin x +C$
+\item $\DS\int\tan x\dee x=\ln|\sec x| + C$
+\item $\DS\int\csc x\dee x=-\ln|\csc x+\cot x| + C$
+\item $\DS\int\sec x\dee x=\ln|\sec x+\tan x|+C$
+\item $\DS\int\cot x\dee x=\ln|\sin x| +C$
+\item $\DS\int\sec^2 x\dee x = \tan x + C$
+\item $\DS\int\csc x\cot x\dee x=-\csc x+C$
+\item $\DS\int\sec x\tan x\dee x = \sec x+C$
+\item $\DS\int\csc^2 x\dee x = -\cot x+C$
+\end{enumerate}
+\end{minipage}
+\end{mdframed}
+
+%\begin{example}
+%Evaluate $\DS\int_3^5\frac{2x-3}{\sqrt{x^2-3x+1}}\dee x$.
+%\end{example}
+%
+%\newpage
+%
+%\begin{example}
+%Compute the following.
+%\begin{enumerate}
+%\item $\DS\int\frac{\dee x}{\sqrt{8x-x^2}}$
+%\vfill
+%\item $\DS\int\big(\cos x\sin 2x + \sin x\cos 2x\big)\dee x$
+%\vfill
+%\end{enumerate}
+%\end{example}
+%
+%\newpage
+%
+%\begin{example}
+%Evaluate the following.
+%\begin{enumerate}
+%\item $\DS\int_0^{\pi/4}\frac{\dee x}{1-\sin x}$
+%\vfill
+%\item $\DS\int\frac{3x^2-7x}{3x+2}\dee x$
+%\vfill
+%\end{enumerate}
+%\end{example}
+%
+%\newpage
+%
+%\begin{example}
+%Determine the following.
+%\begin{enumerate}
+%\item $\DS\int\frac{3x+2}{\sqrt{1-x^2}}\dee x$
+%\vfill
+%\item $\DS\int\frac{\dee x}{(1+\sqrt x)^3}$
+%\vfill
+%\end{enumerate}
+%\end{example}
+%
+%\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item Viewing the chain rule (for differentiation) as a fact about integration led to the technique of $u$-substitution.
+\item Similarly, viewing the product rule as a fact about integration leads to a technique known as \textbf{integration by parts}.
+\item In particular, the formula
+\begin{equation*}
+\frac{\dee }{\dee x}f(x)g(x) = g(x)\frac{\dee}{\dee x}f(x) + f(x)\frac{\dee}{\dee x}g(x)
+\end{equation*}
+is rearranged as
+\begin{equation*}
+f(x)\frac{\dee}{\dee x}g(x) = \frac{\dee }{\dee x}f(x)g(x) - g(x)\frac{\dee}{\dee x}f(x) 
+\end{equation*}
+and then integrated to reveal
+\begin{equation*}
+\int f(x)\frac{\dee}{\dee x}g(x)\dee x = f(x)g(x) - \int g(x)\frac{\dee}{\dee x}f(x) \dee x.
+\end{equation*}
+\item Putting $u=f(x)$ and $v=g(x)$, we usually remember this in the convenient form
+\begin{equation}
+\int u\dee v = uv - \int v\dee u.
+\end{equation}
+\end{itemize}
+\end{remark}
+
+\newpage
+
+\begin{example}
+Evaluate the following.
+\begin{enumerate}
+\item $\DS\int x\cos x\dee x$
+\vfill
+\item $\DS\int\ln x\dee x$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{example}
+Evaluate the following.
+\begin{enumerate}
+\item $\DS\int x^2\E^x\dee x$
+\vfill
+\item $\DS\int\E^x\cos x\dee x$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{example}
+Find the area under the curve $y=x\E^x$ over the interval $[0,4]$.
+\end{example}

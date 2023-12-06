@@ -1,0 +1,183 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Indeterminate forms}{\textit{Thomas' Calculus} \textsection 7.5}
+
+\begin{remark}\,
+\begin{itemize}
+\item If $f(x)\to 0$ and $g(x)\to L\ne 0$ as $x\to a$, then 
+\begin{equation*}
+\DS\lim_{x\to a}\frac{f(x)}{g(x)} = \frac{0}{L} = 0.
+\end{equation*}
+\item If $f(x)\to L\ne 0$ and $g(x)\to 0$ as $x\to a$, then 
+\begin{equation*}
+\DS\lim_{x\to a}\frac{f(x)}{g(x)} \quad \mathrm{DNE}.
+\end{equation*}
+\item It is possible (but not inevitable) that the second limit is $\pm\infty$, but that is only being more specific about the way in which the limit fails to exist.
+\item We \underline{never} write (not even as an intermediate step) that the second limit is equal to $\DS\frac{L}{0}$.
+\item It is \underline{wrong} to say that $L/0 = \infty$; don't believe it.
+The expression $L/0$ is nonsense.
+\end{itemize}
+\end{remark}
+
+\begin{example}[Calc I pop quiz]
+Compute the limits:
+\begin{enumerate}
+\item $\DS\lim_{x\to 3}\frac{x^2-9}{x-3}$
+\vfill
+\item $\DS\lim_{x\to 0}\frac{\sin x}{x}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{definition}\,
+\begin{itemize}
+\item If $\DS\lim_{x\to a}f(x) =  0 = \lim_{x\to a}g(x)$, then we say that the limit $$\DS\lim_{x\to a}\frac{f(x)}{g(x)}$$ exhibits  the \textbf{indeterminate form} ``$\frac{0}{0}$".
+\item If $\DS\lim_{x\to a}f(x) = \pm\infty$ and $\DS\lim_{x\to a}g(x) = \pm\infty$, then we say that the limit $$\DS\lim_{x\to a}\frac{f(x)}{g(x)}$$ exhibits  the \textbf{indeterminate form} ``$\frac{\infty}{\infty}$".
+\end{itemize}
+\end{definition}
+
+\begin{remark}\,
+\begin{itemize}
+\item There is no simple formula to determine the value of an indeterminate form.
+\item The expressions ``$\frac{0}{0}$" and ``$\frac{\infty}{\infty}$" are \underline{not numbers}.
+\item Never write that something equals an indeterminate form.
+\item To say that the limit has the indeterminate form ``$\frac{0}{0}$" and ``$\frac{\infty}{\infty}$" is to realize that there is a race between the numerator and the denominator.
+The existence/value of the limit depends on the relative rate/speed at which the two approach their respective limits.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[L'H\^opital's rule]
+Suppose that $f$ and $g$ are differentiable with $g'(x)\ne 0$ near $x=a$ (except possibly at $x=a$ itself).
+Further suppose that 
+\begin{equation*}
+\lim_{x\to a}f(x) = 0 = \lim_{x\to a}g(x)
+\end{equation*}
+or that
+\begin{equation*}
+\lim_{x\to a}f(x) = \pm\infty = \lim_{x\to a}g(x).
+\end{equation*}
+Then
+\begin{equation*}
+\lim_{x\to a}\frac{f(x)}{g(x)} = \lim_{x\to a}\frac{f'(x)}{g'(x)}
+\end{equation*}
+assuming that the limit on the right side exists (or is $\infty$ or $-\infty$).
+\end{theorem}
+
+\begin{remark}\,
+\begin{itemize}
+\item Applying L'H\^opital's rule when the limit does not exhibit the indeterminate form ``$\frac{0}{0}$" or ``$\frac{\infty}{\infty}$" is not valid and will likely lead to incorrect results.
+\item L'H\^opital's rule is also valid for limits at infinity.
+\end{itemize}
+\end{remark}
+
+\newpage
+
+\begin{example}
+Compute the limits below.
+\begin{enumerate}
+\item $\DS\lim_{x\to 0}\frac{3x - \sin x}{x}$
+\vfill
+\item $\DS\lim_{x\to 0}\frac{\sqrt{1+x}-1}{x}$
+\vfill
+\item $\DS\lim_{x\to 0}\frac{\sqrt{1+x}-1-x/2}{x^2}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage 
+
+\begin{example}
+Compute the limits below.
+\begin{enumerate}
+\item $\DS\lim_{x\to \frac{\pi}{2}}\frac{\sec x}{1+\tan x}$
+\vfill
+\item $\DS\lim_{x\to \infty}\frac{\ln x}{2\sqrt x}$
+\vfill
+\item $\DS\lim_{x\to \infty}\frac{\E^x}{x^2}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{definition}\,
+\begin{itemize}
+\item If $\DS\lim_{x\to a}f(x) = 0$ and $\DS\lim_{x\to a}g(x) = \infty$, then we say that the limit $$\DS\lim_{x\to a}f(x)g(x)$$ exhibits the \textbf{indeterminate form} ``$0\cdot\infty$".
+\item If $\DS\lim_{x\to a}f(x) = \infty = \lim_{x\to a}g(x)$, then we say that the limit $$\DS\lim_{x\to a}\left(f(x)-g(x)\right)$$ exhibits the \textbf{indeterminate form} ``$\infty - \infty$".
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+Indeterminate forms ``$0\cdot\infty$" and ``$\infty - \infty$" may be transformed (via algebra) into the forms ``$\frac{0}{0}$" or ``$\frac{\infty}{\infty}$" where L'H\^opital's rule applies.
+\end{remark}
+
+\begin{example}
+Compute the limits below.
+\begin{enumerate}
+\item $\DS\lim_{x\to\infty}x\sin(1/x)$
+\vfill
+\item $\DS\lim_{x\to 0^+}\sqrt x\ln x$
+\vfill
+\item $\DS\lim_{x\to 0}\left(\frac{1}{\sin x} - \frac{1}{x}\right)$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{definition}\,
+\begin{itemize}
+\item If $\DS\lim_{x\to a}f(x) = 0$ and $\DS\lim_{x\to a}g(x) = 0$, then we say that the limit $$\DS\lim_{x\to a}f(x)^{g(x)}$$ exhibits the \textbf{indeterminate form} ``$0^0$".
+\item If $\DS\lim_{x\to a}f(x) = \infty$ and $\DS\lim_{x\to a}g(x) = 0$, then we say that the limit $$\DS\lim_{x\to a}f(x)^{g(x)}$$ exhibits the \textbf{indeterminate form} ``$\infty^0$".
+\item If $\DS\lim_{x\to a}f(x) = 1$ and $\DS\lim_{x\to a}g(x) = \infty$, then we say that the limit $$\DS\lim_{x\to a}f(x)^{g(x)}$$ exhibits the \textbf{indeterminate form} ``$1^{\infty}$".
+\end{itemize}
+\end{definition}
+
+\begin{remark}
+The forms above are called indeterminate powers.
+Indeterminate powers may be transformed (via the identity $f^g = \exp(g\log f)$) into the form ``$0\cdot \infty$".
+\end{remark}
+
+\begin{example}
+Compute the limits below.
+\begin{enumerate}
+\item $\DS\lim_{x\to 0^+}\left(1+\sin 4x\right)^{\cot x}$
+\vfill
+\item $\DS\lim_{x\to 0^+}x^x$
+\vfill
+\newpage
+\item $\DS\lim_{x\to 0^+}(1+x)^{1/x}$
+\vfill
+\item $\DS\lim_{x\to \infty}x^{1/x}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item We should think of indeterminate forms as races between two functions that each want to drive the limit to a different value.
+L'H\^opital's rule is one tool to help compare the relative velocities of the functions as they approach their respective limits.
+\item Don't forget your algebraic techniques from calc I.
+\begin{itemize}
+\item Frequently an algebraic solution is much quicker.
+\item It is also possible to get stuck in a L'H\^opital cycle that never leads to a final result.
+\end{itemize}
+\item Most indeterminate forms do not evaluate to numbers, but there is 1 exception.  
+By convention, the number $0^0 = 1$, but the form ``$0^0$" is indeterminate.  
+\item In any case, never write that a limit is equal to an indeterminate form.
+If you do, you are at best writing nonsense.
+In any case, you are writing falsehoods.
+\end{itemize}
+\end{remark}
+
+\begin{example}
+Compute $\DS\lim_{x\to\infty}\frac{2^x-3^x}{3^x+4^x}$.
+\end{example}
+
+%Determinate or Indeterminate?
+%$\infty^\infty$, etc.
+

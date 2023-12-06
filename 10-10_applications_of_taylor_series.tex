@@ -1,0 +1,130 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Applications of Taylor series}{\textit{Thomas' Calculus} \textsection 10.10}
+
+\begin{definition}[Falling factorials]
+Given $\alpha\in\R$ and a nonnegative integer $k$, $\alpha$ \textbf{falling} $k$ is the number
+\begin{equation*}
+\alpha^{\underline{k}} = \prod_{j=0}^{k-1}(\alpha-j).
+\end{equation*}
+\end{definition}
+\begin{remark}\,
+\begin{itemize}
+\item By our convention that empty products are $1$, $\binom{\alpha}{0}=1$ for all $\alpha$.
+\item If $n$ is a nonnegative integer, then $n^{\underline{n}}=n!$.
+\end{itemize}
+\end{remark}
+
+
+\begin{definition}[Binomial coefficients]
+Given $\alpha\in\R$ and a nonnegative integer $k$, $\alpha$ \textbf{choose} $k$ is the number
+\begin{equation*}
+\binom{\alpha}{k} = \frac{\alpha^{\underline{k}}}{k!}
+\end{equation*}
+\end{definition}
+
+\begin{example}
+Compute $\binom{7}{3}$ and $\binom{4}{2}$.
+Then compute $\binom{-1}{k}$ for all $k$.
+\end{example}
+
+\newpage
+
+\begin{theorem}[Newton's binomial theorem]
+For any (fixed) $\alpha\in\R$,
+\begin{equation*}
+(1+x)^\alpha = \sum_{k=0}^\infty\binom{\alpha}{k}x^k
+\end{equation*}
+for all $-1< x< 1$.
+\end{theorem}
+\begin{remark}\,
+\begin{itemize}
+\item For some choices of $\alpha$, the above identity may hold for more values of $x$.
+\item For example, if $\alpha$ is a nonnegative integer, the ``infinite series" on the right turns out to be a polynomial and the identity holds for all real $x$.
+\end{itemize}
+\end{remark}
+
+\begin{example}
+Use the above theorem to quickly compute the Taylor polynomial of order $4$ about $x=0$ for $f(x)=\sqrt{1+x}$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Use power series to evaluate $\DS\lim_{x\to 1}\frac{\ln x}{x-1}$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Use power series to evaluate the ``\textit{Mean Girls} limit"
+$\DS\lim_{x\to 0}\frac{\ln(1-x)-\sin x}{1-\cos^2 x}$.
+\end{example}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item The classical (Newtonian) definition of the kinetic energy $K$ of an object with (a constant) mass $m$ moving with velocity $v$ is
+\begin{equation*}
+K= \frac{1}{2}mv^2.
+\end{equation*}
+\item In the modern (Einsteinian) theory, the \textit{relativistic mass} of an object is a function of its velocity, viz.,
+\begin{equation*}
+m = \frac{m_0}{\sqrt{1-(v/c)^2}},
+\end{equation*}
+where $m_0$ is the \textit{rest mass} and $c$ is the speed of light (both of which are constant/invariant in every frame of reference).
+\item The kinetic energy of the object is then redefined to be
+\begin{equation*}
+K = (m-m_0)c^2.
+\end{equation*}
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+We have
+\begin{equation*}
+K = \frac{1}{2}m_0v^2 + O\bigg((v/c)^4\bigg)
+\end{equation*}
+as $v/c\to 0$.
+\end{theorem}
+\begin{remark}
+In other words, if the velocity $v$ of the object is very small compared to the speed of light $c$, then the classical definition of kinetic energy is a good approximation to the modern definition in the sense that the error goes to zero as $v/c\to 0$.
+\end{remark}
+
+\begin{proof}
+\,
+\vspace{3.7in}
+
+\end{proof}
+
+\newpage
+
+
+\begin{definition}
+If $z$ is complex number, we define
+\begin{equation*}
+\exp(z) = \sum_{n=0}^\infty \frac{z^n}{n!}.
+\end{equation*}
+\end{definition}
+
+\begin{theorem}[Euler's identity]
+For any real number $\theta$,
+\begin{equation*}
+\exp(\I\theta) = \cos\theta + \I\sin\theta,
+\end{equation*}
+where $\I$ is a square root of $-1$, i.e, $\I^2=-1$.
+\end{theorem}
+
+\begin{proof}
+\,
+\vspace{4.5in}
+
+\end{proof}
+
+\newpage
+
+\begin{example}
+Express $\DS\int\sin x^2\dee x$ as a power series.
+Then estimate $\DS\int_0^1\sin x^2\dee x$ to within $10^{-3}$.
+\end{example}

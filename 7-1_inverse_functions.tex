@@ -1,0 +1,182 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Inverse functions}{\textit{Thomas' Calculus} \textsection 7.1}
+
+\begin{definition}
+Let $A$ and $B$ be subsets of $\R$, and let $f$ be a function with domain $A$ and range $B$.
+We say that $f$ is \textbf{invertible} if there is a function $f^{-1}$ with domain $B$ and range $A$ so that
+\begin{align*}
+f^{-1}(f(a)) &= a\quad (a\in A),\\
+f(f^{-1}(b)) &= b\quad (b\in B),\\
+\end{align*}
+i.e.,
+\begin{equation*}
+f^{-1}(b)=a \iff f(a)=b.
+\end{equation*}
+If $f^{-1}$ exists, we say that $f^{-1}$ is the \textbf{inverse} of $f$.
+\end{definition}
+
+\begin{remark}
+If $f^{-1}$ exists, then
+\begin{enumerate}
+\item the graph of the function $y=f^{-1}(f(x))$ coincides with the graph of $y=x$ for $x\in A$, 
+\item the graph of $y=f(f^{-1}(x))$ coincides with the graph of $y=x$ for $x\in B$, and
+\item the graph of $y=f^{-1}(x)$ is the reflection of the graph of $y=f(x)$ across the line $y=x$.
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+Explain why $g(x) = \sqrt x$ is \underline{not} the inverse of $f(x)=x^2$ over their natural domains.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{The two are not inverses for two different reasons (either of which is sufficient).
+\begin{enumerate}
+\item Firstly, $\dom(f) = (-\infty, \infty) \ne [0,\infty) = \rng(g)$.
+\item Secondly, 
+\begin{equation*}
+g(f(x)) = g(x^2) = \sqrt{x^2} = |x| \ne x
+\end{equation*}
+for some $x\in\dom(f)=(-\infty, \infty)$.
+\end{enumerate}
+}
+\else
+\vfill
+\fi
+
+\newpage
+
+\begin{example}
+Compute the inverse of $f(x)=3x+1$ over its natural domain.
+\end{example}
+
+\newpage
+
+\begin{definition}
+Let $f$ be a function with domain $A$.
+We say that $f$ is \textbf{one-to-one} (or \textbf{injective}) if for all $a,b\in A$
+\begin{equation*}
+f(a)=f(b)\implies a=b.
+\end{equation*}
+%or equivalently,
+%\begin{equation*}
+%a\ne b\implies f(a)\ne f(b).
+%\end{equation*}
+\end{definition}
+
+\begin{remark}
+A function is one-to-one if every time you \textit{think} you've found two inputs that map to the \textit{same output}, it turns out that the inputs are really the \textit{same input}.
+In other words, the definition of one-to-one is just a formal statement of the ``horizontal line test" that you may have learned in precalculus.
+\end{remark}
+
+\begin{example}
+Use the definition (and algebra) to show that $f(x)=3x+1$ is one-to-one on its natural domain.
+\end{example}
+
+\vfill
+
+\begin{example}
+Use the definition to show that $f(x)=x^2$ is \underline{not} one-to-one on its natural domain.
+\end{example}
+
+\vfill
+
+\newpage
+
+\begin{theorem}
+If $f$ is strictly monotone (increasing or decreasing) over an interval, then $f$ is one-to-one on that interval.
+\end{theorem}
+\begin{proof}\,
+
+\vspace{3.5in}
+
+\end{proof}
+
+
+\begin{example}
+Use the above theorem to show that $f(x)=3x+1$ is one-to-one on its domain.
+\end{example}
+
+\vfill
+
+\newpage
+
+\begin{theorem}
+A function is invertible if and only if it is one-to-one.
+\end{theorem}
+
+\begin{remark}
+Students taking discrete math or combinatorics may notice that the above theorem does not mention that an invertible function also needs to be \textit{onto} (i.e., \textit{surjective}).
+That is because we are using a simplified definition of invertible in calc II.
+\end{remark}
+
+\begin{corollary}
+Let $a\in\R$, and let $I$ be an open interval containing $a$.
+If $f$ is differentiable on $I$, $f'(a)\ne 0$, and $f'$ does not change sign on $I$, then $f$ is invertible on $I$.
+\end{corollary}
+
+\begin{proof}\,
+
+\vspace{4in}
+
+\end{proof}
+
+\newpage
+
+\begin{example}
+Show that the function
+\begin{equation*}
+f(x)=x^2\quad (x\ge 0)
+\end{equation*}
+is invertible on its domain.
+What is its inverse?
+\end{example}
+
+\vfill
+
+\begin{example}
+Show that the function
+\begin{equation*}
+f(x)=x^2\quad (x\le 0)
+\end{equation*}
+is invertible on its domain.
+What is its inverse?
+\end{example}
+
+\vfill
+
+\newpage
+
+\begin{theorem}
+Let $a\in\R$.
+If $f$ is continuously differentiable at $x=a$ and $f'(a)\ne 0$, then $f^{-1}$ is differentiable at $x=a=f^{-1}(b)$ and
+ \begin{equation*}
+ \left(f^{-1}\right)'(b) = \frac{1}{f'\big(f^{-1}(b)\big)}.
+ \end{equation*}
+\end{theorem}
+
+\begin{example}
+Show that $f(x)=2x+\cos x$ is invertible on $\R$.
+Then compute $\frac{\dee f^{-1}}{\dee x}$ when $x=1$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Compute the natural domain and range of $f(x)=\sqrt{x^3+x^2+x+1}$.
+Show that $f$ is invertible over its entire domain.
+Then compute $\left(f^{-1}\right)'(2)$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Show that 
+\begin{equation*}
+f(x) = 3+\frac{x^2}{2}+\tan(\pi x/2)\quad (-1<x<1)
+\end{equation*}
+is invertible over its domain.
+Then compute $\frac{\dee f^{-1}}{\dee x}$ at $x=3$.
+\end{example}
+
+%\end{document}   

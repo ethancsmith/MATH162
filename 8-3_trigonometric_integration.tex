@@ -1,0 +1,131 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{Trigonometric integration}{\textit{Thomas' Calculus} \textsection 8.3}
+
+\begin{remark}
+To evaluate $\int \sin^m x\cos^n x\dee x$ we have the following basic strategy.
+\begin{enumerate}
+\item If $m=2k+1$ is odd, then we save a factor of $\sin x\dee x = -\dee(\cos x)$ and use identity $\sin^2 x + \cos^2 x = 1$ to write
+\begin{equation*}
+\begin{split}
+\int \sin^m x \cos^n x\dee x &= \int (\sin^2 x)^k\sin x\cos^n x\dee x \\
+&= \int (1-\cos^2 x)^k\cos^n x\sin x\dee x\\
+& = -\int (1-u^2)^ku^n\dee u,
+\end{split}
+\end{equation*}
+where $u=\cos x$.
+\item If $n=2k+1$ is odd, then we save a factor $\cos x\dee x = \dee(\sin x)$ and write
+\begin{equation*}
+\begin{split}
+\int \sin^m x \cos^n x\dee x &= \int\sin^m x(\cos^2 x)^k\cos x\dee x \\
+&= \int\sin^m x(1-\sin^2 x)^k\cos x\dee x \\
+&= \int u^m(1-u^2)^k\dee u,
+\end{split}
+\end{equation*}
+where $u=\sin x$.
+\item If $m$ and $n$ are both even, then we reduce to lower powers using the identities
+\begin{align*}
+\cos^2 x = \frac{1+\cos 2x}{2},\\
+\sin^2 x = \frac{1-\cos 2x}{2}.
+\end{align*}
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+Compute $\DS\int\sin^3 x\cos^2 x\dee x$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Calculate $\DS\int\cos^5 x\dee x$.
+\end{example}
+\vfill
+
+\begin{example}
+Determine $\DS\int\sin^2 x\cos^4 x\dee x$.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{remark}
+To evaluate $\int\tan^m x\sec^n x\dee x$ we have the following basic strategy.
+\begin{itemize}
+\item If $n=2k$ is even, we save a factor of $\sec^2 x\dee x = \dee(\tan x)$ and use $1+\tan^2 x = \sec^2 x$ to write
+\begin{equation*}
+\begin{split}
+\int\tan^m x\sec^n x\dee x &= \int\tan^m x(\sec^2 x)^{k-1}\sec^2 x\dee x\\
+&= \int\tan^m x(1+\tan^2 x)^{k-1}\sec^2 x\dee x\\
+&= \int u^m (1+u^2)^{k-1}\dee u,
+\end{split}
+\end{equation*}
+where $u=\tan x$.
+\item If $m=2k+1$ is odd, we save a factor of $\sec x\tan x\dee x = \dee(\sec x)$ and write
+\begin{equation*}
+\begin{split}
+\int\tan^m x\sec^n x\dee x &= \int (\tan^{2} x)^k\sec^{n-1} x\sec x\tan x\dee x\\
+&= \int (\sec^{2} x -1)^k\sec^{n-1} x\sec x\tan x\dee x\\
+&= \int (u^2 -1)^ku^{n-1} \dee u,
+\end{split}
+\end{equation*}
+where $u=\sec x$.
+\item The situation is not so clear-cut in the remaining cases.
+Integration by parts and a little ingenuity may be required.
+\end{itemize}
+\end{remark}
+
+\begin{example}
+Compute $\DS\int\tan^3 x\dee x$.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{example}
+Evaluate $\DS\int\sec^4 x\tan^4 x\dee x$.
+\end{example}
+\vfill
+
+\begin{example}
+Evaluate $\DS\int\tan^4 x\dee x$.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{example}
+Use integration by parts and the ``wrap-around trick" to compute $\DS\int\sec^3 x\dee x$.
+\end{example}
+\vfill
+
+\newpage
+
+\begin{remark}
+The identities 
+\begin{align*}
+\cos^2 x = \frac{1+\cos 2x}{2},\\
+\sin^2 x = \frac{1-\cos 2x}{2}
+\end{align*}
+can also be used to eliminate pesky square roots.
+\end{remark}
+
+\begin{example}
+Evaluate $\DS\int_{\pi/4}^{\pi/2}\sqrt{1+\cos 4\theta}\dee\theta$.
+\end{example}
+
+\newpage
+
+\begin{remark}
+When integrating products of sines and cosines of differing frequencies, the identities
+\begin{align*}
+\sin mx\sin nx &= \frac{1}{2}\big(\cos(m-n)x - \cos(m+n)x\big),\\
+\sin mx\cos nx &= \frac{1}{2}\big(\sin(m-n)x + \sin(m+n)x\big),\\
+\cos mx\cos nx &= \frac{1}{2}\big(\cos(m-n)x + \cos(m+n)x\big)
+\end{align*}
+may be of use.
+\end{remark}
+
+\begin{example}
+Evaluate $\DS\int \sin 3x\cos 5x\dee x$.
+\end{example}

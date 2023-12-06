@@ -1,0 +1,164 @@
+%!TEX root =  main.tex
+
+\lectureheader{162}{Calculus II}{The ratio and root tests}{\textit{Thomas' Calculus} \textsection 10.5}
+
+\begin{remark}\,
+\begin{itemize}
+\item Both the direct comparison test and the limit comparison test require both sequences of terms to be nonnegative.  
+\item In truth they require all the terms $a_n$ and $b_n$ to have the same sign for all sufficiently large $n$.
+\item This is because both tests rely on an application of the monotone sequence theorem and the presence of terms with different signs prevent the sequence of partial sums from being monotone.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+If $\DS\sum_{n=0}^\infty |a_n|$ converges, then $\DS\sum_{n=0}^\infty a_n$ converges.
+\end{theorem}
+
+\begin{proof}\,
+
+\vspace{4in}
+
+\end{proof}
+
+\begin{definition}
+We say that the series $\sum a_n$ is \textbf{absolutely convergent} if $\sum |a_n|$ converges.
+\end{definition}
+
+\newpage
+
+\begin{example}
+What can you say about the following series?
+\begin{enumerate}
+\item $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$
+\vfill
+\item $\DS\sum_{n=1}^\infty\frac{\sin n}{n^2}$
+\vfill
+\item $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$
+\vfill
+\end{enumerate}
+\end{example}
+
+\newpage
+
+\begin{remark}[Heuristic motivation for the ratio and root tests]\,
+\begin{itemize}
+\item The easiest series to deal with by far are geometric series.
+\begin{itemize}
+\item We know exactly when the converge/diverge.
+\item When they converge, it is easy to compute their sums.
+\end{itemize}
+\item Could we come up with ``quick and easy methods" to detect when a series is ``comparable" to a geometric series?
+\begin{enumerate}
+\item If $|a_n|\asymp r^n$ as $n\to\infty$, then
+\begin{equation*}
+\left|\frac{a_{n+1}}{a_n}\right| \to r\quad (n\to\infty).
+\end{equation*}
+So, $\sum |a_n|$ \textit{should} converge if and only if $\sum r^n$ converges, i.e., when $0\le r < 1$.
+\item Similarly, if $|a_n|\asymp r^n$ as $n\to\infty$, then
+\begin{equation*}
+\sqrt[n]{|a_n|} \to r\quad (n\to\infty).
+\end{equation*}
+So again, $\sum |a_n|$ \textit{should} converge if and only if $\sum r^n$ converges, i.e., when $0\le r < 1$.
+\end{enumerate}
+\item The trouble with these arguments is that we started out assuming what we wanted to prove/detect.
+We want the implications ``going the opposite direction."
+\item Unfortunately,
+\begin{align*}
+\left|\frac{a_{n+1}}{a_n}\right|\to r &\centernot\implies |a_n|\asymp r^n \quad (n\to\infty),\\
+\sqrt[n]{|a_n|}\to r &\centernot\implies |a_n|\asymp r^n \quad (n\to\infty),
+\end{align*}
+but it ``almost" works.
+\item The truth is that if $\left|\frac{a_{n+1}}{a_n}\right|\to \rho$ or if $\sqrt[n]{|a_n|}\to \rho$ as $n\to\infty$, then
+\begin{equation*}
+(\rho-\epsilon)^n\ll |a_n|\ll (\rho+\epsilon)^n\quad (n\to\infty)
+\end{equation*}
+for every $\epsilon>0$.
+\end{itemize}
+\end{remark}
+
+\newpage
+
+\begin{theorem}[Ratio test]
+Let $\sum a_n$ be a series, and let
+\begin{equation*}
+\rho=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|.
+\end{equation*}
+\begin{enumerate}
+\item If $0\le \rho< 1$, then the series is absolutely convergent.
+\item If $\rho>1$, then the series is divergent.
+\item Otherwise, the test is inconclusive.
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[Root test]
+Let $\sum a_n$ be a series, and let
+\begin{equation*}
+\rho=\lim_{n\to\infty}\sqrt[n]{|a_n|}.
+\end{equation*}
+\begin{enumerate}
+\item If $0\le \rho< 1$, then the series is absolutely convergent.
+\item If $\rho>1$, then the series is divergent.
+\item Otherwise, the test is inconclusive.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+If the logic of our heuristic arguments on the previous page had been reversible (i.e., if we could have got the ``if-then" going the other direction), then neither test would be inconclusive when $\rho=1$.
+\end{remark}
+
+\newpage
+
+\begin{example}
+Show that the above tests are truly inconclusive when $\rho=1$ by studying the series $\DS\sum_{n=1}^\infty\frac{1}{n}$ and $\DS\sum_{n=1}^\infty\frac{1}{n^2}$.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\frac{2^n+5}{3^n}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series  $\DS\sum_{n=0}^\infty\frac{4^nn!n!}{(2n)!}$converges or diverges.
+\end{example}
+
+\newpage
+
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\frac{(2n)!}{n!n!}$ converges or diverges.
+\end{example}
+
+\newpage
+
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\frac{n^2}{2^n}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=1}^\infty\frac{2^n}{n^3}$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Determine whether the series $\DS\sum_{n=0}^\infty\left(\frac{1}{1+n}\right)^n$ converges or diverges.
+\end{example}
+
+\newpage
+
+\begin{example}
+Let
+\begin{equation*}
+a_n = \begin{cases}
+n/2^n & \text{if } n \text{ is odd},\\
+1/2^n & \text{if } n \text{ is even}.
+\end{cases}
+\end{equation*}
+Does the series $\DS\sum_{n=0}^\infty a_n$ converge?
+\end{example}
