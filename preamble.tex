@@ -2,7 +2,9 @@
 
 % packages
 \usepackage{amssymb}
+\usepackage{cancel}
 \usepackage{fullpage}
+\usepackage{polynom}
 \usepackage{pgfplots}
 \pgfplotsset{compat=newest}
 \usepackage{tikz}
@@ -39,8 +41,8 @@ noitemsep
 \newtheorem*{axiom}{Axiom}
 \newtheorem*{corollary}{Corollary}
 \newtheorem*{definition}{Definition}
-\newtheorem*{example}{Example}
-\newtheorem*{remark}{Remark}
+\newtheorem{example}{Example}
+\newtheorem*{remark}{Remark(s)}
 \newtheorem{exercise}{Exercise}
 \newtheorem{question}{Questions}
 
@@ -79,11 +81,10 @@ noitemsep
 
 % \lectureheader{course number}{course name}{lecture topic}{reading assignment}
 \newcommand{\lectureheader}[4]{
-\hrule width \textwidth depth 1pt
-\vspace{\baselineskip}
-{\textsc{MATH #1 (#2)\hfill #3}}\\
-\textbf{Reading assignment:} #4
-\vspace{\baselineskip}
-\hrule width \textwidth depth 1pt
+\rule{\textwidth}{1pt}
+%\vspace{\baselineskip}
+{\textsc{MATH #1 (#2)\ \hfill #3}}\\
+\textbf{Reading assignment:} #4\newline 
+\rule{\textwidth}{1pt}
 \vspace{\baselineskip}
 }

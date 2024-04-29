@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{MATH 162}{Calculus II}{Relative orders}{\textit{Thomas' Calculus} \textsection 7.8}
+\lectureheader{162}{Calculus II}{Relative orders}{\textit{Thomas' Calculus} 7.8}
 
 \begin{remark}\,
 \begin{itemize}
@@ -43,6 +43,62 @@ if there are constants $C, M>0$ so that $|f(x)|\le C g(x)$ for all $x\ge M$.
 \begin{example}\label{big-oh example}
 Show that $x+\sin x = O(x)$ as $x\to\infty$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+For all $x \geq 1$,
+\begin{equation*}
+    x + \sin{x} \leq x + 1 \leq x + x = 2x.
+\end{equation*}
+So, taking $M = 1$ and $C = 2$, we get $x + \sin{x} = O(x)$ as $x\to \infty$.
+Alternatively, we could say that $x+\sin x \ll x$ as $x\to\infty$.
+%Note that it is also true to say that
+%\begin{equation*}
+%    x + \sin{x} \leq x + 1 \leq x + \frac{1}{4}x = \frac{5}{4}x
+%\end{equation*}
+%for all $x \geq 4$.
+%So, $M = 4$ and $C = 5/4$ also would have worked.
+%You don't have to find the ``best" constants, but you do need to make a convincing argument that your constants work.
+}
+\fi
+\vfill
+
+\begin{example}
+Show that $\E^{-x^2/2}\ll \E^{-x}$ as $x\to\infty$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Note that $x\le x^2/2$ if and only if $0\le x^2/2-x = \frac{1}{2}x(x-2)$.
+Whence, for all $x\ge 2$, it follows that
+\begin{equation*}
+0<x\le x^2/2,
+\end{equation*}
+and hence
+\begin{equation*}
+1<\E^x\le \E^{x^2/2}.
+\end{equation*}
+Therefore, taking $M=2$ and $C=1$, we see that $\E^{-x^2/2}\ll \E^{-x}$ as $x\to\infty$.
+}
+\fi
+
+\vfill
+
+\begin{example}
+Show that $x^2\ll (\ln x)^{\ln x}$ as $x\to\infty$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+When comparing these functions, it is helpful to note that 
+\begin{align*}
+x^2 &= \exp(2\ln x),\\
+(\ln x)^{\ln x} &= \exp((\ln x)\ln\ln x).
+\end{align*}
+Since the natural exponential is increasing, we just need to show that $\ln\ln x\ge 2$ for all $x$ larger than some cutoff.
+Using the fact that the natural logarithm is increasing on its domain, we easily have $\ln\ln x\ge 2$ for all $x\ge M=\E^{\E^2}\approx 1618$.
+Therefore, $x^2\ll (\ln x)^{\ln x}$ as $x\to\infty$.
+}
+\fi
+
+\vfill
 
 \newpage
 
@@ -69,30 +125,46 @@ If $L$ is a nonzero real number and $\DS\lim_{x\to\infty}\frac{f(x)}{g(x)} = L$,
 
 
 \begin{example}
-Show that $(\sqrt{x+4}+\cos x)^3\asymp x^{3/2}$ as $x\to\infty$.
+Show that $(\sqrt{2x+4}+\cos x)^3\asymp x^{3/2}$ as $x\to\infty$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since
+\begin{equation*}
+\begin{split}
+\lim_{x\to\infty}\frac{(\sqrt{2x+4}+\cos x)^3}{x^{3/2}}
+&=\lim_{x\to\infty}\left(\frac{\sqrt{2x+4}}{\sqrt x} + \frac{\cos x}{\sqrt x}\right)^3\\
+&=\lim_{x\to\infty}\left(\sqrt{2+\frac{4}{x}} + \frac{\cos x}{\sqrt x}\right)^3\\
+& = \left(\sqrt{2+0}+0\right)^3 = \sqrt 2\ne 0,
+\end{split}
+\end{equation*}
+it follows that $(\sqrt{2x+4}+\cos x)^3\asymp x^{3/2}$ as $x\to\infty$.
+}
+\else
+\fi
+\vfill
 
 \newpage
 
 \begin{remark}\,
 \begin{itemize}
-\item In the previous example, we used a limit to show that $(\sqrt{x+4}+\cos x)^3\asymp x^{3/2}$ as $x\to\infty$.
+\item In the previous example, we used a limit to show that $(\sqrt{2x+4}+\cos x)^3\asymp x^{3/2}$ as $x\to\infty$.
 \item In other words, we showed that
 \begin{equation*}
-x^{3/2} \ll (\sqrt{x+4}+\cos x)^3\ll x^{3/2} \text{ as } x\to\infty.
+x^{3/2} \ll (\sqrt{2x+4}+\cos x)^3\ll x^{3/2} \text{ as } x\to\infty.
 \end{equation*}
-\item In other words, $f(x) = (\sqrt{x+4}+\cos x)^3$ is trapped between to multiples of $g(x)=x^{3/2}$ for all sufficiently large $x$.
+\item In other words, $f(x) = (\sqrt{2x+4}+\cos x)^3$ is trapped between to multiples of $g(x)=x^{3/2}$ for all sufficiently large $x$.
 \item By using the limit, we were able to bypass the need to work out
 \begin{enumerate}
 \item which constant multiples we wanted to use, and
 \item how large $x$ needs to be so that the inequalities ``kick in."
 \end{enumerate}
-\item The graph below indicates a choice of constants that we could probably use if we were willing to engage in finer analysis of inequalities as in Example~\ref{big-oh example}.
+\item The graph below indicates a choice of constants that we could probably use if we were willing to engage in finer analysis of inequalities as in the first several examples.
 \end{itemize}
 \end{remark}
 
 \begin{figure}[H]
-\includegraphics[width=6.5in]{img/example2}\caption{$f(x) = (\sqrt{x+4}+\cos x)^3$ and $g(x) = x^{3/2}$}
+\includegraphics[width=6.5in]{img/example2}\caption{$f(x) = (\sqrt{2x+4}+\cos x)^3$ and $g(x) = x^{3/2}$}
 \end{figure}
 
 \newpage
@@ -100,8 +172,22 @@ x^{3/2} \ll (\sqrt{x+4}+\cos x)^3\ll x^{3/2} \text{ as } x\to\infty.
 \begin{example}
 Compare the growth rates of $\E^x$ and $\cosh x$ as $x\to\infty$.
 \end{example}
-
-\newpage
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let's ``race them to $\infty$."
+Observe that
+\begin{equation*}
+\begin{split}
+    \lim_{x\to \infty} \frac{\cosh{x}}{\E^x}
+    = \lim_{x\to \infty} \frac{\left(\frac{\E^x+\E^{-x}}{2}\right)}{\E^x}
+    = \frac{1}{2} \lim_{x\to \infty} (1 + \E^{-2x}) = \frac{1}{2}\ne 0.
+\end{split}
+\end{equation*}
+So, $\E^x \asymp \cosh{x}$ as $x\to \infty.$
+}
+\else
+\fi
+\vfill
 
 \begin{definition}
 Let $f$ and $g$ be functions that are defined for all $x$ sufficiently large.
@@ -137,21 +223,49 @@ i.e., $|f(x)|$ is \underline{eventually} smaller than every positive multiple of
 Show that $x^2\lll \E^x$ as $x\to\infty$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Using L'H\^opital's rule, we find that
+\begin{equation*}
+    \lim_{x\to \infty} \frac{x^2}{\E^x}
+    = \lim_{x\to \infty} \frac{2x}{\E^x}
+    = \lim_{x\to \infty} \frac{2}{\E^x}
+    = 0.
+\end{equation*}
+Therefore, we may say that $x^2 \lll \E^x$ as $x\to \infty$, or we can say $x^2 = o(\E^x)$ as $x\to \infty$. 
+}
+\fi
+\vfill
+
 \newpage
 
 \begin{theorem}
-For every (fixed) $\delta>0$, 
+For every (fixed) $\epsilon>0$, 
 \begin{equation*}
-\ln x\lll x^\delta
+\ln x\lll x^\epsilon
 \end{equation*}
 as $x\to\infty$.
 \end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Let $\epsilon > 0$. 
+Then L'H\^opital's rule gives
+\begin{equation*}
+    \lim_{x\to \infty} \frac{\ln{x}}{x^{\epsilon}}
+    = \lim_{x\to \infty} \frac{1/x}{\epsilon x^{\epsilon - 1}}
+    = \lim_{x\to \infty} \frac{1}{\epsilon}\cdot \frac{1}{x^{\epsilon}} 
+    = 0.
+\end{equation*}
+In other words, $\ln x \lll x^{\epsilon}$ as $x\to \infty$ for any $\epsilon>0$.
+}
+\else
 \begin{proof}\,
 
-\vspace{6in}
+\vspace{1.25in}
 \end{proof}
+\fi
 
-\newpage
+\vfill
 
 \begin{remark}\,
 \begin{itemize}
@@ -161,7 +275,7 @@ as $x\to\infty$.
 \end{remark}
 
 \begin{figure}[H]
-\includegraphics[width=6in]{img/log-growth}
+\includegraphics[width=4in]{img/log-growth}
 %\begin{tikzpicture}
 %\pgfplotsset{height=0.35\textheight}
 %\begin{axis}[axis lines=middle, xlabel = $x$, ylabel=$y$]
@@ -176,7 +290,7 @@ as $x\to\infty$.
 \end{figure}
 
 \begin{figure}[H]
-\includegraphics[width=6in]{img/log-growth2}
+\includegraphics[width=4in]{img/log-growth2}
 %\begin{tikzpicture}
 %\pgfplotsset{height=0.35\textheight}
 %\begin{axis}[axis lines=left, xlabel = $x$, ylabel=$y$]
@@ -190,6 +304,33 @@ as $x\to\infty$.
 
 
 \newpage
+
+\begin{corollary}
+For every (fixed) $M>0$,
+\begin{equation*}
+x^M\lll\exp(x)
+\end{equation*}
+as $x\to\infty$.
+\end{corollary}
+
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Let $M>0$.
+By the previous theorem and the change of variables $y=\exp x$, we have
+\begin{equation*}
+\lim_{x\to\infty}\frac{x^M}{\exp x}
+=\lim_{y\to\infty}\frac{(\ln y)^M}{y}
+=\lim_{y\to\infty}\left(\frac{\ln y}{y^{1/M}}\right)^M
+=0^M
+=0.
+\end{equation*}
+}
+\else
+\begin{proof}\,
+
+\vspace{1.5in}
+\end{proof}
+\fi
 
 \begin{definition}
 Let $f$ and $g$ be functions that are defined for all $x$ sufficiently large.
@@ -218,3 +359,14 @@ as $x\to\infty$.
 \begin{example}
 Show that $\sinh x\sim \frac{1}{2}\E^x$ as $x\to\infty$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let's race:
+\begin{equation*}
+\lim_{x\to\infty}\frac{\sinh x}{\E^x/2} 
+=\lim_{x\to\infty}\frac{\frac{\E^x-\E^{-x}}{2}}{\E^x/2} 
+=\lim_{x\to\infty}\left(1- \E^{-2x}\right) = 1.
+\end{equation*}
+In other words, $\sinh x\sim \frac{1}{2}\E^x$ as $x\to\infty$.
+}
+\fi

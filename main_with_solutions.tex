@@ -1,2 +1,10 @@
-\newcommand{\SOLUTION}[2][Solution]{\textcolor{red}{\begin{proof}[#1] #2\end{proof}}}
+%\newcommand{\SOLUTION}[2][Solution]{\textcolor{blue}{\begin{proof}[#1] #2\end{proof}}}
+\newcommand{\SOLUTION}[2][Solution]{
+
+\noindent
+\textcolor{blue}{
+\textit{#1.}
+#2 \qed
+}
+}
 \input{main.tex}

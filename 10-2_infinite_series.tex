@@ -1,48 +1,137 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Infinite series}{\textit{Thomas' Calculus} \textsection 10.2}
+\lectureheader{162}{Calculus II}{Infinite series}{\textit{Thomas' Calculus}  10.2}
 
 \begin{definition}\,
-Let $\{a_n\}_{n=0}^\infty$ be a sequence of real numbers.
+Let $\{a_n\}_{n=k}^\infty$ be a sequence of real numbers.
 \begin{itemize}
 \item The sequence of \textbf{partial sums} is 
 \begin{equation*}
-s_n = \sum_{k=0}^na_k.
+S_N = \sum_{n=k}^Na_n.
 \end{equation*}
 \item The limit 
 \begin{equation*}
-\sum_{k=0}^\infty a_k = \lim_{n\to\infty}s_n
+\sum_{n=k}^\infty a_n = \lim_{N\to\infty}S_N
 \end{equation*}
 is called an \textbf{infinite series}.
 \item We say that the series \textbf{converges} if the above limit exists, otherwise we say that the series \textbf{diverges}.
+\item In this context, we refer to the $a_n$ as the sequence of \textbf{terms} of the series.
 \end{itemize}
 \end{definition}
-\begin{remark}\,
+
+\vfill
+
+\begin{remark}[Caution]
+Students that are sloppy with details are bound to confuse themselves.
+There are 3 distinct objects associated with every infinite series.
+\begin{enumerate}
+\item The sequence of terms.
+\item The sequence of partial sums.
+\item The series itself, which is the limit of the partial sums.
+\end{enumerate}
+\end{remark}
+
+\vfill
+
+\begin{remark}
+Given an infinite series, we are generally interested in 3 main questions.
+\begin{enumerate}
+\item Does the series converge or diverge?  
+\item If the series converges, to what real number does it converge?
+\item If the series converges to a real number $L$, how many terms of the sequence do we need so that the approximation
+\begin{equation*}
+S_N = \sum_{n=k}^N a_n \approx L
+\end{equation*}
+is accurate to within some $\epsilon$-tolerance?
+\end{enumerate}
+It is often the case that the first question is hard enough!
+\end{remark}
+
+\newpage
+
+\begin{remark}[Telescoping series]\,
 \begin{itemize}
 \item The thing that makes series more difficult than sequences is the fact that the sequence of partial terms is given to us as the sum of an ever-increasing number of terms.
 \item To evaluate a series, it is helpful if we can express the partial sums in ``closed form."
 \item We have  very few ``tricks" for evaluating the sum of an infinite series.
-\item If the sequence of partial sums $s_n$ can be rewritten as
+\item If the sequence of partial sums $S_n$ can be rewritten as
 \begin{equation*}
-s_n = \sum_{k=0}^n a_k = \sum_{k=0}^n \big(b_{k+1} - b_k\big),
+S_N = \sum_{n=k}^N a_n = \sum_{n=k}^N \big(b_{n+1} - b_n\big),
 \end{equation*}
 then we say that the series is \textbf{telescoping} and
 \begin{equation*}
 \begin{split}
-s_n &= \sum_{k=0}^n \big(b_{k+1} - b_k\big)\\
-& = (b_1 - b_0) + (b_2 - b_1) + \dots + (b_{n+1} - b_n)\\
-& = b_{n+1} - b_0.
+S_N &= \sum_{n=k}^N \big(b_{n+1} - b_n\big)\\
+& = (\cancel{b_{k+1}} - b_k) 
+  + (\cancel{b_{k+2}} - \bcancel{b_{k+1}}) 
+  + \xcancel{\dots} 
+  + (\cancel{b_N} - \bcancel{b_{N-1}}) 
+  + (b_{N+1} - \bcancel{b_N})\\
+& = b_{N+1} - b_k.
 \end{split}
 \end{equation*}
+\item This last expression involves a constant number of operations (viz., 1 substraction), and so we say that it is a ``closed form" expression for $S_N$.
 \end{itemize}
 \end{remark}
 
 \newpage
 
 \begin{example}
-Compute the first 3 partial sums of the series $\DS\sum_{k=0}^\infty \frac{1}{(k+1)(k+2)}$.
-Then determine if the series converges or diverges.
+Determine the sum of the series $\DS\sum_{k=0}^\infty \frac{1}{(k+1)(k+2)}$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+By the method of partial fractions, we write
+\begin{equation*}
+\frac{1}{(k+1)(k+2)} = \frac{A}{k+1} + \frac{B}{k+2}. 
+\end{equation*}
+Clearing denominators, we have
+\begin{equation*}
+1 = A(k+2) + B(k+1).
+\end{equation*}
+Substituting $k=-1$ yields $A=1$, and substituting $k=-2$ yields $B=-1$.
+Whence,
+\begin{equation*}
+\begin{split}
+S_N &= \sum_{k=0}^N \frac{1}{(k+1)(k+2)} 
+=\sum_{k=0}^N \left[ \frac{1}{k+1} - \frac{1}{k+2} \right] \\
+&=\left[1-\cancel{1/2}\right]
+ +\left[\bcancel{1/2}-\cancel{1/3}\right]
+ +\left[\bcancel{1/3}-\cancel{1/4}\right]
+ +\left[\bcancel{1/4}-\cancel{1/5}\right]
+ +\xcancel{\dots}
+ +\left[\bcancel{1/(N+1)}-1/(N+2)\right]\\
+&= 1 - \frac{1}{N+2} 
+\end{split}
+\end{equation*}
+since the second term of expression in brackets cancels with the first term of the next expression in brackets,
+leaving only the first term of the first bracketed expression and the second term of the last bracketed expression.
+Another way to see this same idea is to first add all the positive terms and then add all the negative ones.
+In other words, we write
+\begin{equation*}
+S_N = \sum_{k=0}^N \left[ \frac{1}{k+1} - \frac{1}{k+2} \right] 
+= \sum_{k=0}^N\frac{1}{k+1} - \sum_{k=0}^N\frac{1}{k+2}.
+\end{equation*}
+Now that we have $S_N$ as a difference of two sums, we reindex the sum that is being substracted with the substitution $n=k+1$ so that we have
+\begin{equation*}
+\sum_{k=0}^N\frac{1}{k+2} = \sum_{n=1}^{N+1}\frac{1}{n+1}.
+\end{equation*}
+Thus, we see that we are summing the same expression as in the first sum but we start at index $1$ (as opposed to $0$) and we end at index $N+1$ (as opposed to $N$).
+So, there is nearly perfect cancelation when we substract.
+In particular,
+\begin{equation*}
+S_N = \sum_{k=0}^N\frac{1}{k+1} - \sum_{n=1}^{N+1}\frac{1}{n+1}
+= 1 - \frac{1}{N+1}
+\end{equation*}
+so that only the $k=0$ term of the first sum and the $n=N+1$ term of the second sum survive.
+Either way, we have
+\begin{equation*}
+\sum_{k=0}^\infty\frac{1}{(k+1)(k+2)} = \lim_{N\to\infty} S_N = \lim_{N\to\infty}\left(1-\frac{1}{N+1}\right) = 1.
+\end{equation*}
+}
+\fi
+\vfill
 
 \newpage
 
@@ -57,38 +146,131 @@ The series $\DS\sum_{n=0}^\infty ar^n$ converges if and only if $|r|<1$, in whic
 \sum_{n=0}^\infty ar^n = \frac{a}{1-r}.
 \end{equation*}
 \end{theorem}
+
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Observe that
+\begin{align*}
+ S_N &= \sum_{n=0}^N ar^n,\\ 
+rS_N &=r\sum_{n=0}^N ar^n = \sum_{n=0}^\infty ar^{k+1}. 
+\end{align*}
+Whence,
+\begin{equation*}
+rS_N-S_N
+=\sum_{n=0}^N ar^{n+1}-\sum_{n=0}^N ar^N 
+=\sum_{n=0}^N\left(ar^{n+1}-ar^n\right) 
+= ar^{N+1}-a.
+\end{equation*}
+Factoring on each side, we have 
+\begin{equation*}
+(r-1)S_N
+=a(r^{N+1}-1).
+\end{equation*}
+Therefore, if $r\ne 1$,
+\begin{equation*}
+S_N=\frac{a(r^{N+1}-1)}{r-1}.
+\end{equation*}
+If $|r| < 1$, then 
+\begin{equation*}
+\sum_{n=0}^\infty ar^n
+=\lim_{N\to\infty}S_N
+= \lim_{N\to \infty} \frac{a(r^{N+1}-1)}{r-1}
+=\frac{a}{1-r}.
+\end{equation*}
+If $r\le -1$ or $r>1$, then 
+\begin{equation*}
+\sum_{n=0}^\infty ar^n 
+=\lim_{N\to\infty}S_N 
+= \lim_{N\to \infty} \frac{a(r^{N+1}-1)}{r-1}\quad \text{DNE}.
+\end{equation*}
+If $r = 1$, then 
+\begin{equation*}
+\sum_{n=0}^\infty ar^n 
+=\lim_{N\to\infty}\sum_{n=0}^N a 
+=\lim_{N\to\infty}(N+1)a\quad \text{DNE}.
+\end{equation*} 
+}
+\else
 \begin{proof}\,
 
 \vspace{6in}
 \end{proof}
-
+\fi
 \newpage 
 
 \begin{example}
 Evaluate $\DS\sum_{n=0}^\infty\frac{(-1)^n5}{4^n}$ if possible.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION{
+\begin{equation*}
+\sum_{n=0}^\infty\frac{(-1)^n5}{4^n} 
+=\sum_{n=0}^\infty 5\left( -\frac{1}{4} \right)^n  
+=\sum_{n=0}^\infty 5\left( \frac{-1}{4} \right)^n 
+= \frac{5}{1-\left(-\frac{1}{4}\right)} 
+= \frac{5}{5/4} = 4.
+\end{equation*}
+}
+\fi
 \newpage
 
 \begin{theorem}[Test for divergence]
-If $\DS\sum a_n$ converges, then $a_n\to 0$ as $n\to\infty$.
+If $\DS\sum_{n=k}^\infty a_n$ converges, then $a_n\to 0$ as $n\to\infty$.
 \end{theorem}
 \begin{remark}
 In practice, we use this theorem in the form of its contrapositive, viz.,
 \begin{equation*}
-\lim_{n\to\infty} a_n\ne 0 \implies \sum a_n \text{ diverges}.
+\lim_{n\to\infty} a_n\ne 0 \implies \sum_{n=k}^\infty a_n \text{ diverges}.
 \end{equation*}
 \end{remark}
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Suppose that $\DS\sum_{n=k}^\infty a_n$ converges.
+Then there is a real number $L$ so that
+\begin{equation*}
+\lim_{N\to\infty} S_N = \lim_{N\to\infty}\sum_{n=k}^N a_n = L.
+\end{equation*}
+Whence
+\begin{equation*}
+S_{N} - S_{N-1} = \sum_{n=k}^{N}a_n - \sum_{n=k}^{N-1} a_n = a_N,
+\end{equation*}
+and so
+\begin{equation*}
+\lim_{N\to\infty}a_N = \lim_{N\to\infty}\left(S_N-S_{N-1}\right) = L-L = 0.
+\end{equation*}
+}
+\else
 \begin{proof}\,
 
 \vspace{3in}
 \end{proof}
+\fi
+
 \begin{example}
 Explain why the series below diverge.
 \begin{enumerate}
 \item $\DS\sum_{n=1}^\infty \frac{n+1}{n}$
+\ifdefined\SOLUTION
+\SOLUTION{
+Since
+\begin{equation*}
+\lim_{n\to\infty} \frac{n+1}{n} 
+=\lim_{n\to\infty}(1+1/n)
+= 1 \ne 0,
+\end{equation*}
+the series $\DS\sum_{n=1}^\infty \frac{n+1}{n}$ diverges by the TFD.
+}
+\else
+\fi
 \vfill
 \item $\DS\sum_{n=0}^\infty (-1)^n$
+\ifdefined\SOLUTION
+\SOLUTION{
+Since $\DS\lim_{n\to\infty} (-1)^n$ diverges by oscillation, 
+the series $\DS\sum_{n=0}^\infty (-1)^n$ diverges by the TFD.
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -96,10 +278,10 @@ Explain why the series below diverge.
 \newpage
 
 \begin{theorem}
-If $\sum a_n$ and $\sum b_n$ both converge and $k\in\R$, then
+If $\DS\sum_{n=k}^\infty a_n$ and $\DS\sum_{n=k}^\infty b_n$ both converge and $c\in\R$, then
 \begin{enumerate}
-\item $\sum \big(a_n\pm b_n\big) = \sum a_n \pm \sum b_n$,
-\item $\sum ka_n = k\sum a_n$.
+\item $\DS\sum_{n=k}^\infty \big(a_n\pm b_n\big) = \sum_{n=k}^\infty a_n \pm \sum_{n=k}^\infty b_n$,
+\item $\DS\sum_{n=k}^\infty ca_n = c\sum_{n=k}^\infty a_n$.
 \end{enumerate}
 \end{theorem}
 
@@ -107,8 +289,39 @@ If $\sum a_n$ and $\sum b_n$ both converge and $k\in\R$, then
 Evaluate the series below.
 \begin{enumerate}
 \item $\DS\sum_{n=1}^\infty \frac{3^{n-1} - 1}{6^{n-1}}$
+\ifdefined\SOLUTION
+\SOLUTION{
+Here we use a technique called ``reindexing" which is similar to $u$-substitution.
+Letting $k=n-1$, we see that
+\begin{align*}
+\sum_{n=1}^\infty \frac{3^{n-1} - 1}{6^{n-1}} 
+&= \sum_{n=1}^\infty\left[\left(\frac{3}{6}\right)^{n-1} - \left(\frac{1}{6}\right)^{n-1}\right]\\
+&= \sum_{n=1}^\infty\left(\frac{1}{2}\right)^{n-1} - \sum_{n=1}^\infty \left( \frac{1}{6}\right)^{n-1}\\
+&= \sum_{k=0}^\infty\left(\frac{1}{2}\right)^{k} - \sum_{k=0}^\infty \left( \frac{1}{6}\right)^{k}\\
+&= \frac{1}{1 - 1/2} - \frac{1}{1-1/6}\\
+&= 2 - 6/5\\
+&= 4/5.
+\end{align*}
+}
+\else
+\fi
 \vfill
 \item $\DS\sum_{n=1}^\infty \frac{4}{2^n}$
+\ifdefined\SOLUTION
+\SOLUTION{
+Here again we let $k = n-1$ so that
+\begin{align*}
+\sum_{n=1}^\infty \frac{4}{2^n} 
+&= 4\sum_{n=1}^\infty \left(\frac{1}{2}\right)^n
+= 4\sum_{k = 0}^\infty \left( \frac{1}{2}\right)^{k+1}
+= 4\sum_{k = 0}^\infty \frac{1}{2}\left( \frac{1}{2}\right)^{k}
+= 4\frac{1/2}{1-1/2}
+= \frac{2}{1/2}
+= 4.
+\end{align*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}

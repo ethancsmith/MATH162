@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Power series}{\textit{Thomas' Calculus} \textsection 10.7}
+\lectureheader{162}{Calculus II}{Power series}{\textit{Thomas' Calculus}  10.7}
 
 \begin{definition}
 Given an infinite sequence $\{c_n\}_{n=0}^\infty$ of ``coefficients," an expression of the form
@@ -17,24 +17,20 @@ is called a \textbf{power series in $x$ about $x=a$}.
 f(x) = \sum_{n=0}^\infty c_n(x-a)^n.
 \end{equation*}
 \item The domain of the function is the set of $x$ for which the series converges.
-\item The only $x$ for which convergence is guaranteed \textit{a priori} is $x=a$ where we have $f(a)=c_0$.
+%\item The only $x$ for which convergence is guaranteed \textit{a priori} is $x=a$ where we have $f(a)=c_0$.
 \end{itemize}
 \end{remark}
 
 \vfill
 
 \begin{theorem}
-Given a power series $\sum c_n(x-a)^n$, there are only 3 possibilities.
+Given a power series $\DS\sum_{n=k}^\infty c_n(x-a)^n$, there are only 3 possibilities.
 \begin{enumerate}
 \item There is an $R>0$ so that the series converges absolutely when $|x-a|<R$ and diverges when $|x-a|>R$.
 \item The series converges for all $x\in\R$.
 \item The series converges only for $x=a$.
 \end{enumerate}
 \end{theorem}
-
-\begin{remark}
-In the first case of the theorem, the series may or may not converge at the endpoints $x=a\pm R$.
-\end{remark}
 
 \begin{definition}\,
 The \textbf{interval of convergence} is the set of $x$ for which the power series converges.
@@ -45,11 +41,58 @@ The \textbf{interval of convergence} is the set of $x$ for which the power serie
 \end{enumerate}
 \end{definition}
 
+\begin{remark}
+In the first case of the theorem (when $0<R<\infty$), the series may or may not converge at the endpoints $x=a\pm R$.
+At $x=a\pm R$,
+\begin{equation*}
+\sum_{n=k}^\infty\left|c_n(x-a)^n\right| 
+=\sum_{n=k}^\infty\left|c_n(\pm R)^n\right| 
+=\sum_{n=k}^\infty|c_n|R^n,
+\end{equation*}
+and so the power series either converges absolutely at both endpoints or it does not converge absolutely at either endpoint.
+When the series fails to converge absolutely at the endpoints, we must still check each endpoint for conditional convergence.
+\end{remark}
+
 \newpage
 
 \begin{example}
-For what values of $x$ does the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\frac{x^n}{n}$ converge?
+For what values of $x$ does the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\frac{(2x+3)^n}{n}$ converge?
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Observe that
+\begin{equation*}
+\begin{split}
+\rho =\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|
+&=\lim_{n\to\infty}\left|\frac{(-1)^{n}(2x+3)^{n+1}n}{(n+1)(-1)^{n-1}(2x+3)^n}\right|\\
+&=\lim_{n\to\infty}|2x+3|\frac{n}{n+1}\\
+&=\lim_{n\to\infty}|2x+3|\frac{1}{1+1/n}\\
+&=|2x+3|.
+\end{split}
+\end{equation*}
+By RaT, the power series converges absolutely if and only if $\rho=|2x+3|<1$.
+Now $|2x+3|<1$ if and only if $2|x+3/2|<1$ if and only if $|x+3/2|<1/2$.
+Thus, the radius of convergence is $R=1/2$, and the center of the interval is $x=-3/2$.
+Therefore, the interval of absolute convergence is $(-2,-1)$.
+Convergence at $x=-2$ and at $x=-1$ is still ``up in the air."
+At $x=-2$,
+\begin{equation*}
+\sum_{n=1}^\infty (-1)^{n-1}\frac{(2x+3)^n}{n}
+=\sum_{n=1}^\infty (-1)^{n-1}\frac{(-1)^n}{n}
+=\sum_{n=1}^\infty \frac{-1}{n}
+\end{equation*}
+diverges since it is the negative of the harmonic series which diverges.
+At $x=-1$,
+\begin{equation*}
+\sum_{n=1}^\infty (-1)^{n-1}\frac{(2x+3)^n}{n}
+=\sum_{n=1}^\infty (-1)^{n-1}\frac{(1)^n}{n}
+=\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}
+\end{equation*}
+converges since it is equal to the alternating harmonic series which we know converges.
+Therefore, the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\frac{(2x+3)^n}{n}$ converges on the interval $(-2,-1]$.
+}
+\fi
 
 \newpage
 
@@ -57,12 +100,42 @@ For what values of $x$ does the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\fr
 For what values of $x$ does the power series $\DS\sum_{n=0}^\infty n!x^n$ converge?
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+Observe that
+\begin{equation*}
+\rho = \lim_{n\to\infty}\left|\frac{(n+1)!x^{n+1}}{n!x^n}\right|
+=\lim_{n\to\infty}(n+1)|x|
+=\begin{cases}
+0 & \text{if } x = 0,\\
+\infty & \text{if } x\ne 0.
+\end{cases}
+\end{equation*}
+By RaT, this power series converges only at $x=0$, where it converges to
+\begin{equation*}
+\sum_{n=0}^\infty n! 0^n = 1 + 0 + 0 +\dots = 1.
+\end{equation*}
+}
+\fi
+
 \newpage
 
 \begin{example}
 For what values of $x$ does the power series $\DS\sum_{n=0}^\infty \frac{x^n}{n!}$ converge?
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+Observe that
+\begin{equation*}
+\rho = \lim_{n\to\infty}\left|\frac{x^{n+1}n!}{x^n(n+1)!}\right|
+=\lim_{n\to\infty}\frac{|x|}{n+1}
+=0.
+\end{equation*}
+By RaT, this power series converges absolutely for all $x\in\R=(-\infty,\infty)$.
+The radius of convergence is $R=\infty$.
+}
+\fi
 \newpage
 
 \begin{remark}
@@ -76,6 +149,52 @@ f(x) = \sum_{n=0}^\infty x^n\quad\text{ and }\quad g(x) =\sum_{n=0}^\infty (-1)^
 \end{equation*}
 How do they relate to the function $F(x)=\DS\frac{1}{1-x}$?
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+By GST, the series 
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty x^n
+\end{equation*}
+converges if and only if $|x|<1$.
+Thus, $f(x)$ has radius of convergence $R_f=1$ and interval of convergence $D_f=(-1,1)$.
+By GST, the series 
+\begin{equation*}
+g(x)=\sum_{n=0}^\infty (-1)^{n+1}(x-2)^n
+=\sum_{n=0}^\infty (-1)(2-x)^n
+\end{equation*}
+converges if and only if $|x-2|=|2-x|<1$.
+Thus, $g(x)$ has radius of convergence $R_g=1$ and interval of convergence $D_g = (1,3)$.
+Also by GST, we have
+\begin{equation*}
+f(x) = \sum_{n=0}^\infty x^n = \frac{1}{1-x} = F(x),
+\end{equation*}
+but only for those $x\in D_f = (-1,1)$.
+Similarly, GST tell us that
+\begin{equation*}
+g(x)=\sum_{n=0}^\infty (-1)^{n+1}(x-2)^n
+=\sum_{n=0}^\infty (-1)(2-x)^n
+=-\frac{1}{1-(2-x)}
+=\frac{-1}{x-1}
+=\frac{1}{1-x} 
+= F(x)
+\end{equation*}
+but only for those $x\in D_g = (1,3)$.
+It is important to understand that $f(x)=F(x)$ for certain values of $x$ and $g(x)=F(x)$ for certain other values of $x$.
+There are no values of $x$ for which $f(x)=g(x)$.
+For example,
+\begin{equation*}
+f(0) = 1 = F(0),
+\end{equation*}
+but $g(0)$ is undefined/diverges.
+Similarly,
+\begin{equation*}
+g(3/2) = F(3/2) = \frac{1}{1-3/2} = -2,
+\end{equation*}
+but $f(3/2)$ is not a number.
+The power series $f(x)$ and $g(x)$ give us ``snapshots" of $F(x)$ but they aren't the same picture.
+}
+\fi
 
 \newpage
 
@@ -94,12 +213,119 @@ wherever $|x-a|<R$.
 
 \begin{example}
 Determine the interval of convergence for $\DS\sum_{n=1}^\infty\frac{x^n}{n}$.
-Then determine the sum of the series for each $x$ in the interval of convergence.
+Then determine the sum of the series for each $x$ in the interior of the interval.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First observe that
+\begin{equation*}
+\rho = \lim_{n\to\infty}\left|\frac{x^{n+1}n}{x^n(n+1)}\right|
+= \lim_{n\to\infty}|x|\frac{n}{n+1}
+= \lim_{n\to\infty}|x|\frac{1}{1+1/n}
+= |x|.
+\end{equation*}
+By RaT, the power series converges absolutely if and only if $|x|<1$, i.e., $x\in (-1,1)$.
+At $x=1$,
+\begin{equation*}
+\sum_{n=1}^\infty\frac{x^n}{n}
+=\sum_{n=1}^\infty\frac{1}{n},
+\end{equation*}
+the harmonic series, which diverges.
+At $x=-1$,
+\begin{equation*}
+\sum_{n=1}^\infty\frac{x^n}{n}
+=\sum_{n=1}^\infty\frac{(-1)^n}{n}
+=-\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}
+\end{equation*}
+is a multiple of the alternating harmonic series, and so converges.
+Therefore, the interval of convergence is $[-1,1)$.
+By the above theorem,
+\begin{equation*}
+\frac{\dee}{\dee x}\sum_{n=1}^\infty\frac{x^n}{n}
+=\sum_{n=1}^\infty x^{n-1}
+=\sum_{k=0}^\infty x^k
+=\frac{1}{1-x}\quad (|x|<1),
+\end{equation*}
+and so
+\begin{equation*}
+\sum_{n=1}^\infty\frac{x^n}{n}
+=\int\frac{\dee x}{1-x} 
+= -\ln|1-x| + C
+\end{equation*}
+for all $x\in (-1,1)$ and some $C\in\R$.
+Evaluating both sides at $x=0$, we find that
+\begin{equation*}
+0=\sum_{n=1}^\infty\frac{0^n}{n}
+= -\ln|1| + C
+=C.
+\end{equation*}
+Therefore,
+\begin{equation*}
+\sum_{n=1}^\infty\frac{x^n}{n}
+= -\ln|1-x| 
+\end{equation*}
+for $x\in (-1,1)$.
+It turns out that the two sides are equal at $x=-1$ as well, but that requires a much more delicate argument.
+}
+\fi
 
 \newpage
 
 \begin{example}
 Determine the interval of convergence for $\DS\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}$.
-Then determine the sum of the series for each $x$ in the interval of convergence.
+Then determine the sum of the series for each $x$ in the interior of the interval.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Observe that
+\begin{equation*}
+\rho = \lim_{n\to\infty}\left|\frac{(-1)^{n+1}x^{2n+3}(2n+1)}{(2n+3)(-1)^nx^{2n+1}}\right|
+= \lim_{n\to\infty}x^2\frac{2n+1}{2n+3}
+= \lim_{n\to\infty}x^2\frac{2+1/n}{2+3/n}
+=x^2.
+\end{equation*}
+By RaT, the power series converges absolutely if and only if $x^2<1$.
+Therefore, the interval of absolute convergence is $(-1,1)$ and the radius of convergence is $R=1$.
+At $x=\pm 1$,
+\begin{equation*}
+\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}
+=\sum_{n=0}^\infty (-1)^n\frac{(\pm 1)^{2n+1}}{2n+1}
+=\pm\sum_{n=0}^\infty \frac{(-1)^n}{2n+1}.
+\end{equation*}
+\begin{enumerate}
+\item The series is clearly alternating when $x=\pm 1$.
+\item $|a_n| = \frac{1}{2n+1}>\frac{1}{2n+3} = |a_{n+1}|$ for all $n\ge 0$, and so the sequence of terms is nonincreasing.
+\item $\DS\lim_{n\to\infty}|a_n| = \lim_{n\to\infty}\frac{1}{2n+1} = 0$.
+\end{enumerate}
+Therefore, the power series convergence when $x=\pm 1$ by AST, and so the interval of convergence is $[-1,1]$.
+Now for $x\in (-1,1)$, we have
+\begin{equation*}
+\frac{\dee}{\dee x}\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}
+=\sum_{n=0}^\infty (-1)^nx^{2n}
+=\sum_{n=0}^\infty (-x)^{2n}
+=\frac{1}{1+x^2},
+\end{equation*}
+and so
+\begin{equation*}
+\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}
+=\int\frac{\dee x}{1+x^2} 
+=\arctan(x)+C
+\end{equation*}
+for $x\in (-1,1)$ and some $C\in\R$.
+Evaluating both sides at $x=0$, we see that
+\begin{equation*}
+0=\sum_{n=0}^\infty (-1)^n\frac{0^{2n+1}}{2n+1}
+=\arctan(0)+C
+=C.
+\end{equation*}
+Therefore,
+\begin{equation*}
+\sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}
+=\arctan(x)
+\end{equation*}
+for $x\in (-1,1)$.
+It turns out that the two sides are equal when $x=\pm 1$ as well, but that requires a much more delicate argument.
+}
+\fi

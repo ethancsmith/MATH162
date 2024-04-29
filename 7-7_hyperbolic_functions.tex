@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Hyperbolic functions}{\textit{Thomas' Calculus} \textsection 7.7}
+\lectureheader{162}{Calculus II}{Hyperbolic functions}{\textit{Thomas' Calculus}  7.7}
 
 \begin{definition}
 We define the \textbf{hyperbolic sine} by the rule
@@ -57,7 +57,7 @@ and the \textbf{hyperbolic cotangent} by the rule
 \begin{theorem}
 For all $x$ where both sides of the identity are defined we have 
 \begin{align}
-\cosh^2 x -\sinh^2 x &= 1,\\
+\cosh^2 x -\sinh^2 x &= 1, \label{hyperbolic trig identity}\\ 
 1-\tanh^2x &=\sech^2 x,\\
 \coth^2 x -1&=\csch^2 x,\\
 \sinh 2x &= 2\sinh x\cosh x,\\
@@ -66,18 +66,30 @@ For all $x$ where both sides of the identity are defined we have
 \sinh^2 x&=\frac{\cosh 2x - 1}{2}.
 \end{align}
 \end{theorem}
-\begin{proof}\,
+\ifdefined\SOLUTION
+\SOLUTION[Proof of \eqref{hyperbolic trig identity}] {
+For all $x\in (-\infty, \infty)$,
+\begin{align*}
+    \cosh^2{x} - \sinh^2{x} &= \left(\frac{\E^x+\E^{-x}}{2}\right)^2 - \left(\frac{\E^x-\E^{-x}}{2}\right)^2 \\
+    &= \frac{\E^{2x} + 1 + 1 + \E^{-2x}}{4} - \frac{\E^{2x} + 1 + 1 + \E^{-2x}}{4} \\
+    &= \frac{(\E^{2x} + 1 + 1 + \E^{-2x}) - (\E^{2x} + 1 + 1 + \E^{-2x})}{4} \\
+    &= \frac{4}{4} \\
+    &= 1. \\
+\end{align*}
+}
+\else
+\begin{proof}[Proof of \eqref{hyperbolic trig identity}]\,
 
 \vspace{5in}
 \end{proof}
-
+\fi
 \newpage
 
 \begin{theorem}
 \begin{align}
-\frac{\dee}{\dee x}\sinh x &= \cosh x\quad (x\in\R)\\
+\frac{\dee}{\dee x}\sinh x &= \cosh x\quad (x\in\R)\label{sinh derivative}\\
 \frac{\dee}{\dee x}\cosh x &= \sinh x\quad (x\in\R)\\
-\frac{\dee}{\dee x}\tanh x &= \sech^2 x\quad (x\in\R)\\
+\frac{\dee}{\dee x}\tanh x &= \sech^2 x\quad (x\in\R) \label{sech derivative}\\
 \frac{\dee}{\dee x}\csch x &= -\csch x\coth x\quad (x\ne 0)\\
 \frac{\dee}{\dee x}\sech x &= -\sech x\tanh x\quad (x\in \R)\\
 \frac{\dee}{\dee x}\coth x &= -\csch^2 x\quad (x\ne 0)
@@ -86,21 +98,63 @@ For all $x$ where both sides of the identity are defined we have
 \begin{remark}
 Of course, each of these gives rise to a corresponding integral formula.
 \end{remark}
-\begin{proof}\,
+\ifdefined\SOLUTION
+\SOLUTION[Proof of \eqref{sech derivative}]{
+For $x\in (-\infty, \infty)$,
+\begin{align*}
+\frac{\dee}{\dee x}\sech{x} 
+	&= \frac{\dee}{\dee x} (\cosh{x})^{-1}\\
+    &= -(\cosh{x})^{-2}\cdot\frac{\dee}{\dee x}\cosh{x} \\
+    &= -(\cosh{x})^{-2}\sinh{x}\\ %\quad \text{(by~\eqref{sinh derivative})} \\
+    &=-\tanh(x)\sech(x). 
+\end{align*}
+}
+\else
+\begin{proof}[Proof of \eqref{sech derivative}]\,
 
 \vspace{5in}
 \end{proof}
+\fi
 
 \newpage
 
 \begin{example}
 Compute $\dee y/\dee x$ if $y=\tanh \sqrt{1+x^2}$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{align*}
+    \frac{\dee y}{\dee x} &= \left(\sech^2{\sqrt{1+x^2}}\right)\cdot\frac{\dee}{\dee x}(1+x^2)^\frac{1}{2} \\
+    &= \left(\sech^2{\sqrt{1+x^2}}\right)\cdot\frac{1}{2}(1+x^2)^{-1/2}\cdot\frac{\dee}{\dee x}(1+x^2) \\
+    &=  \frac{\left(\sech^2{\sqrt{1+x^2}}\right)}{2\sqrt{1+x^2}}\cdot 2x \\
+    &= \frac{x\sech^2{\sqrt{1+x^2}}}{\sqrt{1+x^2}}. 
+\end{align*}
+}
+\else
+\fi
 \vfill
 
 \begin{example}
 Compute $\DS\int\sinh^2 x\dee x$
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+One way to evaluate this integral is 
+\begin{align*}
+    \int\sinh^2 x\dee x &= \int\left(\frac{\E^x+\E^{-x}}{2}\right)^2\dee x \\
+    &= \frac{1}{4}\int(\E^{2x} - 2 + \E^{-2x})\dee x \\
+    &= \frac{1}{4}\left[ \frac{1}{2}\E^{2x} - 2x - \frac{1}{2}\E^{-2x} \right] + C \\
+    &= \frac{1}{4}\left[ \sinh{2x} - 2x \right] + C.
+\end{align*}
+Another way to evaluate this integral is 
+\begin{align*}
+    \int\sinh^2 x\dee x &= \int\frac{\cosh{(2x} - 1)}{2}\dee x \\
+    &= \frac{1}{2} \left[ \frac{1}{2}\sinh{(2x)} - x \right] + C \\
+    &= \frac{1}{4}\sinh{(2x)} - \frac{1}{2}x + C.
+\end{align*}
+}
+\else
+\fi
 \vfill
 
 \newpage
@@ -109,12 +163,36 @@ Compute $\DS\int\sinh^2 x\dee x$
 What is the domain/range of $y=\sinh x$?
 Where can we invert it?
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $\sinh(x) = \frac{\E^x-\E^{-x}}{2}$, we see that $\dom(\sinh) = (-\infty, \infty)$ and $\rng(\sinh) = (-\infty, \infty)$.  
+Now note that
+\begin{equation*}
+    \frac{\dee}{\dee x}\sinh{x} = \cosh{x} = \frac{\E^x+\E^{-x}}{2} > 0
+\end{equation*}
+for all $x\in (-\infty, \infty)$.
+Therefore, $\sinh{x}$ is 1-1 and thus invertible everywhere.  So, $\arcsinh{x} = \sinh^{-1}{x}$ exists and $\dom(\arcsinh) = (-\infty, \infty)$ and $\rng(\arcsinh) = (-\infty, \infty)$.
+}
+\else
+\fi
 \vfill
 
 \begin{example}
 What is the domain/range of $y=\cosh x$?
 Where can we invert it?
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $\cosh(x) = \frac{\E^x+\E^{-x}}{2}$, we see that $\dom(\cosh) = (-\infty,\infty)$ and $\rng(\cosh) = [1, \infty)$.
+Now note that
+\begin{equation*}
+    \frac{\dee}{\dee x}\cosh{x} = \sinh{x} = \frac{\E^x-\E^{-x}}{2} > 0 
+\end{equation*}
+for all $x\in [0,\infty)$.
+So, we can invert the right half of cosh, i.e., $\cosh^{-1}{x}$ exists, but $\dom(\cosh^{-1}) = [1, \infty)$ and $\rng(\cosh^{-1}) = [0, \infty).$
+}
+\else
+\fi
 \vfill
 
 \newpage
@@ -140,18 +218,46 @@ Can you figure out which?
 
 \begin{theorem}
 \begin{align}
-\frac{\dee}{\dee x}\sinh^{-1} x & = \frac{1}{\sqrt{1+x^2}}\\
+\frac{\dee}{\dee x}\sinh^{-1} x & = \frac{1}{\sqrt{1+x^2}}\label{inverse sinh derivative}\\
 \frac{\dee}{\dee x}\cosh^{-1} x & = \frac{1}{\sqrt{x^2-1}}\quad (x>1)\\
 \frac{\dee}{\dee x}\tanh^{-1} x & = \frac{1}{1-x^2}\quad (|x|<1)\\
-\frac{\dee}{\dee x}\csch^{-1} x &=\frac{-1}{|x|\sqrt{1+x^2}}\quad (x\ne 0)\\
+\frac{\dee}{\dee x}\csch^{-1} x &=\frac{-1}{|x|\sqrt{1+x^2}}\quad (x\ne 0) \label{inverse csch derivative} \\
 \frac{\dee}{\dee x}\sech^{-1} x & = \frac{-1}{x\sqrt{1-x^2}}\quad (0<x<1)\\
 \frac{\dee}{\dee x}\coth^{-1} x & = \frac{1}{1-x^2}\quad (|x|>1)
 \end{align}
 \end{theorem}
-\begin{proof}\,
+\ifdefined\SOLUTION
+\SOLUTION[Proof of \eqref{inverse sinh derivative}]{
+First observe that
+\begin{equation*}
+\sinh(\sinh^{-1}(x)) = x \quad (x\in\R).  
+\end{equation*}
+Differentiating both sides, we find that
+\begin{equation*}
+\cosh(\sinh^{-1} x)\frac{\dee}{\dee x}\sinh^{-1} x = 1.
+\end{equation*}
+Dividing, we have
+\begin{equation*}
+\frac{\dee}{\dee x}\sinh^{-1} x = \frac{1}{\cosh(\sinh^{-1} x)}.
+\end{equation*}
+Since $\cosh(z)>0$ for all $z\in\R$, it follows that
+\begin{equation*}
+\cosh(\sinh^{-1} x) = |\cosh(\sinh^{-1} x)|
+ = \sqrt{\cosh^2(\sinh^{-1} x)}
+ = \sqrt{1+\sinh^2(\sinh^{-1} x)}
+ = \sqrt{1+x^2}.
+\end{equation*}
+Therefore,
+\begin{equation*}
+\frac{\dee}{\dee x}\sinh^{-1} x = \frac{1}{\sqrt{1+x^2}}.
+\end{equation*}
+}
+\else
+\begin{proof}[Proof of \eqref{inverse sinh derivative}]\,
 
 \vspace{2.75in}
 \end{proof}
+\fi
 
 \newpage
 
@@ -172,4 +278,21 @@ Can you figure out which?
 \begin{example}
 Evaluate $\DS\int_0^1\frac{2\dee x}{\sqrt{3+4x^2}}$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+First note that
+\begin{equation*}
+    \int_0^1\frac{2\dee x}{\sqrt{3+4x^2}}
+    = \int_0^1\frac{2\dee x}{\sqrt{3}\sqrt{1 + \left( \frac{2x}{\sqrt{3}} \right)^2}}.
+\end{equation*}
+Now let $u = \frac{2x}{\sqrt 3}$ so that $\dee u = \frac{2}{\sqrt 3}\dee x$.  
+Furthermore, if $x = 0$, then $u = 0$, and if $x = 1$, then $u = \frac{2}{\sqrt{3}}$.
+Making the substitution gives
+\begin{equation*}
+    \int_0^{\frac{2}{\sqrt{3}}} \frac{\dee u}{\sqrt{1+u^2}}
+    = \arcsinh{\frac{2}{\sqrt 3}} - \arcsinh{0}
+    = \arcsinh{\frac{2}{\sqrt 3}}.
+\end{equation*}
+}
+\else
+\fi

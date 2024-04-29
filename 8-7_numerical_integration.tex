@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Numerical integration}{\textit{Thomas' Calculus} \textsection 8.7}
+\lectureheader{162}{Calculus II}{Numerical integration}{\textit{Thomas' Calculus}  8.7}
 
 \begin{remark}\,
 \begin{itemize}
@@ -17,7 +17,8 @@ Most functions do not have elementary antiderivatives, and so the fundamental th
 \int_1^2\frac{\dee t}{t} = \ln t\Big|_1^2 = \ln 2,
 \end{equation*}
 but that is really just a cop-out. 
-\item After all what is $\ln 2$?  That answer is merely the name that we have given to $\int_1^2\frac{\dee t}{t}$.
+\item After all what is $\ln 2$?  The answer $\ln 2$ is merely the name that we have given to the number 
+$\int_1^2\frac{\dee t}{t}$.
 \item A lot of functions are ``invented" using the fundamental theorem of calculus (part I).
 \begin{enumerate}
 \item The \textbf{error function} is defined to be a certain antiderivative of $f(x) = \frac{2}{\sqrt\pi}\E^{-x^2}$, namely
@@ -108,6 +109,36 @@ the area of the trapezoid under the line $y=p_i(x)$.
 Use the trapezoidal rule with $n=6$ to estimate $\ln 2$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Recall that 
+\begin{equation*}
+\ln(2) = \int_1^2 \frac{\dee t}{t}. 
+\end{equation*}
+So, we apply the trapezoidal rule with $f(t)=1/t$, $a = 1$, $b = 2$, and $n = 6$.  
+Whence, 
+\begin{equation*}
+\Delta x = \frac{b-a}{n} = \frac{2-1}{6} = \frac{1}{6},
+\end{equation*}
+and
+\begin{align*}
+y_0 &= f(a) = f(1) = 1, \\
+y_1 &= f(a+\Delta x) = f(7/6) = 6/7, \\
+y_2 &= f(a+2\Delta x) = f(8/6) = 6/8, \\
+y_3 &= 6/9, \\
+y_4 &= 6/10, \\
+y_5 &= 6/11, \\
+y_6 &= 6/12 = 1/2.
+\end{align*}
+Therefore, 
+\begin{equation*}
+\ln(2) 
+\approx \frac{1/6}{2}\left[ 1 + 2(6/7 + 6/8 + 6/9 + 6/10 + 6/11) + 1/2\right] 
+= \frac{9631}{13860} \approx 0.694877.
+\end{equation*}
+}
+\else
+\fi
 \newpage
 
 \begin{remark}
@@ -115,7 +146,7 @@ When the second derivative $f''$ is continuous on $[a,b]$, we can use the follow
 \end{remark}
 
 \begin{theorem}
-Suppose $f''$ is continuous on $[a,b]$ and that $|f''(x)|\le M$ for all $x\in [a,b]$.
+Suppose $f''$ is continuous on $[a,b]$ and $\DS M=\max_{a\le x\le b}|f''(x)|$.
 If $E_T$ is the error in the $n$-step  trapezoidal approximation of $\int_a^bf(x)\dee x$, then
 \begin{align*}
 %|E_M| &\le \frac{M(b-a)^3}{24n^2},\\
@@ -127,7 +158,41 @@ If $E_T$ is the error in the $n$-step  trapezoidal approximation of $\int_a^bf(x
 Use the above to bound the error in the trapezoidal approximation of $\ln 2$ when $n=6$.
 How large must $n$ be to ensure that the error is less than $10^{-6}$?
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $\ln(2) = \int_1^2 \frac{\dee t}{t}$, we need to compute the global extrema of $f''(t)$ over the interval $[a,b]$, 
+where $f(t)=1/t$ and $[a,b]=[1,2]$.
+First, we calculate that
+\begin{align*}
+f'(t)   &= -t^{-2}, \\
+f''(t)  &= 2t^{-3},\\
+f'''(t) &= -6t^{-4}.
+\end{align*}
+It is clear that $f''(t)$ has no critical points on the interval $[1,2]$.
+So, we only need to check the endpoints of the interval.
+Since
+\begin{align*}
+|f''(1)| &= 2,\\
+|f''(2)| &= 1/4,
+\end{align*}
+it follows that 
+\begin{equation*}
+M=\max_{a\le t\le b}|f''(t)| = 2.
+\end{equation*}
+Therefore, with $n$ steps of the trapezoidal rule, the error $E_T$ satisfies
+\begin{equation*}
+|E_T| \le \frac{M(b-a)^3}{12n^2} = \frac{2(2-1)^3}{12n^2} = \frac{1}{6n^2}.
+\end{equation*}
+So, when $n=6$, we have $|E_T| \le 1/6^3 \approx 0.00462963$.
+To guarantee $|E_T|<10^{-6}$, we force
+\begin{equation*}
+|E_T|\le\frac{1}{6n^2}<10^{-6}.
+\end{equation*}
+Solving the latter inequality for $n$ yields $n >\sqrt{10^6/6} \approx 408.248$.
+So, to guarantee $|E_T|<10^{-6}$, we require $n\ge 409$.
+}
+\else
+\fi
 \newpage
 
 \begin{remark}\,
@@ -166,11 +231,43 @@ where $\Delta x = x_i - x_{i-1} = \frac{b-a}{n}$ for $i=1,\dots, n$.
 \begin{example}
 Use Simpson's rule with $n=6$ to estimate $\ln 2$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Recall that 
+\begin{equation*}
+\ln(2) = \int_1^2 \frac{\dee t}{t}. 
+\end{equation*}
+So, we apply Simpson's rule with $f(t)=1/t$, $a = 1$, $b = 2$, and $n = 6$.  
+Whence, 
+\begin{equation*}
+\Delta x = \frac{b-a}{n} = \frac{2-1}{6} = \frac{1}{6},
+\end{equation*}
+and
+\begin{align*}
+y_0 &= f(a) = f(1) = 1, \\
+y_1 &= f(a+\Delta x) = f(7/6) = 6/7, \\
+y_2 &= f(a+2\Delta x) = f(8/6) = 6/8, \\
+y_3 &= 6/9, \\
+y_4 &= 6/10, \\
+y_5 &= 6/11, \\
+y_6 &= 6/12 = 1/2.
+\end{align*}
+Therefore, 
+\begin{align*}
+\ln{2} 
+&\approx \frac{\Delta x}{3}\left[ y_0 + 4(y_1 + y_3 + y_5) + 2(y_2 + y_4) + y_6 \right] \\
+&= \frac{1/6}{3}\left[ 1 + 4(6/7 + 6/9 + 6/11) + 2(6/8 + 6/10) + 1/2 \right] \\
+&= \frac{14411}{20790} \\
+& \approx 0.69317. 
+\end{align*}
+}
+\else
+\fi
 
 \newpage
 
 \begin{theorem}
-Suppose $f^{(4)}$ is continuous on $[a,b]$ and that $|f^{(4)}(x)|\le M$ for all $x\in [a,b]$.
+Suppose $f^{(4)}$ is continuous on $[a,b]$ and $\DS M=\max_{a\le x\le b}|f^{(4)}(x)|$.
 If $E_S$ is the $n$-step error in Simpson's approximation of $\int_a^bf(x)\dee x$, then
 \begin{equation*}
 |E_S| \le \frac{M(b-a)^5}{180n^4}.
@@ -183,3 +280,27 @@ If $E_S$ is the $n$-step error in Simpson's approximation of $\int_a^bf(x)\dee x
 Use the above to bound the error in Simpson's approximation of $\ln 2$ when $n=6$.
 How large must $n$ be to ensure that the error is less than $10^{-6}$?
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+This time we need to compute
+\begin{equation*}
+M = \max_{a\le t\le b}|f^{(4)}(t)|,
+\end{equation*}
+where again $f(t)=1/t$ and $[a,b]=[1,2]$.
+Using our calc I skills, we easily show that
+\begin{equation*}
+M = \max_{1\le t\le 2}|24t^{-5}| = 24.
+\end{equation*}
+Therefore, with $n$ steps of Simpson's rule, we have
+\begin{equation*}
+\left| E_S\right| \leq \frac{M(b-a)^5}{180n^4} = \frac{24}{180n^4}.
+\end{equation*}
+When $n=6$, this means that $|E_S|\le \frac{1}{9720}\approx 0.00010$.
+To ensure $|E_S| < 10^{-6},$ we force 
+\begin{equation*}
+|E_S|\le \frac{24}{180n^4} < 10^{-6}.
+\end{equation*}
+Solving, we find that the smallest even integer satisfying the inequality is $n=20$.
+}
+\else
+\fi

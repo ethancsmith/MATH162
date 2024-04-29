@@ -1,14 +1,14 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Alternating series}{\textit{Thomas' Calculus} \textsection 10.6}
+\lectureheader{162}{Calculus II}{Alternating series}{\textit{Thomas' Calculus}  10.6}
 
 \begin{definition}
-We say that $\sum a_n$ is an \textbf{alternating series} if the sequence of terms alternates between positive and negative values, 
-i.e., if $a_n = \pm(-1)^n|a_n|$ and $|a_n|>0$ for all $n$. 
+We say that $\DS\sum_{n\ge k} a_n$ is an \textbf{alternating series} if the sequence of terms alternates between positive and negative values, 
+i.e., if $a_n = \pm(-1)^n|a_n|$ and $|a_n|>0$ for all $n\ge k$. 
 \end{definition}
 
 \begin{theorem}[Alternating series test]
-If $\sum a_n$ is an alternating series so that
+If $\DS\sum_{n=k}^\infty a_n$ is an alternating series so that
 \begin{itemize}
 \item $|a_n|$ is nonincreasing for all $n$ sufficiently large, and
 \item $|a_n|\to 0$ as $n\to\infty$,
@@ -20,11 +20,23 @@ then $\sum a_n$ converges.
 The series $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$ is called the \textbf{alternating harmonic series}.
 Explain why the series converges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+We have 3 criteria to check.
+\begin{enumerate}
+\item $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$ is clearly alternating.
+\item $|a_n| = \left| \frac{(-1)^{n+1}}{n} \right| = \frac{1}{n} > \frac{1}{n+1} = |a_{n+1}|$ for $n\ge 1$.
+\item $\DS\lim_{a\to\infty} |a_n| = \lim_{n\to\infty} \frac{1}{n} = 0$.
+\end{enumerate}
+Therefore, $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$ converges by the alternating series test (AST).
+}
+\fi
 
 \vfill
 
 \begin{definition}
-We say that $\sum a_n$ is \textbf{conditionally convergent} if $\sum a_n$ is convergent but $\sum |a_n|$ is divergent. 
+We say that $\DS\sum_{n=k}^\infty a_n$ is \textbf{conditionally convergent} 
+if $\DS\sum_{n=k}^\infty a_n$ is convergent but $\DS\sum_{n=k}^\infty |a_n|$ is divergent. 
 \end{definition}
 
 \newpage
@@ -32,11 +44,30 @@ We say that $\sum a_n$ is \textbf{conditionally convergent} if $\sum a_n$ is con
 \begin{example}
 Show that the series $\DS\sum_{n=0}^\infty\frac{(-1)^n 10n}{n^2+16}$ converges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{ 
+\begin{enumerate}
+\item The terms $a_n= \frac{(-1)^n 10n}{n^2+16}$ of series are clearly alternating.
+\item Let $f(x)=\frac{10x}{x^2+16}$ so that $f(n) = |a_n|$.
+Observe then that
+\begin{equation*}
+f'(x)=\frac{(x^2+16)\cdot10 - 10x(2x)}{(x^2 + 16)^2} 
+=\frac{-10x^2 + 160}{(x^2 + 16)^2} 
+=\frac{-10(x^2-16)}{(x^2+16)^2}
+=\frac{-10(x-4)(x+4)}{(x^2+16)^2},
+\end{equation*}
+and hence $f(x)$ is decreasing for $x\ge 4$.  Therefore, $|a_n|$ is nonincreasing for $n\ge 4$.
+\item Finally, we compute that
+$\DS\lim_{n\to\infty} |a_n| = \lim_{n\to\infty} \frac{10n}{n^2+16} = \lim_{n\to\infty} \frac{10/n}{1 + 16/n^2} = 0$.
+\end{enumerate}
+Therefore, $\DS\sum_{n=0}^\infty\frac{(-1)^n 10n}{n^2+16}$ converges by AST.
+}
+\fi
 
 \newpage
 
 \begin{remark}
-Recall that if $\sum a_n$ is a convergent series, then the $N$th partial sum
+Recall that if $\DS\sum_{n=k}^\infty a_n$ is a convergent series, then the $N$th partial sum
 \begin{equation*}
 S_N = \sum_{n\le N} a_n
 \end{equation*}
@@ -48,9 +79,9 @@ is the error in the approximation.
 \end{remark}
 
 \begin{theorem}[Alternating series estimation theorem]
-If $\DS\sum_{n=0}^\infty a_n$ is an alternating series so that
+If $\DS\sum_{n=k}^\infty a_n$ is an alternating series so that
 \begin{itemize}
-\item $|a_n|$ is nonincreasing for all $n\ge 0$, and
+\item $|a_n|$ is nonincreasing for all $n\ge k$, and
 \item $|a_n|\to 0$ as $n\to\infty$,
 \end{itemize}
 then
@@ -60,7 +91,7 @@ then
 \end{enumerate}
 Moreover, 
 \begin{equation*}
-\Big| R_N \Big| = \left| S_N - \sum_{n=0}^\infty a_n\right| < \Big| a_{N+1}\Big|.
+\Big| R_N \Big| = \left| S_N - \sum_{n=k}^\infty a_n\right| < \Big| a_{N+1}\Big|.
 \end{equation*}
 \end{theorem}
 
@@ -69,7 +100,20 @@ We know that $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^3}$ converges to something
 Thanks to Roger Ap\'ery we know that it is an irrational number, but that is about all we know about this number.
 How many terms do we need to include so that we are sure that our approximation to the sum is accurate to within $10^{-3}$?
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+The absolute error in the $N$th partial sum approximation is
+\begin{equation*}
+|R_N| \le |a_{N+1}| = \left| \frac{(-1)^{N+2}}{(N+1)^3} \right| = \frac{1}{(N+1)^3}. 
+\end{equation*}
+Therefore, solving the inequality $1/(N+1)^3 \le 10^{-3}$, 
+the alternating series estimation theorem (ASET) ensures that if $N\ge 9$, then the error in the approximation
+\begin{equation*}
+\sum_{n=1}^N\frac{(-1)^{n+1}}{n^3}\approx \sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^3}
+\end{equation*}
+is no greater than $10^{-3}$.
+}
+\fi
 \newpage
 
 \begin{remark}\,
@@ -80,7 +124,7 @@ How many terms do we need to include so that we are sure that our approximation 
 \end{remark}
 
 \begin{theorem}[Series rearrangement theorem]
-If $\sum a_n$ converges absolutely and the sequence $\{b_n\}$ is any (re)arrangement of the sequence of terms $\{a_n\}$, then $\sum b_n$ converges absolutely, and $\sum b_n = \sum a_n$.
+If $\sum_n a_n$ converges absolutely and the sequence $\{b_n\}$ is any (re)arrangement of the sequence of terms $\{a_n\}$, then $\sum_n b_n$ converges absolutely, and $\sum_n b_n = \sum_n a_n$.
 \end{theorem}
 
 \begin{example}
@@ -88,26 +132,85 @@ Recall that Euler showed that
 \begin{equation*}
 \sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6}.
 \end{equation*}
-Use this fact together with the rearrangement theorem to compute the value of $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$.
+Use this fact together with the rearrangement theorem to compute the value of 
+\begin{equation*}
+\sum_{n=1}^\infty\frac{1}{(2n-1)^2}=1+\frac{1}{9}+\frac{1}{25}+\frac{1}{49}+\frac{1}{81}+\dots.
+\end{equation*}
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+The $p$-series with $p=2$ is clearly absolutely convergent (since all the terms are positive).
+By the series rearrangement theorem, we can sum the odd-indexed terms before the even-indexed terms so that
+\begin{equation*}
+\begin{split}
+\frac{\pi^2}{6}
+=\sum_{k=n}^\infty \frac{1}{n^2}
+&=\sum_{k=1}^\infty \frac{1}{(2k-1)^2} + \sum_{k=1}^\infty  \frac{1}{(2k)^2}\\
+&=\sum_{k=1}^\infty \frac{1}{(2k-1)^2} + \frac{1}{4}\sum_{k=1}^\infty \frac{1}{k^2}\\
+&=\sum_{k=1}^\infty \frac{1}{(2k-1)^2} + \frac{1}{4}\cdot\frac{\pi^2}{6}.
+\end{split}
+\end{equation*}
+Therefore, 
+\begin{equation*}
+\sum_{n=1}^\infty\frac{1}{(2n-1)^2}
+=\frac{\pi^2}{6}-\frac{1}{4}\cdot\frac{\pi^2}{6}
+=\frac{3}{4}\cdot\frac{\pi^2}{6}
+=\frac{\pi^2}{8}.
+\end{equation*}
+}
+\fi
 \newpage
 
 \begin{example}
-Which of $\DS\sum_{n=1}^\infty\frac{1}{n^2}$ and  $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$ converges faster?
-In other words, if you wanted to approximate 
+Using the series rearrangement theorem and the fact that
 \begin{equation*}
-\pi^2 = 6 \sum_{n=1}^\infty\frac{1}{n^2} = 12\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2},
+\sum_{n=1}^\infty\frac{1}{n^2} = \frac{\pi^2}{6},
 \end{equation*}
-which sum requires the fewest additions to achieve the same accuracy?
+it is not terribly hard to show that
+\begin{equation*}
+\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2} = \frac{\pi^2}{12}.
+\end{equation*}
+Suppose that you wanted to approximate 
+\begin{equation*}
+\pi^2 = 6 \sum_{n=1}^\infty\frac{1}{n^2} = 12\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}.
+\end{equation*}
+Which sum requires the fewest additions to achieve the same accuracy?
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+By the ITET, the approximation 
+\begin{equation*}
+\pi^2=\sum_{n=1}^\infty \frac{6}{n^2} \approx \DS\sum_{n=1}^N \frac{6}{n^2}
+\end{equation*}
+has an absolute error
+\begin{equation*}
+\left|\sum_{n=N+1}^\infty \frac{6}{n^2}\right|
+\le\int_N^\infty \frac{6\dee x}{x^2} 
+=\lim_{t\to\infty} \int_N^t \frac{6\dee x}{x^2} 
+=\lim_{t\to\infty} \left.\frac{-6}{x}\right|_N^t 
+= \lim_{t\to\infty} \left( \frac{6}{N} - \frac{6}{t}\right) = \frac{6}{N}.
+\end{equation*}
+By the ASET, the approximation 
+\begin{equation*}
+\pi^2=\sum_{n=1}^\infty \frac{(-1)^{n+1}\cdot 12}{(N+1)^2} 
+\approx\sum_{n=1}^N (-1)^{n+1}\frac{12}{n^2} 
+\end{equation*}
+has an absolute error
+\begin{equation*}
+\left|\sum_{n=N+1}^\infty \frac{(-1)^{n+1}\cdot 12}{(N+1)^2}\right|
+<\left| \frac{(-1)^{N+2}\cdot 12}{(N+1)^2} \right|
+=\frac{12}{(N+1)^2}.
+\end{equation*}
+Since $\DS\frac{12}{(N+1)^2}\to 0$ faster than $\DS\frac{6}{N}\to 0$, 
+we need fewer terms of $\DS 12\sum_{n=1}^N \frac{(-1)^{n+1}}{n^2}$ to get the same level of accuracy.
+}
+\fi
 
 \newpage
 
 \begin{remark}\,
 \begin{itemize}
-\item The rearrangement theorem is not true if $\sum a_n$ is conditionally convergent
+\item The rearrangement theorem is not true if $\sum_n a_n$ is conditionally convergent
 \item With enough skill, it possible to rearrange the terms of a conditionally convergent series so that the resulting series diverges or converges to whatever we want.
 \item That means that we need to be very careful when manipulating conditionally convergent series so that we do not deceive ourselves.
 \end{itemize}
@@ -118,5 +221,24 @@ Later we will show that
 \begin{equation*}
 \sum_{n=1}^\infty\frac{(-1)^{n+1}}{n} = \ln 2.
 \end{equation*}
-Show how a misuse of the rearrangement theorem can lead to an \underline{invalid proof} that $2\ln 2 = \ln 2$.
+Show how a misuse of the series rearrangement theorem can lead to an \underline{invalid proof} that $2\ln 2 = \ln 2$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Fake Proof]{
+Since the harmonic series is divergent, the alternating harmonic series is conditionally convergent.
+It is therefore not valid to reorder the terms of summation, but let's see what happens when we try summing the odd-indexed terms and then the even-index terms.
+Then
+\begin{equation*}
+\begin{split}
+2\ln 2 
+=2\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}
+&=2\sum_{k=1}^\infty \frac{(-1)^{2k}}{2k-1} + 2\sum_{k=1}^\infty \frac{(-1)^{2k+1}}{2k}\\
+&=2\sum_{k=1}^\infty \frac{1}{2k-1} - \sum_{k=1}^\infty \frac{1}{k}\\
+&=2\sum_{k=1}^\infty\frac{1}{2k-1} - \left[ \sum_{j=1}^\infty \frac{1}{(2k-1)} + \sum_{j=1}^\infty\frac{1}{2j}\right] \\
+&=\sum_{k=1}^\infty \frac{1}{2k-1} - \sum_{j=1}^\infty \frac{1}{2j}\\
+&=\sum_{k=1}^\infty \left[\frac{1}{2k-1} - \frac{1}{2k}\right]\\
+&= \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n} = \ln(2).
+\end{split}
+\end{equation*}
+}
+\fi

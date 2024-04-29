@@ -1,11 +1,12 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{The comparison tests}{\textit{Thomas' Calculus} \textsection 10.4}
+\lectureheader{162}{Calculus II}{The comparison tests}{\textit{Thomas' Calculus}  10.4}
 
 \begin{theorem}[Direct comparison test]\,
+Suppose that $a_n,b_n\ge 0$ for all $n$ sufficiently large.
 \begin{enumerate}
-\item If $0\le a_n\le b_n$ for all $n\ge N$ and $\DS\sum_{n\ge N} b_n$ converges, then $\DS\sum_{n\ge N}a_n$ converges.
-\item If $0\le b_n\le a_n$ for all $n\ge N$ and $\DS\sum_{n\ge N} b_n$ diverges, then $\DS\sum_{n\ge N}a_n$ diverges.\label{direct comparison test}
+\item If $a_n\ll b_n$ as $n\to\infty$ and $\DS\sum_{n\ge k} b_n$ converges, then $\DS\sum_{n\ge k}a_n$ converges.
+\item If $b_n\ll a_n$ as $n\to\infty$ and $\DS\sum_{n\ge k} b_n$ diverges, then $\DS\sum_{n\ge k}a_n$ diverges.\label{direct comparison test}
 \end{enumerate}
 \end{theorem}
 %\begin{proof}[Proof of~\eqref{direct comparison test}]\,
@@ -16,11 +17,11 @@
 \begin{remark}
 There is an art to applying the direct comparison test, but there is strategy to this art.
 \begin{enumerate}
-\item Ask yourself what ``simpler" series $\sum b_n$ has terms that look similar to $\sum a_n$.
-\item If $\sum b_n$ is known to converge, try to show that $0\le a_n\le b_n$ eventually.  If you succeed, then $\sum a_n$ also converges.
-\item If $\sum b_n$ is known to diverge, try to show that $0\le b_n\le a_n$ eventually. If you succeed, then $\sum a_n$ also diverges.
+\item Ask yourself what ``simpler" series $\sum_n b_n$ has terms that look similar to those of $\sum_n a_n$.
+\item If $\sum_n b_n$ is known to converge, try to show that $0\le a_n\ll b_n$ as $n\to\infty$.  If you succeed, then $\sum_n a_n$ also converges.
+\item If $\sum_n b_n$ is known to diverge, try to show that $0\le b_n\ll a_n$ as $n\to\infty$. If you succeed, then $\sum_n a_n$ also diverges.
 \end{enumerate}
-As with any art, mastery comes with much experience, and experience is only got by a lot of practice.
+As with any art, mastery comes with much experience, and experience can only be earned from a lot of practice.
 \end{remark}
 
 \newpage
@@ -28,18 +29,67 @@ As with any art, mastery comes with much experience, and experience is only got 
 \begin{example}
 Determine if $\DS\sum_{n=1}^\infty\frac{5}{10n-1}$ converges or diverges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+We guess that $a_n = \frac{5}{10n-1}$ is comparable to $b_n=\frac{1}{n}$.
+Since we know that $\DS\sum_{n=1}^\infty\frac{1}{n}$ diverges by the $p$-test with $p=1$, we hope to show that $a_n\gg b_n$ as $n\to\infty$.
+Observe then that if $n\ge 1$, then
+\begin{equation*}
+a_n = \frac{5}{10n-1}\ge \frac{5}{10n} = \frac{1}{2n} = \frac{1}{2}b_n>0,
+\end{equation*}
+i.e., $b_n\le 2a_n$ for all $n\ge 1$.
+Therefore, $b_n = \frac{1}{n}\ll \frac{5}{10n-1} = a_n$ as $n\to\infty$.
+Thus, we conclude that $\DS\sum_{n=1}^\infty\frac{5}{10n-1}$ diverges by the direct comparison test (DCT).
+}
+\else
+\fi
 
 \newpage
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\frac{1}{n!}$  converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION{
+Recall that $n!\ge\left(\frac{n+1}{\E}\right)^n$ for all $n\ge 0$, and therefore
+\begin{equation*}
+0<\frac{1}{n!}\le \left(\frac{\E}{n+1}\right)^n\le\left(\frac{1}{2}\right)^n \quad (n\ge 2\E-1),
+\end{equation*}
+i.e., $\frac{1}{n!}\ll \frac{1}{2^n}$ as $n\to\infty$.
+Since $\DS\sum_{n=0}^\infty (1/2)^{n}$ converges by GST (with $r = 1/2$), 
+it follows that $\DS\sum_{n=0}^\infty \frac{1}{n!}$ converges by DCT. 
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\frac{1}{2^n+\sqrt n}$  converges or diverges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Here there are two ``obvious" choices of comparator: $b_n=\frac{1}{2^n}$ or $b_n=\frac{1}{\sqrt n}$.
+We want to make the less drastic or less greedy change.
+So, we need to ask ourselves which term is more important when it comes to determining the size of the denominator for large $n$.
+We can try to drop the other one.\\
+\vspace{2\baselineskip}
+Observe that for all $n\ge 0$,
+\begin{equation*}
+0 \le \frac{1}{2^n + \sqrt{n}} \le \frac{1}{2^n}
+\end{equation*}
+Since $\DS\sum_{n=0}^\infty \frac{1}{2^n}$ converges by GST (with $r = 1/2$), 
+it follows that $\DS\sum_{n=0}^\infty \frac{1}{2^n + \sqrt{n}}$ converges by DCT.\\
+\vspace{2\baselineskip}
+What would have happened if we had guessed that $\frac{1}{\sqrt n}$ was a good comparator?
+We would still have
+\begin{equation*}
+0 \le \frac{1}{2^n + \sqrt{n}} \le \frac{1}{\sqrt{n}}
+\end{equation*}
+for all $n\ge 1$.
+Unfortunately, since $\DS\sum_{n=1}^\infty\frac{1}{\sqrt n}$ diverges by $p$-test (with $p=1/2$),
+the DCT tells us nothing about $\DS\sum_{n=0}^\infty\frac{1}{2^n+\sqrt n}$.
+}
+\fi
 
 \newpage
 
@@ -58,9 +108,9 @@ Determine whether the series $\DS\sum_{n=0}^\infty\frac{1}{2^n+\sqrt n}$  conver
 Suppose that $a_n, b_n>0$ for all $n\ge N$.
 \begin{enumerate}
 \item If $a_n\asymp b_n$ as $n\to\infty$, in particular if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=L\in (0,\infty)$, 
-then $\sum a_n$ and $\sum b_n$ both converge or both diverge.
-\item If $a_n\lll b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=0$) and $\sum b_n$ converges, then $\sum a_n$ converges.
-\item If $a_n\ggg b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=\infty$) and $\sum b_n$ diverges, then $\sum a_n$ diverges.
+then $\DS\sum_{n\ge k} a_n$ and $\DS\sum_{n\ge k} b_n$ both converge or both diverge.
+\item If $a_n\lll b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=0$) and $\DS\sum_{n\ge k} b_n$ converges, then $\DS\sum_{n\ge k} a_n$ converges.
+\item If $a_n\ggg b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=\infty$) and $\DS\sum_{n\ge k} b_n$ diverges, then $\DS\sum_{n\ge k} a_n$ diverges.
 \end{enumerate}
 \end{theorem}
 
@@ -69,24 +119,138 @@ then $\sum a_n$ and $\sum b_n$ both converge or both diverge.
 \begin{example}
 Determine if the series $\DS\sum_{n=1}^\infty\frac{2n+1}{(n+1)^2}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we guess that
+\begin{equation*}
+    a_n = \frac{2n+1}{(n+1)^2} \asymp \frac{n}{n^2} = \frac{1}{n} = b_n \text{ as } n \to \infty.
+\end{equation*}
+Next, we verify this by computing that
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty} \frac{a_n}{b_n} 
+&= \lim_{n\to\infty} \frac{2n+1}{(n+1)^2}\Big/ \left(\frac{1}{n}\right) \\
+&= \lim_{n\to\infty} \frac{n(2n+1)}{(n+1)^2} \\
+&= \lim_{n\to\infty} \frac{n(2n+1)\frac{1}{n^2}}{(n+1)^2\frac{1}{n^2}} \\
+&= \lim_{n\to\infty} \frac{1(2+\frac{1}{n})}{\left( 1 + \frac{1}{n}\right)^2} \\
+&= 2 \in (0,\infty).
+\end{split}
+\end{equation*}
+\\Since $\DS\sum_{n=1}^\infty b_n = \sum_{n=1}^\infty \frac{1}{n}$ diverges by $p$-test with $p = 1$,
+it follows that $\DS\sum_{n=1}^\infty \frac{2n+1}{(n+1)^2}$ also diverges by the limit comparison test (LTC).
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Determine if the series $\DS\sum_{n=1}^\infty\frac{1}{2^n-1}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we guess that
+\begin{equation*}
+a_n=\frac{1}{2^n - 1} \asymp \frac{1}{2^n} = b_n \text{ as } n\to\infty.
+\end{equation*}
+Next we verify that
+\begin{equation*}
+\lim_{n\to\infty}   \frac{1}{2^n-1}\Big/ \frac{1}{2^n} 
+= \lim_{n\to\infty} \frac{2^n}{2^n - 1} 
+= \lim_{n\to\infty} \frac{2^n\frac{1}{2^n}}{(2^n - 1)\frac{1}{2^n}} 
+= \lim_{n\to\infty} \frac{1}{1-\frac{1}{2^n}} = 1 \in (0,\infty).
+\end{equation*}
+Since $\DS\sum_{n=1}^\infty b_n = \sum_{n=1}^\infty \frac{1}{2^n}$ converges by GST (with $r=1/2$),
+$\DS\sum_{n=1}^\infty \frac{1}{2^n-1}$ converges by LCT.
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Determine if the series $\DS\sum_{n=1}^\infty\frac{\ln n}{n^{3/2}}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION{
+Recall that $\ln{n} \lll n^\epsilon$ as $n\to\infty$ for every $\epsilon > 0$.
+So in particular,
+\begin{equation*}
+a_n = \frac{\ln n}{n^{3/2}} \lll \frac{n^{1/4}}{n^{3/2}} = \frac{1}{n^{5/4}} = b_n \text{ as } n\to\infty.
+\end{equation*}
+In other words,
+\begin{align*}
+\lim_{n\to\infty} \frac{a_n}{b_n} = \frac{\ln n}{n^{3/2}}\Big/\frac{1}{n^{5/2}} = 0.
+\end{align*}
+Since $\DS\sum_{n=1}^\infty b_n = \sum_{n=1}^\infty \frac{1}{n^{5/4}}$ converges by $p$-test (with $p = 5/4$), 
+$\DS\sum_{n=1}^\infty \frac{\ln n}{n^{3/2}}$ also converges by LCT.\\
+\vspace{2\baselineskip}\\
+Note: Because $a_n$ is of smaller order than $b_n$, we needed $\sum b_n$ to converge.  
+If it had diverged, the LCT would tell us nothing about the original series.
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Determine if the series $\DS\sum_{n=1}^\infty\frac{1+n\ln n}{n^2+5}$ converges or diverges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we guess that
+\begin{equation*}
+a_n = \frac{1+n\ln n}{n^2+5} \asymp \frac{n\ln n}{n^2} = \frac{\ln n}{n} \ggg \frac{1}{n} = b_n \text{ as } n\to\infty.
+\end{equation*}
+Next we verify that
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\frac{a_n}{b_n}
+&=\lim_{n\to\infty}\frac{1+n\ln n}{n^2+5}\cdot\frac{n}{1}\\
+&=\lim_{n\to\infty}\frac{n+n^2\ln n}{n^2+5}\\
+&=\lim_{n\to\infty}\frac{n^2\ln n\left(\frac{1}{n\ln n} + 1\right)}{n^2\left(1+\frac{5}{n^2}\right)}\\
+&=\lim_{n\to\infty}\frac{\ln n\left(\frac{1}{n\ln n} + 1\right)}{\left(1+\frac{5}{n^2}\right)}\\
+&=\infty.
+\end{split}
+\end{equation*}
+Therefore, $a_n = \frac{1+n\ln n}{n^2+5}\ggg\frac{1}{n} = b_n$ as $n\to\infty$.
+Since $\DS\sum_{n=1}^\infty\frac{1}{n}$ diverges by $p$-test with $p=1$,
+$\DS\sum_{n=1}^\infty\frac{1+n\ln n}{n^2+5}$ diverges by LCT.\\
+\vspace{2\baselineskip}\\
+Note: Because $a_n$ is of greater order than $b_n$, we needed $\sum b_n$ to diverge.  
+If it had converged, the LCT would tell us nothing about the original series.
+}
+\else
+\fi
+
+\newpage
+
+\begin{example}
+Determine if the series $\DS\sum_{n=1}^\infty\frac{1}{n^{\arctan n}}$ converges or diverges.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Since $\arctan n \to \pi/2$ as $n\to\infty$, it is reasonable to guess that
+\begin{equation*}
+\frac{1}{n^{\arctan n}} \asymp \frac{1}{n^{\pi/2}} \text{ as }n\to\infty.
+\end{equation*}
+To verify this we compute
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\frac{1}{n^{\arctan n}} \Big/\frac{1}{n^{\pi/2}} 
+&=\lim_{n\to\infty}n^{\pi/2-\arctan n}\\
+&=\exp\left(\lim_{n\to\infty}\left(\pi/2-\arctan n\right)\ln n\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{\pi/2-\arctan n}{(\ln n)^{-1}}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{\frac{-1}{n^2+1}}{-(\ln n)^{-2}\frac{1}{n}}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{n(\ln n)^2}{n^2+1}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{(\ln n)^2}{n(1+1/n^2)}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{\left(\frac{\ln n}{\sqrt n}\right)^2}{1+1/n^2}\right)\\
+&=\exp(0/1)\\
+&=\E\in (0,\infty).
+\end{split}
+\end{equation*}
+Therefore, since $\DS\sum_{n=1}^\infty\frac{1}{n^{\pi/2}}$ converges by $p$-test (with $p=\pi/2>1$), 
+it follows that $\DS\sum_{n=1}^\infty\frac{1}{n^{\arctan n}}$ converges by LCT.
+}
+\fi
 
 \newpage
 
@@ -94,14 +258,66 @@ Determine if the series $\DS\sum_{n=1}^\infty\frac{1+n\ln n}{n^2+5}$ converges o
 Determine if the series $\DS\sum_{n=2}^\infty\frac{1}{(\ln n)^{\ln n}}$ converges or diverges.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+Here the terms sort of look like a $p$-series, but not quite since the base $\frac{1}{\ln n}$ decays to zero much slower than $\frac{1}{n}$.
+However, rather than having a constant $p$ for the exponent we have $\ln n\to\infty$ as $n\to\infty$, which should help speed up the decay.
+To compare the two, we apply our usual logarithm trick:
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\frac{1}{(\ln n)^{\ln n}} \Big/\frac{1}{n^p} 
+&=\lim_{n\to\infty}\frac{n^p}{(\ln n)^{\ln n}}\\
+&=\lim_{n\to\infty}\frac{\exp(p\ln n)}{\exp(-(\ln n)\ln\ln n)}\\
+&=\exp\left(\lim_{n\to\infty}(p\ln n-(\ln n)\ln\ln n)\right)\\
+&=\exp\left(\lim_{n\to\infty}-(\ln n)\ln\ln n\left(1-\frac{p}{\ln\ln n}\right)\right)\\
+&=0.
+\end{split}
+\end{equation*}
+Thus we have shown that
+\begin{equation*}
+\frac{1}{(\ln n)^{\ln n}}
+\lll 
+\frac{1}{n^p} 
+\text{ as } n\to\infty
+\end{equation*}
+for every fixed real number $p$.
+Since $\DS\sum_{n=1}^\infty\frac{1}{n^2}$ converges by $p$-test with $p=2$,
+it follows that $\DS\sum_{n=2}^\infty\frac{1}{(\ln n)^{\ln n}}$ converges by LCT.
+}
+\fi
+
 \newpage
 
 \begin{example}
 Determine if the series $\DS\sum_{n=10}^\infty\frac{1}{(\ln n)^{\ln\ln n}}$ converges or diverges.
 \end{example}
 
-\newpage
-
-\begin{example}
-Determine if the series $\DS\sum_{n=10}^\infty\frac{1}{n^{\arctan n}}$ converges or diverges.
-\end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Again the terms look sort of, but not quite, like a $p$-series.
+However, this time the exponent $\ln\ln n\to\infty$ as $n\to\infty$, but it does so at a much slower rate.
+So, it is not immediately clear if this new series converges or diverges.
+Proceeding in a similar manner to the last example,
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\frac{1}{(\ln n)^{\ln\ln n}} \Big/\frac{1}{n^p} 
+&=\lim_{n\to\infty}\frac{n^p}{(\ln n)^{\ln\ln n}}\\
+&=\lim_{n\to\infty}\frac{\exp(p\ln n)}{\exp(-(\ln\ln n)^2}\\
+&=\exp\left(\lim_{n\to\infty}(p\ln n-(\ln\ln n)^2\right)\\
+&=\exp\left(\lim_{n\to\infty}(\ln n)\left(p-\frac{(\ln\ln n)^2}{\ln n}\right)\right)\\
+&=\exp\left(\lim_{m\to\infty}m\left(p-\left(\frac{\ln m}{\sqrt m}\right)^2\right)\right)\\
+&=\infty.
+\end{split}
+\end{equation*}
+Thus we have shown that
+\begin{equation*}
+\frac{1}{(\ln n)^{\ln\ln n}}
+\ggg 
+\frac{1}{n^p} 
+\text{ as } n\to\infty
+\end{equation*}
+for every fixed real number $p$.
+Since $\DS\sum_{n=1}^\infty\frac{1}{n}$ diverges by $p$-test with $p=1$,
+it follows that $\DS\sum_{n=2}^\infty\frac{1}{(\ln n)^{\ln\ln n}}$ diverges by LCT.
+}
+\fi

@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Parametric equations}{\textit{Thomas' Calculus} \textsection 11.1}
+\lectureheader{162}{Calculus II}{Parametric equations}{\textit{Thomas' Calculus}  11.1}
 
 \begin{definition}
 Suppose that $x=f(t)$ and $y=g(t)$ are functions of some third variable $t$, called a \textbf{parameter}.
@@ -19,6 +19,37 @@ Plot the points on the curve corresponding to $t=0, 1, 2, 3$.
 Then eliminate the parameter to and identify the curve and finish the sketch.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+We make a table of values:
+\begin{center}
+\begin{tabular}{c|c|c}
+$t$ & $x$ & $y$\\
+\hline
+$0$ &  $0$ & $1$\\
+$1$ & $-1$ & $2$\\
+$2$ &  $0$ & $3$\\
+$3$ &  $3$ & 4
+\end{tabular}
+\end{center}
+Solving the equation $y=t+1$ for $t$ and substituting we have
+\begin{equation*}
+\begin{split}
+x &= (y-1)^2 -2(y-1)\\
+  &= y^2-4y+3.
+\end{split}
+\end{equation*}
+Now as $t$ varies in the interval $[0,\infty)$, $y=t+1$ varies in the interval $[1,\infty)$.
+Therefore, the parametric equations trace out 
+\begin{equation*}
+x = y^2-4y+3\quad (1\le y<\infty).
+\end{equation*}
+This is part of a parabola that opens toward the right.
+However, the parametrization also imposes an orientation: 
+the parabola is traversed from the point $(x,y)=(0,1)$ upwards.
+}
+\fi
+
 \newpage
 
 \begin{example}
@@ -29,6 +60,30 @@ y &= t - \frac{1}{t} \quad (t>0).
 \end{align*}
 Eliminate the parameter to identify the curve.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Adding the equations, we find that
+\begin{equation*}
+x+y = 2t,
+\end{equation*}
+and subtracting the equation, we have
+\begin{equation*}
+x-y = \frac{2}{t}.
+\end{equation*}
+Multiplying these two new equations, we find that
+\begin{equation*}
+x^2-y^2 = (x+y)(x-y) = 2t\frac{2}{t} = 4.
+\end{equation*}
+As $t$ varies in the interval $(0,\infty)$, 
+we see that $x=t + 1/t$ also varies in the interval $(0,\infty)$ and $y=t-1/t$ varies in the interval $(-\infty,\infty)$.
+Therefore, the parametric equations trace out the right half of the hyperbola
+\begin{equation*}
+x^2-y^2 = 4 \quad (x>0)
+\end{equation*}
+but it does so from bottom to top.
+}
+\fi
 
 \newpage
 
@@ -68,6 +123,53 @@ C_2: x = 2\sin\left(\frac{\pi}{2}t\right),\quad y = -3\cos\left(\frac{\pi}{2}t\r
 \end{equation*}
 At what points, if any, do the paths intersect?  At what points, if any, do the particles collide?
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+The equations for $C_1$ may be rewritten as
+\begin{align*}
+3x &= 16 - 8t,\\
+2y &= 8t - 10.
+\end{align*}
+Adding these equations, we find that
+\begin{equation*}
+3x+2y = 6\quad (y\ge -5),
+\end{equation*}
+which is a ``half-line."
+The equations for $C_2$ may be rewritten as $C_2$ as
+\begin{align*}
+\frac{x}{2} &= \sin\left(\frac{\pi}{2}t\right),\\
+\frac{y}{-3}&= \cos\left(\frac{\pi}{2}t\right).
+\end{align*}
+Whence, squaring and adding, the usual Pythagorean identity gives
+\begin{equation*}
+\frac{x^2}{4} + \frac{y^2}{9} = 1,
+\end{equation*}
+which is an ellipse that is traversed counterclockwise infinitely many times starting at the point $(x,y) = (0,-3)$.
+To determine if the curves intersect, we simultaneously solve the cartesian equations.
+We rewrite the cartesian equation for $C_1$ as $3x = 6-2y$ 
+and the cartesian equation for $C_2$ as $(3x)^2 + 4y^2 = 36$.
+Substituting the first into the later, we have
+\begin{equation*}
+(6-2y)^2 +4y^2 = 36.
+\end{equation*}
+Expanding, we have 
+\begin{equation*}
+36 - 24y + 8y^2 = 36.
+\end{equation*}
+Whence,
+\begin{equation*}
+8y(y-3) = 0,
+\end{equation*}
+and so $y=0$ or $y=3$.
+Substituting these values back into the equation for $C_1$, we find that $x=2$ in the first case and $x=0$ in the latter.
+Therefore, the curves intersect at $(x,y)=(2,0)$ and $(x,y)=(0,3)$.
+The particle on $C_1$ is at $(x,y)=(2,0)$ if and only if $t=5/4$, and it is at $(x,y)=(0,3)$ if and only if $t=2$.
+When $t=5/4$, the particle on $C_2$ is at $(x,y) = \Big(2\sin(5\pi/8), -3\cos(5\pi/8)\Big)\ne (2,0)$.
+So the particles do not collide at $(2,0)$.
+However, when $t=2$, the particle on $C_2$ is at $(x,y) = (0,3)$, and so the particles do collide at this point.
+}
+\fi
 
 \newpage
 

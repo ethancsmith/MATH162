@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Taylor series}{\textit{Thomas' Calculus} \textsection 10.8}
+\lectureheader{162}{Calculus II}{Taylor series}{\textit{Thomas' Calculus}  10.8}
 
 \begin{definition}
 Suppose that $f$ is $d$ times differentiable at $x=a$.
@@ -19,7 +19,7 @@ We will take up this topic later.
 
 \begin{definition}
 Suppose that $f$ has derivatives of all orders at $x=a$.
-Then the \textbf{Taylor series of order $d$ about $x=a$ for $f$} is
+Then the \textbf{Taylor series about $x=a$ for $f$} is
 \begin{equation*}
 T_f(x; a) = \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n.
 \end{equation*}
@@ -39,11 +39,58 @@ Compute the Taylor polynomial of order $3$ about $x=2$ for $f(x) = 1/x$.
 Then compute the Taylor series.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+First we observe that
+\begin{align*}
+f(x) &= x^{-1},\\
+f'(x) &= -x^{-2},\\
+f''(x) &= (-1)(-2)x^{-3},\\
+f'''(x) &= (-1)(-2)(-3)x^{-4},\\
+f^{(4)}(x) &= (-1)(-2)(-3)(-4)x^{-5},\\
+&\vdots
+\end{align*}
+So, we surmise that
+\begin{equation*}
+f^{(n)}(x) = (-1)^{n}n!x^{-(n+1)} \quad (n\ge 0).
+\end{equation*}
+Whence,
+\begin{equation*}
+\frac{f^{(n)}(2)}{n!} = \frac{(-1)^{n}n!2^{-(n+1)}}{n!} = \frac{(-1)^n}{2^{n+1}} \quad (n\ge 0).
+\end{equation*}
+Therefore, the Taylor polynomial of order $3$ for $f(x)=1/x$ about $x=2$ is
+\begin{equation*}
+\begin{split}
+P_f(x;3,2) &= \sum_{n=0}^3\frac{f^{(n)}(2)}{n!}(x-2)^n
+= \sum_{n=0}^3\frac{(-1)^{n}}{2^{n+1}}(x-2)^n\\
+&=\frac{1}{2}-\frac{1}{4}(x-2)+\frac{1}{8}(x-2)^2-\frac{1}{16}(x-2)^3,
+\end{split}
+\end{equation*}
+and the corresponding Taylor series is
+\begin{equation*}
+T_f(x;2) = \sum_{n=0}^\infty\frac{(-1)^{n}}{2^{n+1}}(x-2)^n.
+\end{equation*}
+}
+\fi
+
 \newpage
 
 \begin{example}
 Compute the Maclaurin series for $f(x) = \exp x$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Since $f^{(n)}(x) = \exp x$ for all $n\ge 0$, we have that
+\begin{equation*}
+\frac{f^{(n)}(0)}{n!} = \frac{\exp(0)}{n!} = \frac{1}{n!}\quad (n\ge 0).
+\end{equation*}
+Whence the Maclaurin series for $f(x)=\exp(x)$ is
+\begin{equation*}
+T_f(x;0) = \sum_{n=0}^\infty\frac{f^{(n)}(0)}{n!}x^n = \sum_{n=0}^\infty\frac{x^n}{n!}.
+\end{equation*}
+}
+\fi
 
 \newpage
 
@@ -51,8 +98,70 @@ Compute the Maclaurin series for $f(x) = \exp x$.
 Compute the Maclaurin series for $f(x) = \cos x$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+We observe that
+\begin{align*}
+f(x) &=\cos x,\\
+f'(x) &=-\sin x,\\
+f''(x) &=-\cos x,\\
+f'''(x) &=\sin x,\\
+f^{(4)}(x) &=\cos x\\
+&\vdots
+\end{align*}
+and so we surmise that
+\begin{equation*}
+f^{(n)}(x) = \begin{cases}
+(-1)^k\cos x & \text{if } n=2k,\\
+(-1)^{k+1}\sin x & \text{if } n=2k+1.
+\end{cases}
+\end{equation*}
+Whence
+\begin{equation*}
+\frac{f^{(n)}(0)}{n!} = \begin{cases}
+\frac{(-1)^k}{(2k)!} & \text{if } n=2k,\\
+0 & \text{if } n=2k+1.
+\end{cases}
+\end{equation*}
+Therefore, the Maclaurin series for $f(x)=\cos x$ is
+\begin{equation*}
+T_f(x;0) = \sum_{k=0}^\infty (-1)^k\frac{x^{2k}}{(2k)!}.
+\end{equation*}
+}
+\fi
+
 \newpage
 
 \begin{example}
 Compute the Maclaurin series for $f(x) =\sqrt{1+x}$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we observe that
+\begin{align*}
+f(x) &= (1+x)^{1/2},\\
+f'(x) &= (1/2)(1+x)^{-1/2},\\
+f''(x) &= (-1/2)(1/2)(1+x)^{-3/2},\\
+f'''(x) &= (-3/2)(-1/2)(1/2)(1+x)^{-5/2},\\
+f^{(4)}(x) &= (-5/2)(-3/2)(-1/2)(1/2)(1+x)^{-7/2},\\
+&\vdots
+\end{align*}
+Thus, we surmise that
+\begin{equation*}
+f^{(n)}(x) = (-1)^{n-1}\frac{\prod_{j=1}^{n-1}(2j-1)}{2^n}(1+x)^{-(2n-1)/2} \quad (n\ge 1)
+\end{equation*}
+so that
+\begin{equation*}
+\frac{f^{(n)}(0)}{n!}
+=\begin{cases}
+1& \text{if } n=0,\\
+(-1)^{n-1}\frac{\prod_{j=1}^{n-1}(2j-1)}{2^n}& \text{if } n\ge 1.
+\end{cases}
+\end{equation*}
+Therefore, the Maclaurin series for $f(x)=\sqrt{1+x}$ is
+\begin{equation*}
+T_f(x;0) = 1 + \sum_{n=1}^\infty(-1)^{n-1}\frac{\prod_{j=1}^{n-1}(2j-1)}{2^{n}n!}x^n.
+\end{equation*}
+}
+\fi

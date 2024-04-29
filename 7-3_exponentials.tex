@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{The natural exponential}{\textit{Thomas' Calculus} \textsection 7.3}
+\lectureheader{162}{Calculus II}{The natural exponential}{\textit{Thomas' Calculus}  7.3}
 
 \begin{theorem}
 The natural logarithm is invertible.
@@ -18,11 +18,37 @@ The \textbf{natural exponential function} $\exp x $ is the inverse of the natura
 Have you ever thought about what exponentiation really means?
 \begin{itemize}
 \item What does $2^3$ mean?
-\vspace{2in}
+
+\ifdefined\SOLUTION
+\SOLUTION {
+    $2^3 = 2\cdot2\cdot2$ (Repeated multiplication.)
+}
+\else
+\vspace{1in}
+\fi
+
 \item What about $(5/4)^{2/3}$?
-\vspace{2.5in}
+\ifdefined\SOLUTION
+\SOLUTION {
+    \begin{equation*}
+        \left(\frac{5}{4}\right)^{2/3}
+        = \left(\frac{5}{4}\cdot\frac{5}{4}\right)^{1/3}
+        =  \left(\frac{25}{16}\right)^{1/3},
+    \end{equation*}
+    which is the unique real solution to $x^3 = \frac{25}{16}$.
+}
+\else
+\vspace{1in}
+\fi
+
 \item What about $\E^\pi$? What about ${\sqrt 2}^{\sqrt 2}$?
-\vspace{0.1in}
+\ifdefined\SOLUTION
+\SOLUTION {
+   Hmmm\dots Let's put in a pin that for a moment. 
+}
+\else
+\vspace{1in}
+\fi
 \end{itemize}
 \end{remark}
 
@@ -55,20 +81,45 @@ If $a, b, c$ are real numbers with $a>0$, then
 So what does $\E^\pi$ really mean?
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+    $x = \E^\pi = \exp(\pi) = \ln{^{-1}(\pi)}.$
+    It follows that $\ln{x} = \pi$.  So, $\E^\pi$ is the unique solution to the equation
+    $\int_{1}^{x} \frac{\dee t}{t} \, = \pi$.
+}
+\else
+\fi
 \vfill
-
 
 \begin{example}
 Solve $\E^{2x-6}=4$ for $x$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+    $\E^{2x-6}=4.$  Take the natural logarithm of both sides.  So, 
+    \begin{equation*}
+        \ln{e^{2x-6}} = \ln{4}
+    \end{equation*} 
+    \begin{equation*}
+        2x-6 = \ln{4}
+    \end{equation*} 
+    \begin{equation*}
+        2x = \ln{4} + 6
+    \end{equation*} 
+    \begin{equation*}
+        x = \frac{\ln{4} + 6}{2}
+    \end{equation*} 
+}
+\else
+\fi
 \vfill
 
 \begin{theorem}
 $\DS\lim_{x\to 0}\left(1+x\right)^{1/x} = \E$.
 \end{theorem}
 \begin{remark}
-We will develop a technique to evaluate limits like this in \textsection 7.5. 
+We will develop a technique to evaluate limits like this in section 7.5. 
 \end{remark}
 
 \newpage
@@ -78,10 +129,28 @@ We will develop a technique to evaluate limits like this in \textsection 7.5.
 \frac{\dee }{\dee x}\exp x = \exp x.
 \end{equation*}
 \end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+By definition of inverses, 
+\begin{equation*}
+    \ln{(\exp x)} = x
+\end{equation*}
+for all real $x$.  By the chain rule, 
+\begin{equation*}
+    \frac{1}{\exp{x}}\cdot\frac{\dee}{\dee x}(\exp x) = 1.
+\end{equation*}
+Clearing the denominator, we get 
+\begin{equation*}
+    \frac{\dee}{\dee x}(\exp x) = \exp x.
+\end{equation*}
+}
+\else
 \begin{proof}\,
 
 \vspace{3in}
 \end{proof}
+\fi
+%\vfill
 
 \begin{corollary}
 The natural exponential function is continuous, differentiable, strictly increasing, and concave up on its domain $(-\infty, \infty)$.
@@ -92,6 +161,23 @@ The natural exponential function is continuous, differentiable, strictly increas
 \begin{example}
 Compute $\DS\frac{\dee}{\dee x}\E^{\sqrt{3x+1}}$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+\begin{equation*}
+\frac{\dee}{\dee x}e^{\sqrt{3x+1}}
+= e^{\sqrt{3x+1}}\cdot \frac{\dee}{\dee x}\sqrt{3x+1}
+=  e^{\sqrt{3x+1}}\cdot \frac{1}{2}(3x+1)^{-\frac{1}{2}}\cdot 3
+= \frac{3e^{\sqrt{3x+1}}}{2\sqrt{3x+1}}.
+\end{equation*}
+%Or,
+%\begin{equation*}
+%\frac{\dee}{\dee x} e^{\sqrt{3x+1}}
+%= \frac{\dee}{\dee x} \exp (\sqrt{3x+1})\cdot \frac{\dee}{\dee x} \sqrt{3x+1}
+%= \exp (\sqrt{3x+1}) \cdot \frac{1}{2}(3x+1)^{-\frac{1}{2}}\cdot 3
+%\end{equation*}
+}
+\else
+\fi
 \vfill
 
 \begin{theorem}
@@ -103,6 +189,26 @@ Compute $\DS\frac{\dee}{\dee x}\E^{\sqrt{3x+1}}$.
 \begin{example}
 Evaluate $\DS\int_0^{\pi/2}\E^{\sin x}\cos x\dee x$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+Let $u = \sin{x}.$  It follows that $\dee u = \cos{x}\dee x.$  For the limits of integration, $u(0) = \sin{0} = 0,$ and $u(\frac{\pi}{2} = \sin{\frac{\pi}{2}} = 1$.  So, 
+\begin{equation*}
+    \int_{0}^{\frac{\pi}{2}} \E^{\sin{x}}\cos{x}\dee x
+    = \int_{0}^{1}\E^u \, \dee u
+    = \E^u \Biggr|_{0}^{1}
+    = \E^1 - \E^0 = \E - 1.
+\end{equation*}
+Or alternatively, 
+\begin{equation*}
+\int_{0}^{\frac{\pi}{2}} \E^{\sin{x}}\cos{x} \dee x
+= \int_{x=0}^{x = \frac{\pi}{2}} \E^u \dee u
+= \E^u \Biggr|_{x = 0}^{x = \frac{\pi}{2}}
+= \E^{\sin{x}} \Biggr|_{x = 0}^{x = \frac{\pi}{2}} 
+= \E^{\sin{\frac{\pi}{2}}} - \E^{\sin{0}} = \E - 1.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 
 
@@ -125,11 +231,34 @@ For a fixed real number $a>0$, we have
 Calculate $\DS\frac{\dee }{\dee x}3^{\sin x}$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+\begin{equation*}
+    \frac{\dee}{\dee x}3^{\sin{x}} = (\ln{3})3^{\sin{x}}\cdot\frac{\dee}{\dee x}\sin{x}
+    = (\ln{3})3^{\sin{x}}\cos{x}.
+\end{equation*}
+}
+\else
+\fi
+
 \vfill
 
 \begin{example}
 Compute $\DS\int 2^{\sin x}\cos x\dee x$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = \sin{x}.$  It follows that $\dee u = \cos{x} \dee x$.  So, 
+\begin{equation*}
+    \int_{}^{} 2^{\sin{x}}\cos{x}\dee x 
+    = \int_{}^{} 2^u \dee u
+    = \frac{2^u}{\ln{2}} + C
+    = \frac{2^{\sin{x}}}{\ln{2}} + C.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 
 \newpage
@@ -153,3 +282,22 @@ For any fixed $a\in (0,1)\cup (1,\infty)$, we have
 \end{equation*}
 \end{corollary}
 
+\ifdefined\SOLUTION
+\SOLUTION[Examples] {
+\begin{equation*}
+    \frac{\dee}{\dee x}\log_2{x}
+    = \frac{\dee}{\dee x} \frac{\ln{x}}{\ln{2}}
+    = \frac{1}{\ln{2}}\cdot \frac{\dee}{\dee x} \ln{x} 
+    = \frac{1}{\ln{2}} \cdot \frac{1}{x}.
+\end{equation*}
+\vspace{.5in}
+\begin{equation*}
+    \frac{\dee}{\dee x}(47)^x 
+    =\frac{\dee}{\dee x} \exp (x\ln{47}) 
+    =\exp (x\ln{47}) \cdot \frac{\dee}{\dee x} x\ln{47}
+    =\exp (x\ln{47}) \cdot\ln{47}
+    = (47)^x\ln{47}.
+\end{equation*}
+}
+\else
+\fi

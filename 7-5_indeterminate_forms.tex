@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Indeterminate forms}{\textit{Thomas' Calculus} \textsection 7.5}
+\lectureheader{162}{Calculus II}{Indeterminate forms}{\textit{Thomas' Calculus}  7.5}
 
 \begin{remark}\,
 \begin{itemize}
@@ -23,8 +23,30 @@ The expression $L/0$ is nonsense.
 Compute the limits:
 \begin{enumerate}
 \item $\DS\lim_{x\to 3}\frac{x^2-9}{x-3}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+\begin{equation*}
+    \DS\lim_{x\to 3}\frac{x^2-9}{x-3}
+    = \DS\lim_{x\to 3}\frac{(x+3)(x-3)}{x-3}
+    = \DS\lim_{x\to 3}(x+3)
+    = 3+3
+    = 6.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0}\frac{\sin x}{x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+Here we just recall the calc I fact:
+\begin{equation*}
+   \DS\lim_{x\to 0}\frac{\sin x}{x} = 1.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -40,11 +62,11 @@ Compute the limits:
 
 \begin{remark}\,
 \begin{itemize}
-\item There is no simple formula to determine the value of an indeterminate form.
+\item There is no simple formula to resolve an indeterminate form.
 \item The expressions ``$\frac{0}{0}$" and ``$\frac{\infty}{\infty}$" are \underline{not numbers}.
 \item Never write that something equals an indeterminate form.
 \item To say that the limit has the indeterminate form ``$\frac{0}{0}$" and ``$\frac{\infty}{\infty}$" is to realize that there is a race between the numerator and the denominator.
-The existence/value of the limit depends on the relative rate/speed at which the two approach their respective limits.
+The existence/value of the limit depends on the relative rate at which the two approach their respective limits.
 \end{itemize}
 \end{remark}
 
@@ -72,16 +94,70 @@ assuming that the limit on the right side exists (or is $\infty$ or $-\infty$).
 \end{itemize}
 \end{remark}
 
+\ifdefined\SOLUTION
+\SOLUTION[FAQ] {
+\textbf{Question:} Is ``$\frac{0}{\infty}$" an indeterminate form? 
+\textbf{Answer:} No, there's no tension.  The numerator is driving the quotient to zero and so is the denominator.  So, $\frac{f(x)}{g(x)}\to 0$. 
+\textbf{Question:} Is ``$\frac{\infty}{0}$" an indeterminate form? 
+\textbf{Answer:}  No.  Again, there's no tension.  
+But the numerator is driving the quotient to infinity and the denominator is driving towards DNE.  
+So, the limit $\lim_{x\to a}\frac{f(x)}{g(x)}$ DNE.  
+It might be positive or negative infinity, but we need further analysis to say.
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Compute the limits below.
 \begin{enumerate}
 \item $\DS\lim_{x\to 0}\frac{3x - \sin x}{x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0}\frac{3x - \sin x}{x}
+    = \lim_{x\to 0}\frac{3-\cos x}{1}
+    = 3 - \cos{(0)}
+    = 3-1
+    = 2.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0}\frac{\sqrt{1+x}-1}{x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0}\frac{\sqrt{1+x}-1}{x}
+    = \lim_{x\to 0}\frac{\frac{1}{2}(1+x)^{-\frac{1}{2}}}{1}
+    = \frac{1}{2}(1+0)^{-\frac{1}{2}}
+    = \frac{1}{2}.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0}\frac{\sqrt{1+x}-1-x/2}{x^2}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+\begin{split}
+    \lim_{x\to 0}\frac{\sqrt{1+x}-1-x/2}{x^2}
+    &= \lim_{x\to 0}\frac{\frac{1}{2}(1+x)^{-\frac{1}{2}}-\frac{1}{2}}{2x}
+     = \frac{1}{4}\lim_{x\to 0}\frac{(1+x)^{-\frac{1}{2}}-1}{x}\\
+    &= \frac{1}{4}\lim_{x\to 0}\frac{\frac{1 - (1+x)^{\frac{1}{2}}}{(1+x)^\frac{1}{2}}}{x} 
+     = \frac{1}{4}\lim_{x\to 0}\frac{1 - (1+x)^{\frac{1}{2}}}{x(1+x)^{\frac{1}{2}}}\\
+    &= \frac{1}{4}\lim_{x\to 0} \frac{-\frac{1}{2}(1+x)^{-\frac{3}{2}}\cdot 1}{1}
+     = \frac{1}{4}\cdot \left(-\frac{1}{2}\right)\\
+    &= -\frac{1}{8}.
+\end{split}
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -92,10 +168,59 @@ Compute the limits below.
 Compute the limits below.
 \begin{enumerate}
 \item $\DS\lim_{x\to \frac{\pi}{2}}\frac{\sec x}{1+\tan x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+This example teaches us not to become too dependent on L'H\^o pital's rule to the point where we forget our calc I skills:
+\begin{equation*}
+    \lim_{x\to \frac{\pi}{2}}\frac{\sec x}{1+\tan x}
+    = \lim_{x\to \frac{\pi}{2}}\frac{\sec{x}\tan{x}}{\sec^2{x}}
+    = \lim_{x\to \frac{\pi}{2}}\frac{\tan{x}}{\sec{x}}
+    = \lim_{x\to \frac{\pi}{2}}\frac{\sec^2{x}}{\sec{x}\tan{x}}
+    = \lim_{x\to \frac{\pi}{2}}\frac{\sec{x}}{\tan{x}} 
+    = \dots
+\end{equation*}
+Continuing down this path will clearly just take us in circles.
+It's algebra and trigonometry to the rescue:
+\begin{equation*}
+     \lim_{x\to \frac{\pi}{2}}\frac{\sec x}{1+\tan x}
+     = \lim_{x\to \frac{\pi}{2}}\frac{\frac{1}{\cos{x}}}{1+\frac{\sin{x}}{\cos{x}}}
+     = \lim_{x\to \frac{\pi}{2}}\frac{1}{\cos{x} + \sin{x}}
+     = \frac{1}{0+1}
+     = 1.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to \infty}\frac{\ln x}{2\sqrt x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to \infty}\frac{\ln x}{2\sqrt x}
+    = \lim_{x\to \infty}\frac{\frac{1}{x}}{2\cdot \frac{1}{2}x^{-\frac{1}{2}}}
+    = \lim_{x\to \infty}\frac{\frac{1}{x}}{\frac{1}{x^{\frac{1}{2}}}}
+    = \lim_{x\to \infty} \frac{x^{\frac{1}{2}}}{x}
+    = \lim_{x\to \infty}\frac{1}{\sqrt{x}}
+    = 0.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to \infty}\frac{\E^x}{x^2}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to \infty}\frac{\E^x}{x^2}
+    = \lim_{x\to \infty}\frac{\E^x}{2x}
+    = \lim_{x\to \infty}\frac{\E^x}{2}
+    = \infty.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -117,10 +242,67 @@ Indeterminate forms ``$0\cdot\infty$" and ``$\infty - \infty$" may be transforme
 Compute the limits below.
 \begin{enumerate}
 \item $\DS\lim_{x\to\infty}x\sin(1/x)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to\infty}x\sin(1/x)
+    = \lim_{x\to\infty}\frac{\sin(1/x)}{1/x}
+    = \lim_{x\to\infty}\frac{\cos(1/x)\cdot(-x^{-2})}{-x^{-2}}
+    = \lim_{x\to\infty}\cos(1/x)
+    = 1.
+\end{equation*}
+However, do not try to transform the equation into a fraction like the following:
+\begin{equation*}
+    \lim_{x\to\infty}x\sin(1/x)
+    = \lim_{x\to\infty}\frac{x}{\csc(1/x)}
+    \lim_{x\to\infty}\frac{1}{-\csc(1/x)\cot(1/x)(-x^{-2})} 
+    = \dots
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0^+}\sqrt x\ln x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0^+}\sqrt x\ln x
+    = \lim_{x\to 0^+}\frac{\ln{x}}{\frac{1}{\sqrt{x}}}
+    = \lim_{x\to 0^+}\frac{1/x}{-\frac{1}{2}x^{-\frac{3}{2}}}
+    = \lim_{x\to 0^+} -2\sqrt{x}
+    = 0.
+\end{equation*}
+The following is a bad decision, but a good exercise.
+\begin{equation*}
+    \lim_{x\to 0^+}\sqrt x\ln x
+    = \lim_{x\to 0^+}\frac{\sqrt{x}}{\frac{1}{\ln{x}}}
+    = \lim_{x\to 0^+}\frac{\frac{1}{2}x^{-\frac{1}{2}}}
+    {-(\ln{x})^{-2}\cdot\frac{1}{x}}
+    =-\frac{1}{2}\lim_{x\to 0^+}\sqrt x (\ln{x})^2
+	=\dots
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0}\left(\frac{1}{\sin x} - \frac{1}{x}\right)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+\begin{split}
+    \lim_{x\to 0}\left(\frac{1}{\sin x} - \frac{1}{x}\right)
+    &= \lim_{x\to 0} \frac{x - \sin{x}}{x\sin{x}}
+    = \lim_{x\to 0} \frac{1 - \cos{x}}{\sin{x} + x\cos{x}}\\
+    &= \lim_{x\to 0} \frac{\sin{x}}{\cos{x} + \cos{x} - x\sin{x}}
+    = \frac{0}{1 + 1 - 0}
+    = 0.  
+\end{split}
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -144,13 +326,77 @@ Indeterminate powers may be transformed (via the identity $f^g = \exp(g\log f)$)
 Compute the limits below.
 \begin{enumerate}
 \item $\DS\lim_{x\to 0^+}\left(1+\sin 4x\right)^{\cot x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0^+}\left(1+\sin 4x\right)^{\cot x}
+    = \lim_{x\to 0^+} \exp(\cot{x}\cdot\ln{(1+\sin{4x})})
+    = \exp \left(\lim_{x\to 0^+}\frac{\ln{(1+\sin{4x})}}{\tan{x}}\right)
+\end{equation*}
+\begin{equation*}
+    = \exp \left(\lim_{x\to 0^+} \frac{\frac{1}{1+\sin{4x}}\cdot (\cos{(4x)}\cdot4)}{\sec^2{x}}\right)
+    = \exp \left(\frac{4}{1}\right)
+    = \E^4.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to 0^+}x^x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0^+}x^x
+    = \exp \left( \lim_{x\to 0^+} x\ln{x} \right)
+    = \exp \left( \lim_{x\to 0^+} \frac{\ln{x}}{x^{-1}} \right)
+    = \exp \left( \lim_{x\to 0^+} \frac{1/x}{-x^{-2}} \right) 
+\end{equation*}
+\begin{equation*}
+    = \exp \left( \lim_{x\to 0^+} -x \right)
+    = \E^0 
+    = 1.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \newpage
 \item $\DS\lim_{x\to 0^+}(1+x)^{1/x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to 0^+}(1+x)^{1/x}
+    = \exp\left( \lim_{x\to 0^+} \frac{1}{x}\ln{(1+x)} \right)
+    = \exp\left( \lim_{x\to 0^+} \frac{\ln{(1+x)}}{x} \right)
+\end{equation*}
+\begin{equation*}
+    = \exp\left( \lim_{x\to 0^+} \frac{\frac{1}{1+x}}{1} 
+    \right)
+    = \exp (1)
+    = \E.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\lim_{x\to \infty}x^{1/x}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \lim_{x\to \infty}x^{1/x}
+    = \exp\left( \lim_{x\to \infty} \frac{1}{x}\ln{x}
+    \right)
+    = \exp\left( \lim_{x\to \infty} \frac{\frac{1}{x}}{1}
+    \right)
+    = \exp(0)
+    = 1.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -175,9 +421,35 @@ In any case, you are writing falsehoods.
 \end{remark}
 
 \begin{example}
+Compute $\DS\lim_{x\to\infty}\left(2^x-3^x\right)$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Guess which term is dominant and factor it out.
+\begin{equation*}
+\lim_{x\to \infty} \left(2^x - 3^x\right) 
+	= \lim_{x\to \infty} 3^x\left((2/3)^x - 1\right) 
+	=-\infty.
+\end{equation*}
+}
+\fi
+\vfill
+
+
+\begin{example}
 Compute $\DS\lim_{x\to\infty}\frac{2^x-3^x}{3^x+4^x}$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Don't fall for the L'H\^opital's rule trap.
+Guess which term is dominant in the numerator and in the denominator and factor each out.
+\begin{equation*}
+    \lim_{x\to\infty}\frac{2^x-3^x}{3^x+4^x}
+    =\lim_{x\to\infty}\frac{3^x\left((2/3)^x-1\right)}{4^x\left((3/4)^x+1\right)}
+	=0\cdot\frac{0-1}{0+1} = 0.
+\end{equation*}
+}
+\fi
+\vfill
 
-%Determinate or Indeterminate?
-%$\infty^\infty$, etc.
 

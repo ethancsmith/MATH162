@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Integration by parts}{\textit{Thomas' Calculus} \textsection 8.2}
+\lectureheader{162}{Calculus II}{Integration by parts}{\textit{Thomas' Calculus}  8.2}
 
 \begin{mdframed}
 \begin{minipage}{0.5\linewidth}
@@ -106,11 +106,52 @@ and then integrated to reveal
 Evaluate the following.
 \begin{enumerate}
 \item $\DS\int x\cos x\dee x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = x$ and $\dee v = \cos{x}.$  It follows that $\dee u = \dee x$ and $v = \sin{x}.$  Making the substitution and using integration by parts gives 
+\begin{equation*}
+    \int x\cos x\dee x
+    = x\sin{x} - \int\sin{x}\dee x
+    = x\sin{x} + \cos{x} + C.
+\end{equation*}
+Note that if you let $u = \cos{x}$ and $\dee v = x \dee x$, you get $\dee u = -\sin{x}\dee x$ and $v = \frac{1}{2}x^2.$  Making the substitution and using integration by parts gives 
+\begin{equation*}
+    \int x\cos x\dee x
+    = \frac{1}{2}x^2\cos{x} + \int \frac{1}{2}x^2\sin{x}\dee x.
+\end{equation*}
+This is a more complicated integral than the original. So, when you're picking $u$ and $\dee v$, you want
+\begin{enumerate}
+    \item A $\dee v$ that we can integrate on its own.
+    \item A $u$ so that $v\dee u$ is simpler than $u\dee v.$
+\end{enumerate}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\int\ln x\dee x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = \ln{x}$ and let $\dee v = \dee x.$  So, it follows that $\dee u = \frac{\dee x}{x}$ and $v = x.$  Integrating by parts gives 
+\begin{equation*}
+    \int\ln x\dee x
+    = x\ln{x} - \int x \frac{\dee x}{x}
+    = x\ln{x} - \int \dee x
+    = x\ln{x} - x + C.
+\end{equation*}
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
+\begin{remark}\,
+\begin{itemize}
+\item The logarithm is such an important function that it is probably worth memorizing its integral.
+\item The technique of deriving the integral of the logarithm has an even greater lesson to teach us.
+If I know how to differentiate a function, but not how to integrate it, maybe integration by parts can help.
+\end{itemize}
+\end{remark}
 
 \newpage
 
@@ -118,14 +159,85 @@ Evaluate the following.
 Evaluate the following.
 \begin{enumerate}
 \item $\DS\int x^2\E^x\dee x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = x^2$ and $\dee v = \E^x \dee x.$  It follows that $\dee u = 2x\dee x$ and $v = \E^x.$  Integrating by parts gives 
+\begin{equation*}
+    \int x^2\E^x\dee x
+    = x^2\E^x - \int 2x\E^x\dee x
+    = x^2\E^x - 2\int x\E^x\dee x.
+\end{equation*}
+To integrate $x\E^x,$ integration by parts needs to be used again.  So, let $u = x$ and $\dee v = \E^x\dee x.$  It follows that $\dee u = \dee x$ and $v = \E^x.$  Integrating by parts again gives 
+\begin{equation*}
+    \int x^2\E^x\dee x
+    =x^2\E^x - 2\int x\E^x\dee x
+    = x^2\E^x - 2\left( x\E^x - \int e^x \dee x \right)
+    = x^2\E^x - 2x\E^x + 2\E^x + C.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \item $\DS\int\E^x\cos x\dee x$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = \E^x$ and let $\dee v = \cos{x} \dee x$.  It follows that $\dee u = \E^x\dee x$ and $v = \sin{x}$.  Integrating by parts gives 
+\begin{equation*}
+    \int \E^x\cos{x}\dee x
+    = \E^x\sin{x} - \int \E^x\sin{x} \dee x
+\end{equation*}
+Integration by parts needs to be used again.  Let $u = \E^x$ and  $\dee v = \sin{x}.$  So, $\dee u = \E^x\dee x$ and $v = -\cos{x}.$  Integrating by parts again gives 
+\begin{equation*}
+\begin{split}
+    \int \E^x\cos{x}\dee x
+    &=\E^x\sin{x} - \left( -\E^x\cos{x} + \int \E^x\cos{x}\dee x\right)\\
+    &= \E^x\sin{x} + \E^x\cos{x} - \int \cos{x}\E^x\dee x.
+\end{split}
+\end{equation*}
+At first glance, it looks like we're back where we started, but we have a $-1$ in front of the integral on the right and not a $+1$.
+This allows us to solve the above equation for the integral.
+In particular, we get
+\begin{equation*}
+    2\int \E^x\cos{x}\dee x = \E^x\cos{x} + \E^x\sin{x} + C,
+\end{equation*}
+and so
+\begin{equation*}
+    \int \E^x\cos{x}\dee x = \frac{1}{2}\E^x\cos{x} + \frac{1}{2}\E^x\sin{x} + C.
+\end{equation*}
+}
+\else
+\fi
 \vfill
+
 \end{enumerate}
 \end{example}
 
 \newpage
 
+\begin{remark}
+Integration by parts works for definite integral as well so long as you remember to evaluate and substract appropriately.
+In particular, the definite integral formula can be written as
+\begin{equation*}
+    \int_{a}^{b} u \,\dee v\ 
+    = uv\Bigg|_a^b -  \int_{a}^{b} v \,\dee u\ 
+\end{equation*}
+Alternatively, one may compute the indefinite integral first, and then apply the result.
+\end{remark}
+
 \begin{example}
 Find the area under the curve $y=x\E^x$ over the interval $[0,4]$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = x$ and $\dee u = \E^x \dee x$.  So, $\dee u = \dee x$ and $v = \E^x$.  We proceed by integration by parts.
+\begin{equation*}
+    A =  \int_{0}^{4} x\E^x \,\dee x\
+    = x\E^x\Bigg|_0^4 - \int_{0}^{4} \E^x \, \dee x\
+    = 4\E^4 - (\E^x)\Bigg|_0^4
+    = 3\E^4 + 1.
+\end{equation*}
+}
+\else
+\fi
+\vfill

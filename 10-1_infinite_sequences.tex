@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Infinite sequences}{\textit{Thomas' Calculus} \textsection 10.1}
+\lectureheader{162}{Calculus II}{Infinite sequences}{\textit{Thomas' Calculus}  10.1}
 
 \begin{definition}\,
 \begin{itemize}
@@ -51,17 +51,111 @@ n>N \implies |a_n - L|<\epsilon.
 Let $T_n$ denote the $n$-step trapezoidal approximation to $\ln 2 = \int_1^2\frac{\dee t}{t}$ for $n\ge 1$.
 Then
 \begin{equation*}
-T_1 = \frac{3}{2},\quad
-T_2 = \frac{13}{6},\quad
-T_3 =\frac{57}{20},\quad
-T_4=\frac{743}{210},\quad
-T_5 = \frac{2131}{504},\quad \dots.
+T_1 = \frac{3}{4},\quad
+T_2 = \frac{17}{24},\quad
+T_3 =\frac{7}{10},\quad
+T_4=\frac{1171}{1680},\quad
+T_5 = \frac{1753}{2520},\quad \dots.
 \end{equation*}
-The trapezoidal approximation theorem tells us that
+The trapezoidal approximation theorem tells us that the absolute error in the approximation $T_n\approx \ln 2$ satisfies
 \begin{equation*}
 \left| T_n - \ln 2\right| \le \frac{1}{6n^2}.
 \end{equation*}
 Use this fact to show that $T_n\to \ln 2$ as $n\to\infty$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+We need to show that the error in the approximation $\ln 2\approx T_n$ can be made as small as we like by taking $n$ to be sufficiently large.
+In other words, we need to show that for every $\epsilon>0$, there is an integer $N$ so that if $n>N$, then 
+\begin{equation*}
+\left| T_n - \ln 2\right| <\epsilon.
+\end{equation*}
+Let $\epsilon>0$.
+Since we know that $|T_n-\ln 2|\le 1/(6n^2)$, we simply force $1/(6n^2)<\epsilon$.
+Solving, we see that the latter inequality is satisfied if and only if $n>1/\sqrt{6\epsilon}$.
+Since we need an integer, we take $N=\ceil{\frac{1}{\sqrt{6\epsilon}}}$.
+Therefore, if $n>N=\ceil{\frac{1}{\sqrt{6\epsilon}}}>\frac{1}{\sqrt{6\epsilon}}$, it follows that
+\begin{equation*}
+\left| T_n - \ln 2\right|\le\frac{1}{6n^2} <\epsilon.
+\end{equation*}
+}
+\fi
+
+\vfill
+
+\begin{remark}
+Given an infinite sequence, we generally have 3 major questions.
+\begin{enumerate}
+\item Does $a_n$ converge or diverge, i.e., is $\lim_{n\to\infty} a_n$ a number or not a number?
+\item If $a_n$ converges, to which value does it converge, i.e., what number is $\DS L=\lim_{n\to\infty} a_n$?
+\item If $a_n\to L$ as $n\to\infty$, how large do we need $n$ to be so that the approximation $a_n\approx L$ is guaranteed to be within a given tolerance?
+\end{enumerate}
+Sometimes it is difficult to answer all 3 questions, and we settle for less.
+\end{remark}
+
+\newpage
+
+\begin{remark}\,
+\begin{itemize}
+\item Sequences are discrete (not continuous) and so they can't have derivatives.
+\item That's bad news for L'H\^opital's rule, but the following theorem tells us that if our sequence is the restriction of a function to integer inputs, then pretty much everything that we're used doing with limits at $\infty$ for functions still works including L'H\^opital's rule (when it applies).
+\end{itemize}
+\end{remark}
+
+\begin{theorem}
+Let $\{a_n\}$ be an infinite sequence, and let $f(x)$ be a function that is defined for all sufficiently large $x$.
+If $f(n) = a_n$ for all sufficiently large integers $n$, then
+\begin{equation*}
+\lim_{x\to\infty}f(x) = L \implies \lim_{n\to\infty} a_n=  L.
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Compute the following.
+\begin{enumerate}
+\item $\DS\lim_{n\to\infty}\frac{n}{n+1}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+By L'H\^opital's rule,
+\begin{equation*}
+\lim_{n\to\infty}\frac{n}{n+1} =\lim_{n\to\infty} \frac{1}{1} = 1.
+\end{equation*}
+}
+\fi
+\vfill
+\item $\DS\lim_{n\to\infty}\frac{\ln n}{n}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+By L'H\^opital's rule,
+\begin{equation*}
+\lim_{n\to\infty}\frac{\ln n}{n} = \lim_{n\to\infty}\frac{1/n}{1} = 0.
+\end{equation*}
+}
+\fi
+\vfill
+
+\newpage
+
+\item $\DS\lim_{n\to\infty}\left(\frac{n+1}{n-1}\right)^n$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+By L'H\^opital's rule,
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty}\left(\frac{n+1}{n-1}\right)^n 
+&=\exp\left(\lim_{n\to\infty}n\ln\left(\frac{n+1}{n-1}\right)\right) \\
+&=\exp\left(\lim_{n\to\infty}\frac{\ln{\frac{n+1}{n-1}}}{1/n}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{\frac{n-1}{n+1}\cdot\frac{(n-1)\cdot 1 - (n+1) \cdot 1)}{(n-1)^2}}{-n^{-2}}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{2n^2}{(n+1)(n-1)}\right)\\
+&=\exp\left(\lim_{n\to\infty}\frac{2}{(1+1/n)(1-1/n)}\right)\\
+&=\exp\left(\frac{2}{(1+0)(1-0)}\right)\\
+&= \E^2. 
+\end{split}
+\end{equation*}
+}
+\fi
+\vfill
+\end{enumerate}
 \end{example}
 
 \newpage
@@ -88,6 +182,11 @@ n>N\implies a_n<M.
 \end{itemize}
 \end{definition}
 
+\begin{remark}
+The symbols $\pm\infty$ are not numbers; they are ``directions."
+To say that $\DS\lim_{n\to\infty} a_n = \pm\infty$ is to say $a_n$ diverges in a particular way.
+\end{remark}
+
 \begin{example}
 If $n$ is a nonnegative integer, then $n$-\textbf{factorial} is 
 \begin{equation*}
@@ -95,85 +194,94 @@ n! = \prod_{j=0}^{n-1}\left(n-j\right).
 \end{equation*}
 List the first 5 terms, and then determine whether the sequence converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{align*}
+0! &= 1. \text{  This is convention! ``Empty products" are 1, like ``empty sums" are 0.}\\
+1! &= \prod_{j=0}^{0}\left(1-j\right) = 1, \\
+2! &= \prod_{j=0}^{1}\left(2-j\right) = (2)(1) = 2, \\
+3! &= \prod_{j=0}^{2}\left(3-j\right) = (3)(2)(1) = 6, \\
+4! &= \prod_{j=0}^{3}\left(4-j\right) = (4)(3)(2)(1) = 24.
+\end{align*}
+It is clear that if $n\ge 0$, then $n!\ge n$.
+Since we can make $n$ larger than any given real number, we can make $n!$ larger than any given real number.
+Thus, it follows that $\DS\lim_{n\to \infty} n! = \infty$.
+}
+\else
+\fi
 \newpage
 
 \begin{theorem}
-For all integers $n\ge 1$, 
+For all integers $n\ge 0$, 
 \begin{equation*}
-\E\left(\frac{n}{\E}\right)^n\le n!\le n^{n-1}.
+\left(\frac{n+1}{\E}\right)^n\le n!\le \sqrt{n+1}\left(\frac{n+1}{\E}\right)^n. 
 \end{equation*}
 \end{theorem}
-\begin{remark}
-Stirling is famous for proving a much more precise relationship, viz., for every $\epsilon>0$, there is an $N>0$ so that
+\ifdefined\SOLUTION
+\SOLUTION[Proof of lower bound]{
+Let $n\ge 1$.
+The first trick is to transform the product $n!$ into a sum via the logarithm.
+Observe that
+\begin{equation*}
+\ln n! = \ln\left(\prod_{k=1}^{n}k \right) = \sum_{k=1}^{n} \ln k.
+\end{equation*}
+Since $y = \ln(x)$ is always increasing, the right-hand rule tell us that
+\begin{equation*}
+\int_k^{k+1}\ln(x)\dee x \le \ln(k+1)
+\end{equation*}
+for every integer $k\ge 1$.
+Therefore,
+\begin{equation*}
+\begin{split}
+\int_1^{n+1}\ln(x)\dee x - \sum_{k=1}^n\ln k
+&=\sum_{k=1}^n\left[\int_k^{k+1}\ln(x)\dee x\right] - \sum_{k=1}^n\ln k
+=\sum_{k=1}^n\left[\int_k^{k+1}\ln(x)\dee x - \ln k\right]\\
+&\le\sum_{k=1}^n\left[\ln(k+1) - \ln(k)\right]
+=\ln(n+1) - \ln(1)
+=\ln(n+1).
+\end{split}
+\end{equation*}
+Thus, it follows that
+\begin{equation*}
+\ln n! 
+=\sum_{k=1}^n\ln(k)
+\ge \int_1^{n+1}\ln(x)\dee x - \ln(n+1)
+=(x\ln x - x)\Big|_1^{n+1} - \ln(n+1)
+=n\ln(n+1) - n.
+\end{equation*}
+Since $y = \E^x$ is always increasing, 
+\begin{equation*}
+n!\ge \E^{n\ln(n+1) - n} 
+=\left(\E^{\ln(n+1)}\right)^n \cdot \E^{-n}
+=\left(\frac{n+1}{\E}\right)^n.
+\end{equation*}
+}
+\else
+\begin{proof}[Proof of lower bound]\,
+
+\vspace{6in}
+\end{proof}
+\fi
+
+\vfill
+
+\begin{remark}\,
+\begin{itemize}
+\item The above bounds on $n!$ are not optimal, but the upper bound is ``close" to optimal.
+\item You are encouraged to try to prove the upper bound.
+Hint: The concavity of $\ln x$ implies that the trapezoidal rule gives an underestimate in the step where the right-hand rule gave an overestimate.
+\item Stirling is famous for proving that
+\begin{equation*}
+n!\sim \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n
+\end{equation*}
+as $n\to\infty$.
+In other words, he showed that, for every $\epsilon>0$, there is an $N>0$ so that
 \begin{equation*}
 (1-\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n\le n!\le (1+\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n
 \end{equation*}
 for all $n>N$.
-\end{remark}
-\begin{proof}\,
-
-\vspace{6in}
-\end{proof}
-
-
-
-\newpage
-
-\begin{remark}\,
-\begin{itemize}
-\item Sequences are discrete (not continuous) and so they can't have derivatives.
-\item That's bad news for L'H\^opital's rule, but the following theorem tells us that if our sequence is the restriction of a function to integer inputs, then pretty much everything that we're used doing with limits at $\infty$ for functions still works including L'H\^opital's rule (when it applies).
 \end{itemize}
 \end{remark}
-
-\begin{theorem}
-Let $\{a_n\}$ be an infinite sequence, and let $f(x)$ be a function that is defined for all sufficiently large $x$.
-If $f(n) = a_n$ for all sufficiently large integers $n$, then
-\begin{equation*}
-\lim_{x\to\infty}f(x) = L \implies \lim_{n\to\infty} a_n=  L.
-\end{equation*}
-\end{theorem}
-
-\begin{example}
-Compute the following.
-\begin{enumerate}
-\item $\DS\lim_{n\to\infty}\frac{n}{n+1}$
-\vfill
-\item $\DS\lim_{n\to\infty}\frac{\ln n}{n}$
-\vfill
-\item $\DS\lim_{n\to\infty}\left(\frac{n+1}{n-1}\right)^n$
-\vfill
-\end{enumerate}
-\end{example}
-
-
-\newpage
-
-\begin{theorem}
-If $\{a_n\}$ is a sequence of real numbers and $\DS\lim_{n\to\infty}|a_n|=0$, then $\DS\lim_{n\to\infty}a_n=0$.
-\end{theorem}
-
-\begin{example}
-Show that the sequence $\{a_n\}$ whose terms are defined by 
-\begin{equation*}
-a_n = \frac{(-1)^n}{n}\quad (n\ge 1)
-\end{equation*}
-converges.
-\end{example}
-
-\vfill
-
-
-\begin{example}
-Does the sequence $\{a_n\}$ whose terms are defined by
-\begin{equation*}
-a_n=(-1)^n\quad (n\ge 0)
-\end{equation*}
-converge or diverge?
-\end{example}
-
-\vfill
 
 \newpage
 
@@ -188,43 +296,147 @@ If $a_n\le b_n\le c_n$ for all $n$ sufficient large, then
 \begin{example}
 Determine $\DS\lim_{n\to\infty}\frac{\cos n}{n}$.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $-1\le\cos n\le 1$ for all $n\ge 1$,
+it follows that $\frac{-1}{n}\le \frac{\cos{n}}{n}\le\frac{1}{n}$ for all $n\ge 1$. 
+Furthermore,
+\begin{equation*}
+\lim_{n\to\infty}\frac{1}{n} = 0 = \lim_{n\to\infty} \frac{-1}{n}.
+\end{equation*}
+Therefore, by the squeeze theorem, $\DS\lim_{n\to\infty}\frac{\cos n}{n} = 0$.
+}
+\else
+\fi
 \vfill
 
 \begin{example}
-Determine if the sequence $\DS a_n=\frac{n!}{n^n}$ converges.
+Show that $n!\lll n^n$ as $n\to\infty$.
 \end{example}
-\vfill
-
-\newpage
-
-\begin{example}
-For what values of $x$ is the sequence $a_n=x^n$ convergent?
-\end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+We need to show that $n!/n^n\to 0$ as $n\to\infty$.
+Recall that $0\le n!\le \sqrt{n+1}\left(\frac{n+1}{\E}\right)^n$ for all $n\ge 0$.
+Thus, it follows that
+\begin{equation*}
+0
+\le\frac{n!}{n^n}
+\le\frac{\sqrt{n+1}}{\E^n}\left(\frac{n+1}{n}\right)^n
+\le\frac{\sqrt{n+1}}{\E^n}\left(1+\frac{1}{n}\right)^n
+\end{equation*}
+for all $n\ge 1$.  
+Since $\DS\lim_{n\to\infty} 0 = 0$ and
+\begin{equation*}
+\lim_{n\to\infty}\cancelto{0}{\frac{\sqrt{n+1}}{\E^n}}\cancelto{\E}{\left(1+\frac{1}{n}\right)^n} = 0,
+\end{equation*}
+the sandwich theorem implies that $\DS\lim_{n\to\infty}\frac{n!}{n^n}= 0$.
+Thus, it follows that $n!\lll n^n$ as $n\to\infty$.
+}
+\else
+\fi
 \vfill
 
 \newpage
 
 \begin{theorem}
-For every (fixed) $x\in\R$,
+If $\{a_n\}$ is a sequence of real numbers and $\DS\lim_{n\to\infty}|a_n|=0$, then $\DS\lim_{n\to\infty}a_n=0$.
+\end{theorem}
+
+\begin{theorem}
+For every (fixed) $x\in\R$, $x^n\lll n!$ as $n\to\infty$, i.e.,
 \begin{equation*}
 \lim_{n\to\infty}\frac{x^n}{n!} = 0.
 \end{equation*}
 \end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Let $x\in\R$.
+Note that, by the above theorem, it suffices to show that $\DS\lim_{n\to\infty}\left|\frac{x^n}{n!}\right| = 0$.
+Recall that 
+\begin{equation*}
+n!>\left(\frac{n+1}{\E}\right)^n
+\end{equation*}
+for all $n\ge 0$.
+Therefore,
+\begin{equation*}
+0\le \left|\frac{x^n}{n!}\right|
+<\frac{|x|^n}{((n+1)/\E)^n}
+=\left(\frac{|x|\E}{n+1}\right)^n
+\le\left(\frac{1}{2}\right)^n
+\end{equation*}
+for all $n\ge 2|x|\E-1$.
+Since 
+\begin{equation*}
+\lim_{n\to\infty} 0 = 0 = \lim_{n\to\infty}(1/2)^n,
+\end{equation*}
+the squeeze theorem implies that $\DS\lim_{n\to\infty}\left|\frac{x^n}{n!}\right|=0$.
+}
+\else
 \begin{proof}\,
 
 \vspace{6in}
 \end{proof}
+\fi
 
-\begin{remark}
-It is sometimes helpful to think about the above theorem in the following equivalent forms.
-\begin{enumerate}
-\item If $x\in\R$, then $x^n\lll n!$ as $n\to\infty$.
-\item If $x\in\R$, then for every $\epsilon>0$, there is an $N>0$ so that
+%\begin{example}
+%Show that the sequence $\{a_n\}$ whose terms are defined by 
+%\begin{equation*}
+%a_n = \frac{(-1)^n}{n}\quad (n\ge 1)
+%\end{equation*}
+%converges.
+%\end{example}
+%\ifdefined\SOLUTION
+%\SOLUTION[Solution]{
+%Since $|a_n| = \left| \frac{(-1)^n}{n} \right| = \frac{1}{n} \to 0$ as $n \to \infty$, it follows that
+%$a_n=\frac{(-1)^n}{n}\to 0$ as $n\to\infty$.
+%In particular, the sequence converges.
+%}
+%\fi
+%\vfill
+%
+%
+%\begin{example}
+%Does the sequence $\{a_n\}$ whose terms are defined by
+%\begin{equation*}
+%a_n=(-1)^n\quad (n\ge 0)
+%\end{equation*}
+%converge or diverge?
+%\end{example}
+%\ifdefined\SOLUTION
+%\SOLUTION[Solution]{
+%If $n = 2m$ is an even number, then $a_n = (-1)^n = (-1)^{2m} = 1$. 
+%However, if $n = 2m + 1$ is an odd number, then $a_n = (-1)^n = (-1)^{2m + 1} = -1$. 
+%So, the sequence will forever oscillate between $+1$ and $-1$.
+%Therefore, $a_n = (-1)^n$ diverges.
+%}
+%\else
+%\fi
+%\vfill
+
+\vfill
+
+\begin{example}
+For which values of $x$ is the sequence $x^n$ convergent?
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{ 
+If $x\le -1$, then $x^n\le -1$ when $n$ is odd and $x^n\ge 1$ when $n$ is even.
+Therefore, the sequence $a_n=x^n$ diverges by oscillation when $x\le -1$.
+For the remaining cases, 
 \begin{equation*}
-n>N\implies |x|^n \le\epsilon n!.
+\lim_{x\to\infty} x^n
+=\begin{cases}
+\infty & \text{if } x>1,\\
+1 	   & \text{if } x=1,\\
+0	   & \text{if } -1<x<1.
+\end{cases}
 \end{equation*}
-\end{enumerate}
-\end{remark}
+Therefore, $x^n$ converges if and only if $-1<x\le 1$.
+}
+\else
+\fi
+\vfill
+
 
 \newpage
 
@@ -243,11 +455,48 @@ If $\{a_n\}$ is not bounded, we say that it is \textbf{unbounded}.
 \begin{example}
 Determine if the following sequences are bounded.
 \begin{enumerate}
-\item $a_n = n\quad (n\ge 0)$
+\item $a_n = n^2\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $a_n = n^2\ge 0$, for all $n\ge 0$, this sequence is bounded below by $m=0$.
+In fact, $G=0$ is the greatest lower bound.
+However, the sequence is not bounded above since given any real number $r$, we can find an $n$ so that $a_n=n^2>r$.
+Therefore, we say that the sequence is unbounded.
+}
+\else
+\fi
 \vfill
 \item $a_n=(-1)^n n\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+We can find an even-indexed term that is larger than any given real number, 
+and we can find an odd-indexed term that is smaller than any given real number.
+Therefore, sequence is neither bounded above nor below. 
+It is also true to say that the sequence is unbounded.
+}
+\else
+\fi
 \vfill
 \item $a_n =\DS \frac{n}{n+1}\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Observe that if $n\ge 0$, then
+\begin{equation*}
+0\le n<n+1.
+\end{equation*}
+Thus, it follows that
+\begin{equation*}
+0\le \frac{n}{n+1}<1
+\end{equation*}
+for all $n\ge 0$.
+So, the sequence is bounded below by $m=0$ and above by $M=1$.
+Therefore, we say that the sequence is bounded.
+In fact, $G=0$ is the greatest lower bound and $L=1$ is the least upper bound.
+Note, that here the greatest lower bound is attained since $a_0=0=G$.
+However, the least upper bound is never actually attained since $a_n = \frac{n}{n+1}<1$ for all $n\ge 0$.
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -268,12 +517,58 @@ Let $\{a_n\}$ be a sequence of real numbers.
 Determine whether each sequence below is monotonic
 \begin{enumerate}
 \item $a_n=n\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+The sequence is monotonic nondecreasing because $a_n = n \leq n+1 = a_{n+1}$ for all $n\ge 0$.
+}
+\else
+\fi
 \vfill
 \item $\DS a_n=\frac{n}{n+1}\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+If we compute the first several terms of the sequence $0, 1/2, 2/3, 3/4,\dots$, it appears to be nondecreasing.
+However, it is never sufficient to compute finitely many terms.
+We have to show that $a_n\le a_{n+1}$ for all $n\ge 0$.
+Unfortunately, increasing $n$ makes both the numerator and the denominator of $a_n$ larger.
+So, it's difficult to be sure if $a_{n+1}$ is bigger or smaller than $a_n$.
+One strategy is to try to rewrite $a_n$ so that all the change happens in only the numerator or only in the denominator.
+For example, we easily see that
+\begin{equation*}
+a_n = \frac{n}{n+1} = \frac{1}{1+1/n} < \frac{1}{1+1/(n+1)} = a_{n+1}
+\end{equation*}
+for all $n\ge 1$.
+Combining this with the fact that $a_0=0<1/1 = a_1$, we have proved that $a_n$ is nondecreasing.
+But here is another strategy that works when $a_n=f(n)$ for some differentiable function $f$.
+Let $f(x) = x/(x+1)$ so that $f(n) = a_n$ and
+\begin{equation*}
+f'(x) = \frac{(x+1)-x}{(x+1)^2} = \frac{1}{(x+1)^2}>0 \quad (x\ge 0).
+\end{equation*}
+Thus, it follows that $f(x)$ is increasing for all $x\ge 0$, and hence $a_n=f(n)$ is monotonic nondecreasing.
+}
+\else
+\fi
 \vfill
 \item $a_n=3\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+This sequence is both monotonic nondecreasing and monotonic nonincreasing.  
+}
+\else
+\fi
 \vfill
 \item $a_n=(-1)^n\quad (n\ge 0)$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Caution: We cannot put $f(x) = (-1)^x$ and try to use the derivative because this function isn't even defined (let alone differentiable) for most real $x$.
+Instead, we notice that the sequence oscillates: $1, -1, 1, -1\dots$.
+Since $a_1 = -1 < 1 = a_2$, it follows that $a_n$ is not nonincreasing.
+(Careful: The double negative can be a bit confusing.)
+Since $a_2 = 1 > -1 = a_3$, it follows that $a_n$ is not nondecreasing.
+Therefore, $a_n$ is not monotonic. 
+}
+\else
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -287,7 +582,38 @@ Then
 \{a_n\} \text{ is bounded} \iff \{a_n\} \text{ is convergent}.
 \end{equation*}
 \end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Proof when $\{a_n\}$ is nondecreasing ($\implies$)]{
+Let $\epsilon>0$, and suppose that $a_n$ is bounded and monotone nondecreasing. 
+Since $a_n$ is bounded, there exists a least upper bound $L$ so that $a_n\le L$ for all $n$.  
+Since $L-\epsilon < L$, it is not an upper bound for $a_n$.
+Thus, there is an $N$ such that $a_N > L - \epsilon$.  
+Since $a_n$ is nondecreasing, $a_n\ge a_{N}$ for all $n>N$.
+Therefore, if $n > N$, then 
+\begin{equation*}
+L\ge a_n \ge a_N \ge L-\epsilon, 
+\end{equation*}
+and hence $|a_n-L|<\epsilon$.
+Therefore, $a_n \to L$ as $n \to \infty$.
+}
+\else
 \begin{proof}[Proof when $\{a_n\}$ is nondecreasing ($\implies$)]\,
 
-\vspace{7in}
+\vspace{5in}
 \end{proof}
+\fi
+
+\vfill
+
+\begin{remark}
+In the proof above, we needed to use our hypotheses to show that there is a number $L$ so that no matter how small our error tolerance $\epsilon$ is, we can get the approximation $a_n\approx L$ within tolerance and keep it in tolerance by pushing $n$ far enough to the right.
+Here's how we did that.
+\begin{enumerate}
+\item Set our (arbitrary) error tolerance $\epsilon$.
+\item Assume our hypotheses (the ``if-part").
+\item Get our ``target" (least upper bound) $L$ by unpacking what it means to be bounded.
+\item Use what it means to be a least upper bound to show that we can get within tolerance.
+\item Use what it means to be nondecreasing to explain why we will continue to stay within tolerance from then on.
+\end{enumerate}
+\end{remark}
+

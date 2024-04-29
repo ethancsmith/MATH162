@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Improper integrals}{\textit{Thomas' Calculus} \textsection 8.8}
+\lectureheader{162}{Calculus II}{Improper integrals}{\textit{Thomas' Calculus}  8.8}
 
 \begin{remark}\,
 \begin{itemize}
@@ -9,69 +9,6 @@
 Such integrals are referred to as \textbf{improper integrals}.
 \end{itemize}
 \end{remark}
-
-\begin{definition}[Improper integrals of type I]\,
-\begin{itemize}
-\item If $\DS\int_a^tf(x)\dee x$ exists for every $t\ge a$, then we define
-\begin{equation*}
-\int_a^\infty f(x)\dee x = \lim_{t\to\infty}\int_a^t f(x)\dee x
-\end{equation*}
-provided that the limit exists.
-\item If $\DS\int_t^bf(x)\dee x$ exists for every $t\le b$, then we define
-\begin{equation*}
-\int_{-\infty}^b f(x)\dee x = \lim_{t\to-\infty}\int_t^b f(x)\dee x
-\end{equation*}
-provided that the limit exists.
-\end{itemize}
-We say that the integrals above are \textbf{convergent} when they exist; otherwise we say that they are \textbf{divergent}.
-\begin{itemize}
-\item If there is a real number $c$ so that both $\DS\int_c^\infty f(x)\dee x$ and $\DS\int_{-\infty}^cf(x)\dee x$ are both convergent, then we define
-\begin{equation*}
-\int_{-\infty}^\infty f(x)\dee x = \int_{-\infty}^cf(x)\dee x + \int_c^\infty f(x)\dee x.
-\end{equation*}
-\end{itemize}
-\end{definition}
-
-\newpage
-
-\begin{example}
-What is the area of the region under the curve $y=\DS\frac{\ln x}{x^2}$ over the interval $[1,\infty)$?
-\end{example}
-
-\newpage
-
-\begin{theorem}
-Let $p\in\R$.
-The integral $\DS\int_1^\infty\frac{\dee x}{x^p}$ converges if and only if $p>1$.
-\end{theorem}
-\begin{proof}\,
-
-\vspace{5in}
-\end{proof}
-
-\newpage
-
-\begin{example}
-Evaluate $\DS\int_{-\infty}^\infty\frac{\dee x}{1+x^2}$.
-\end{example}
-
-\newpage
-
-\begin{theorem}[Test for divergence]
-If $\int_a^\infty f(x)\dee x$ converges, then $f(x)\to 0$ as $x\to\infty$.
-\end{theorem}
-\begin{remark}
-In practice, we use the test for divergence in the form of its contrapositive, viz.,
-\begin{equation*}
-\lim_{x\to\infty} f(x)\ne 0 \implies \int_a^\infty f(x)\dee x \text{ diverges}.
-\end{equation*}
-\end{remark}
-
-\begin{example}
-Show that $\DS\int_1^\infty \left(1-\frac{1}{x}\right)^{x}\dee x$ diverges.
-\end{example}
-
-\newpage
 
 \begin{definition}[Improper integrals of type II]\,
 \begin{itemize}
@@ -99,38 +36,338 @@ We say that the integrals above are \textbf{convergent} when they exist; otherwi
 Determine $\DS\int_2^5\frac{\dee x}{\sqrt{x-2}}$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+The integrand is continuous on $(2,5]$ but discontinuous at $x=2$.
+Therefore,
+\begin{equation*}
+\begin{split}
+\int_2^5\frac{\dee x}{\sqrt{x-2}} 
+&= \lim_{a\to 2^+}\int_a^5(x-2)^{-1/2}\dee x\\
+&=\lim_{a\to 2^+}2(x-2)^{1/2}\Big|_a^5\\
+&=2\lim_{a\to 2^+}\left(\sqrt 3 -\sqrt{a-2}\right)\\
+&= 2\sqrt 3.
+\end{split}
+\end{equation*}
+}
+\fi
+
 \newpage
 
 \begin{example}
 Calculate $\DS\int_0^{\pi/2}\sec x\dee x$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+The secant is continuous on $[0,\pi/2)$ but discontinuous at $x=\pi/2$.
+Therefore,
+\begin{equation*}
+\begin{split}
+\int_0^{\pi/2}\sec x\dee x
+&=\lim_{b\to(\pi/2)^-}\int_0^b\sec x\dee x \\
+&= \lim_{b\to(\pi/2)^-}\ln|\sec x + \tan x|\Big|_0^b\\
+&= \lim_{b\to(\pi/2)^-}\left(\ln|\sec b + \tan b| - \ln|\sec 0 + \tan 0|\right)\\
+&= \lim_{b\to(\pi/2)^-}\left(\ln|\sec b + \tan b| - \ln|1|\right)\\
+&=\infty.
+\end{split}
+\end{equation*}
+Therefore, $\DS\int_0^{\pi/2}\sec x\dee x$ is divergent (i.e., it does not exist).
+}
+\fi
+
 \vfill
 
 \begin{example}
 Evaluate $\DS\int_0^3\frac{\dee x}{x-1}$.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+This time the integrand is continuous on $[0, 1)$ and $(1,3]$ but is discontinuous at $x=1$.
+Therefore,
+\begin{equation*}
+\int_0^3\frac{\dee x}{x-1} = \int_0^1\frac{\dee x}{x-1} + \int_1^3\frac{\dee x}{x-1}.
+\end{equation*}
+However,
+\begin{equation*}
+\int_0^1\frac{\dee x}{x-1} 
+= \lim_{b\to 1^-}\int_0^b\frac{\dee x}{x-1} 
+= \lim_{b\to 1^-}\ln|x-1|\Big|_0^b
+= \lim_{b\to 1^-}\left(\ln|b-1|-\ln|-1|\right)
+=-\infty.
+\end{equation*}
+Therefore, $\DS\int_0^3\frac{\dee x}{x-1}$ diverges.
+There is no reason to examine the other piece of the integral.
+}
+\fi
+
 \vfill
 
 \newpage
 
-\begin{theorem}[Direct comparison test for integrals]
-Suppose that $f$ and $g$ are continuous functions on the interval $[a,\infty)$.
-\begin{enumerate}
-\item If $0\le f(x)\le g(x)$ for all $x\ge a$ and $\int_a^\infty g(x)\dee x$ converges, then $\int_a^\infty f(x)\dee x$ also converges.
-\item If $0\le g(x)\le f(x)$ for all $x\ge a$ and $\int_a^\infty g(x)\dee x$ diverges, then $\int_a^\infty f(x)\dee x$ also diverges.
-\end{enumerate}
+\begin{definition}[Improper integrals of type I]\,
+\begin{itemize}
+\item If $\DS\int_a^tf(x)\dee x$ exists for every $t\ge a$, then we define
+\begin{equation*}
+\int_a^\infty f(x)\dee x = \lim_{t\to\infty}\int_a^t f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\item If $\DS\int_t^bf(x)\dee x$ exists for every $t\le b$, then we define
+\begin{equation*}
+\int_{-\infty}^b f(x)\dee x = \lim_{t\to-\infty}\int_t^b f(x)\dee x
+\end{equation*}
+provided that the limit exists.
+\end{itemize}
+We say that the integrals above are \textbf{convergent} when they exist; otherwise we say that they are \textbf{divergent}.
+\begin{itemize}
+\item If there is a real number $c$ so that both $\DS\int_c^\infty f(x)\dee x$ and $\DS\int_{-\infty}^cf(x)\dee x$ are both convergent, then we define
+\begin{equation*}
+\int_{-\infty}^\infty f(x)\dee x = \int_{-\infty}^cf(x)\dee x + \int_c^\infty f(x)\dee x.
+\end{equation*}
+\end{itemize}
+\end{definition}
+
+
+\begin{example}
+What is the area of the region under the curve $y=\DS\frac{\ln x}{x^2}$ over the interval $[1,\infty)$?
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+The area in question is
+\begin{equation*}
+A = \int_1^\infty\frac{\ln x}{x^2}\dee x = \lim_{b\to\infty}\int_1^b\frac{\ln x}{x^2}\dee x.
+\end{equation*}
+Then integration by parts with $u=\ln x$, $\dee v = \frac{\dee x}{x^2}$, $\dee u = \frac{\dee x}{x}$, and $v=-\frac{1}{x}$ gives
+\begin{equation*}
+\begin{split}
+A &= \lim_{t\to\infty}\left(-\frac{\ln x}{x}\Bigg|_1^t + \int_1^t\frac{\dee x}{x^2}\right)\\
+&= \lim_{t\to\infty}\left(\frac{\ln 1}{1}-\frac{\ln t}{t} + \left(-\frac{1}{x}\right)\Bigg|_1^t\right)\\
+&= \lim_{t\to\infty}\left(-\frac{\ln t}{t} + 1-\frac{1}{t}\right)\\
+&= \lim_{t\to\infty}\left(-\frac{\ln t}{t}\right) + 1\\
+&= \lim_{t\to\infty}\left(-\frac{1/t}{1}\right) + 1\\
+& = 1,
+\end{split}
+\end{equation*}
+where the next to last line follows from L'H\^opital's rule.
+}
+\fi
+
+\vfill
+
+\newpage
+
+\begin{theorem}[$p$-test for integrals]
+Let $p\in\R$.
+The integral $\DS\int_1^\infty\frac{\dee x}{x^p}$ converges if and only if $p>1$.
 \end{theorem}
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+First, note that if $p\ne 1$, then
+\begin{equation*}
+\begin{split}
+\int_1^\infty\frac{\dee x}{x^p} &= \lim_{t\to\infty}\int_1^b\frac{\dee x}{x^p}\\
+&=\lim_{t\to\infty}\frac{x^{1-p}}{1-p}\Bigg|_1^t\\
+&=\lim_{t\to\infty}\left(\frac{t^{1-p}}{1-p}-\frac{1}{1-p}\right)\\
+&=\begin{cases}
+\frac{1}{p-1} & \text{if } p>1,\\
+\infty & \text{if } p<1.
+\end{cases}
+\end{split}
+\end{equation*}
+Finally, when $p=1$, we have
+\begin{equation*}
+\begin{split}
+\int_1^\infty\frac{\dee x}{x^p} &= \lim_{t\to\infty}\int_1^b\frac{\dee x}{x}\\
+&= \lim_{t\to\infty}\ln x\Big|_1^t\\
+&= \lim_{t\to\infty}\left(\ln t - \ln 1\right)\\
+&= \infty.
+\end{split}
+\end{equation*}
+Therefore, $\DS\int_1^\infty\frac{\dee x}{x^p}$ converges if $p>1$ and diverges otherwise.
+}
+\else
 \begin{proof}\,
 
-\vspace{5in}
+\vspace{7in}
 \end{proof}
+\fi
+
+\newpage
+
+\begin{example}
+Evaluate $\DS\int_{-\infty}^\infty\frac{\dee x}{1+x^2}$.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we observe that
+\begin{equation*}
+\int_0^\infty\frac{\dee x}{1+x^2}
+=\lim_{b\to\infty}\int_0^b\frac{\dee x}{1+x^2}
+=\lim_{b\to\infty}\arctan(x)\Big|_0^b
+=\lim_{b\to\infty}\left(\arctan(b)-\arctan(0)\right)
+=\frac{\pi}{2}.
+\end{equation*}
+Next, we reason that by (even) symmetry of the integrand and the calculation above
+\begin{equation*}
+\int_{-\infty}^0\frac{\dee x}{1+x^2}
+=\lim_{a\to -\infty}\int_a^0\frac{\dee x}{1+x^2}
+=\lim_{b\to\infty}\int_0^b\frac{\dee x}{1+x^2}
+=\frac{\pi}{2}.
+\end{equation*}
+Therefore,
+\begin{equation*}
+\int_{-\infty}^\infty\frac{\dee x}{1+x^2}
+= 
+\int_{-\infty}^0\frac{\dee x}{1+x^2}
++\int_0^\infty\frac{\dee x}{1+x^2}
+=\frac{\pi}{2} + \frac{\pi}{2} = \pi.
+\end{equation*}
+}
+\fi
+\vfill
+
+\begin{remark}[Caution]
+When integrating a function across the whole real line, you may be tempted to try to get away with a single limit.
+While there are situations where one wants such a definition, it is not what we mean in calc II.
+Generally,
+\begin{equation*}
+\int_{-\infty}^\infty f(x)\dee x \ne \lim_{t\to\infty}\int_{-t}^t f(x)\dee x.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Show that $\DS\int_{-\infty}^\infty\sin x\dee x$ does not converge even though $\DS\lim_{t\to\infty}\int_{-t}^t\sin x\dee x$ does.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First observe that if $c$ is any real number, then
+\begin{equation*}
+\int_c^\infty \sin x \dee x 
+=\lim_{b\to\infty}\int_c^b\sin x\dee x
+=\lim_{b\to\infty} (-\cos x)\Big|_c^b
+=\lim_{b\to\infty} (\cos(c)-\cos(b))
+\end{equation*}
+diverges by oscillation.
+Therefore, $\DS\int_{-\infty}^\infty\sin x\dee x$ does not exist.
+On the other hand,
+\begin{equation*}
+\lim_{t\to\infty}\int_{-t}^{t}\sin x \dee x 
+=\lim_{t\to\infty} (-\cos x)\Big|_{-t}^t
+=\lim_{b\to\infty} (\cos(-t)-\cos(t))
+=\lim_{b\to\infty} (\cos(t)-\cos(t))
+=0.
+\end{equation*}
+}
+\fi
+
+\vfill
+
+\newpage
+
+\begin{theorem}[Test for divergence for improper integrals]
+Suppose that $f$ is positive, continuous, and nonincreasing for all $x$ sufficiently large.
+If $\int_a^\infty f(x)\dee x$ converges, then $f(x)\to 0$ as $x\to\infty$.
+\end{theorem}
+\begin{remark}
+In practice, we use the test for divergence in the form of its contrapositive, viz.,
+assuming that $f$ is positive, continuous, and nonincreasing for all $x$ sufficiently large,
+\begin{equation*}
+\lim_{x\to\infty} f(x)\ne 0 \implies \int_a^\infty f(x)\dee x \text{ diverges}.
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Show that $\DS\int_1^\infty \coth(x)\dee x$ diverges.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Recall that 
+\begin{equation*}
+\coth(x) = \frac{\cosh x}{\sinh x} = \frac{\E^x+\E^{-x}}{\E^x-\E^{-x}} = \frac{1+\E^{-2x}}{1-\E^{-2x}}>0
+\end{equation*}
+and continuous for all $x>0$.
+Furthermore,
+\begin{equation*}
+\frac{\dee }{\dee x}\coth x = -(\csch x)^2<0
+\end{equation*}
+for all $x>0$.
+Therefore, since 
+\begin{equation*}
+\lim_{x\to\infty}\coth x = \lim_{x\to\infty}\frac{1+\E^{-2x}}{1-\E^{-2x}} = \frac{1+0}{1-0} = 1\ne 0,
+\end{equation*}
+it follows from the above theorem that $\DS\int_1^\infty \coth(x)\dee x$ diverges.
+}
+\fi
+
+\vfill
+
+\begin{remark}
+The nonincreasing condition is necessary.
+It is possible to construct a function which is positive, continuous, has no limit at $\infty$, and yet its improper integral converges.
+% The idea is to make a function whose support looks like a sequence of triangles centered at the positive integers, 
+% where the $n$th triangle has height 2 and base length 1/n^2.  
+\end{remark}
+
 
 \newpage
 
 
+\begin{remark}\,
+\begin{itemize}
+\item According to the test for divergence, 
+if $f$ is positive, continuous, nonincreasing and $\int_a^\infty f(x)\dee x$ converges, then the integrand $f(x)$ must ``die off" at $\infty$.
+\item In this situation then, the difference between convergence and divergence is how quickly the integrand dies.
+\item This leads to important applications of relative orders (big-Oh and little-Oh) known as the comparison tests.
+\end{itemize}
+\end{remark}
+
+\begin{theorem}[Direct comparison test for integrals]
+Suppose that $f$ and $g$ are both positive and continuous functions on the interval $[a,\infty)$.
+\begin{enumerate}
+\item If $f(x)\ll g(x)$ as $x\to\infty$ and $\int_a^\infty g(x)\dee x$ converges, then $\int_a^\infty f(x)\dee x$ also converges.
+\item If $g(x)\ll f(x)$ as $x\to\infty$ and $\int_a^\infty g(x)\dee x$ diverges, then $\int_a^\infty f(x)\dee x$ also diverges.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}\,
+\begin{itemize}
+\item Applying the direct comparison test (DCT) is an art of making ``small changes" to a difficult integrand so that the resulting integral is easier to evaluate.
+\item The trick is in not being ``too greedy" with our changes so that we trade a convergent integral for a divergent one, or vice versa.
+\end{itemize}
+\end{remark}
+
+
 \begin{example}
-Determine if $\DS\int_0^\infty \E^{-x^2}\dee x$ converges or diverges.
+Determine if $\DS\int_0^\infty \frac{2}{\sqrt{\pi}}\E^{-x^2/2}\dee x$ converges or diverges.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+We have no elementary antiderivative for $\frac{2}{\sqrt\pi}\E^{-x^2/2}$.
+So, evaluating the integral directly would be a challenge.
+Since $\E^{-x}$ is easy to integrate, we begin by comparing $\frac{2}{\sqrt\pi}\E^{-x^2/2}$ and $\E^{-x}$ as $x\to\infty$.
+First, we note that $x\le x^2/2$ if and only if $0\le x^2/2 - x = \frac{1}{2}x(x-2)$.
+Therefore, if $x\ge 2$, it follows that $0\le x\le x^2/2$ and hence 
+\begin{equation*}
+\frac{2}{\sqrt\pi}\E^{-x^2/2} \le\frac{2}{\sqrt\pi}\E^{-x}.
+\end{equation*}
+Thus, we have shown that $\frac{2}{\sqrt\pi}\E^{-x^2/2} \ll \E^{-x}$ as $x\to\infty$.
+Furthermore, $\frac{2}{\sqrt\pi}\E^{-x^2/2}$ and $\E^{-x}$ are both positive and continuous on $[0,\infty)$, and
+\begin{equation*}
+\int_0^\infty\E^{-x}\dee x 
+= \lim_{b\to\infty}\int_0^b\E^{-x}\dee x 
+= \lim_{b\to\infty}-\E^{-x}\Big|_0^b
+= \lim_{b\to\infty}\left(1-\E^{-b}\right)
+= 1.
+\end{equation*}
+Therefore, $\DS\int_0^\infty \frac{2}{\sqrt{\pi}}\E^{-x^2/2}\dee x$ converges by DCT.
+}
+\fi
 
 \newpage
 
@@ -142,15 +379,33 @@ The idea of the direct comparison test can also be applied to improper integrals
 Determine if $\DS\int_0^{\pi/2}\frac{\cos x}{\sqrt x}\dee x$ converges or diverges.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+On the interval $(0,\pi/2)$, we have
+\begin{equation*}
+0<\frac{\cos x}{\sqrt x} \le\frac{1}{\sqrt x}.
+\end{equation*}
+Moreover, $1/\sqrt x$ and $(\cos x)/\sqrt x$ are both continuous on $(0,\pi/2]$, and
+\begin{equation*}
+\int_0^{\pi/2}\frac{\dee x}{\sqrt x} 
+= \lim_{a\to 0^+}\int_a^{\pi/2}x^{-1/2}\dee x
+= \lim_{a\to 0^+}2x^{1/2}\Big|_a^{\pi/2}
+= 2\lim_{a\to 0^+}\left(\sqrt{\pi/2} - \sqrt a\right)
+= \sqrt{2\pi}.
+\end{equation*} 
+Therefore, $\DS\int_0^{\pi/2}\frac{\cos x}{\sqrt x}\dee x$ converges by DCT.
+}
+\fi
+
 \newpage
 
 \begin{remark}\,
 \begin{itemize}
-\item The test for divergence tells us that if $\int_a^\infty f(x)\dee x$ is going to have a chance at convergence, then we must have $f(x)\to 0$ as $x\to\infty$.
-\item The difference between convergence and divergence for the integral is ``how fast" $f(x)$ tends toward zero.
-\item The comparison tests are about determining convergence by comparing the relative sizes of the integrands.
+%\item The test for divergence tells us that if $\int_a^\infty f(x)\dee x$ is going to have a chance at convergence, then we must have $f(x)\to 0$ as $x\to\infty$.
+%\item The difference between convergence and divergence for the integral is ``how fast" $f(x)$ tends toward zero.
+\item The comparison tests are about determining convergence of integrals by comparing the relative orders of their integrands.
 \item For the direct comparison test we have to be careful to get the inequalities correct for \textit{all sufficiently large} $x$.
-\item The limit comparison tests allows for ``cruder" comparison using limits.
+\item The limit comparison test (LCT) allows us to get away with ``cruder" comparisons using limits.
 \end{itemize}
 \end{remark}
 
@@ -170,8 +425,44 @@ then $\int_a^\infty f(x)\dee x$ diverges.
 Determine if $\DS\int_1^\infty\frac{1-\E^{-x}}{x}\dee x$ converges or diverges.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we guess that
+\begin{equation*}
+\frac{1-\E^{-x}}{x}\asymp \frac{1}{x}
+\end{equation*}
+as $x\to\infty$.
+Then we verify that this is true by observing that
+\begin{equation*}
+\lim_{x\to\infty}\left(\frac{1-\E^{-x}}{x}\right)/\left(\frac{1}{x}\right)
+=\lim_{x\to\infty}\left(1-\E^{-x}\right) = 1.
+\end{equation*}
+Since $\int_1^\infty\frac{\dee x}{x}$ diverges by the $p$-test for integrals, we conclude that $\DS\int_1^\infty\frac{1-\E^{-x}}{x}\dee x$ diverges by LCT.
+}
+\fi
+
 \newpage
 
 \begin{example}
 Determine if $\DS\int_4^\infty\frac{x\dee x}{(3x^2+4)^{5/2}}$ converges or diverges.
 \end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First, we guess that
+\begin{equation*}
+\frac{x}{(3x^2+4)^{5/2}}\asymp\frac{x}{x^5} = \frac{1}{x^4}
+\end{equation*}
+as $x\to\infty$.
+Then we verify that this is true by observing that
+\begin{equation*}
+\lim_{x\to\infty}\frac{x}{(3x^2+4)^{5/2}}\cdot \frac{x^4}{1}
+=\lim_{x\to\infty}\frac{x^5}{(3x^2+4)^{5/2}}
+=\lim_{x\to\infty}\frac{x^5}{|x|^5\left(3+\frac{4}{x^2}\right)^{5/2}}
+=\lim_{x\to\infty}\frac{1}{\left(3+\frac{4}{x^2}\right)^{5/2}}
+=\frac{1}{3^{5/2}}.
+\end{equation*}
+Since $\int_1^\infty\frac{\dee x}{x^4}$ converges by the $p$-test for integrals, 
+we conclude that $\DS\int_4^\infty\frac{x\dee x}{(3x^2+4)^{5/2}}$ converges by LCT.
+}
+\fi

@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{The natural logarithm}{\textit{Thomas' Calculus} \textsection 7.2}
+\lectureheader{162}{Calculus II}{The natural logarithm}{\textit{Thomas' Calculus}  7.2}
 
 \begin{theorem}[The fundamental theorem of calculus, part I]
 If $f$ is continuous on $[a,b]$, then there is a solution to the differential equation
@@ -22,7 +22,7 @@ In particular, $y=\DS\int_a^xf(t)\dee t$ is the unique solution so that $y(a)=0$
 \begin{definition}
 The \textbf{natural logarithm} is the function defined by the rule
 \begin{equation*}
-\ln(x) = \int_1^x\frac{\dee t}{t}\quad (x>0).
+\ln x = \int_1^x\frac{\dee t}{t}\quad (x>0).
 \end{equation*}
 \end{definition}
 
@@ -73,7 +73,7 @@ and on the other hand, the chain rule gives
 \begin{equation*}
 \frac{\dee}{\dee a}\ln ab = \frac{1}{ab}\frac{\dee}{\dee a}(ab) = \frac{b}{ab} = \frac{1}{a}.
 \end{equation*}
-Whence it follows that 
+Since the functions $f(a)=\ln a$ and $g(a)=\ln ab$ have the same derivative (with respect to $a$), it follows that 
 \begin{equation*}
 \ln ab = \ln a + C
 \end{equation*}
@@ -82,10 +82,11 @@ Evaluating each side of this equation at $a=1$, we observe that
 \begin{equation*}
 \ln b = \ln 1 + C = C.
 \end{equation*}
-Substituting $C=\ln b$ above, we have
+Substituting $C=\ln b$ above, we see that we have proven the identity
 \begin{equation*}
-\ln ab = \ln a + \ln b.\qedhere
+\ln ab = \ln a + \ln b
 \end{equation*}
+for all positive $a, b$.
 }
 \else
 \begin{proof}[Proof of~\eqref{log of product}]\,
@@ -110,42 +111,124 @@ Suppose that $y = \frac{(x^2+1)(x+3)^{1/2}}{x-1}$ for $x>1$.
 Compute $\dee y/\dee x$ without using the product rule or the quotient rule.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION {
+Taking the natural log of both sides of the equation gives 
+\begin{equation*}
+    \ln{y} = \ln{\frac{(x^2+1)(x+3)^{1/2}}{x-1}}.
+\end{equation*}
+Using the properties of the logarithm, we get 
+\begin{equation*}
+    \ln{y} = \ln{(x^2 + 1)} + \ln{(x+3)^{1/2}} - \ln{(x-1)} =  \ln{(x^2 + 1)} + \frac{1}{2}\ln{(x+3)} - \ln{(x-1)}.
+\end{equation*}
+Next, take the logarithmic derivative. So, 
+\begin{equation*}
+    \frac{y'}{y} = \frac{\dee}{\dee x}\ln{y} = \frac{2x}{x^2+1} + \frac{1}{2}\cdot \frac{1}{x+3}-\frac{1}{x-1}.
+\end{equation*}
+Multiplying both sides by y gives 
+\begin{equation*}
+    y' = y\left[ \frac{2x}{x^2+1} + \frac{1}{2(x+3)}-\frac{1}{x-1} \right]
+    = \frac{(x^2+1)(x+3)^{1/2}}{x-1}\left[\frac{2x}{x^2+1} + \frac{1}{2(x+3)}-\frac{1}{x-1}\right].
+\end{equation*}
+}
+\else
 \vfill
+\fi
 
 \begin{example}
 Compute $\dee y/\dee x$ if $y=x^x$ for $x>0$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION {
+Take the natural log of both sides of the equation.  So, 
+\begin{equation*}
+    \ln{y} = \ln{x^x}.
+\end{equation*}
+Using the properties of logarithms, it follows that 
+\begin{equation*}
+    \ln{y} = \ln{x^x} = x\ln{x}.
+\end{equation*}
+Taking the logarithmic derivative and using the product rule, 
+\begin{equation*}
+    \frac{y'}{y} = \frac{\dee}{\dee x}\ln{y} 
+    = \frac{\dee}{\dee x}x\ln{x} 
+    =\ln{x} + x\frac{1}{x} = \ln{x} + 1.
+\end{equation*}
+Therefore, 
+\begin{equation*}
+    y' = y[\ln{x} + 1] = x^x[\ln{x} + 1].
+\end{equation*}
+}
+\else
 \vfill
+\fi
 
 \newpage
 
+\begin{remark}\,
+\begin{itemize}
+\item The number $\ln 2$ is an ``invented" number just like $\sqrt 3$.
+\item Our mathematical reasoning tells us that such a number has to exist, but it's still sort of mysterious.
+\item To help us feel more comfortable, we remove some of the mystery by estimation.
+\item For a lower bound, we have
+    \begin{equation*}
+        \ln 2 
+		= \int_{1}^{2} \frac{\dee t}{t} 
+		>\int_1^2\frac{\dee t}{2}
+		= \frac{1}{2}.
+    \end{equation*} 
+\item For an upper bound, we can say
+    \begin{equation*}
+        \ln 2 
+		= \int_{1}^{2} \frac{\dee t}{t} 
+		<\int_1^2\frac{\dee t}{1}
+		= 1.
+    \end{equation*} 
+\item So, $\ln 2$ is some number between $0.5$ and $1$.
+\item Later will develop numerical techniques that will allow us to estimate logarithms to arbitrary precision.
+\end{itemize}
+\end{remark}
+
 \begin{theorem}
-If $n$ is a positive integer, then $\ln 2^n > n/2$.
-\end{theorem}
-\begin{proof}\,
-
-\vspace{2.5in}
-\end{proof}
-
-\begin{corollary}
 The range of the natural logarithm is $(-\infty, \infty)$, and moreover
 \begin{align*}
 \lim_{x\to \infty}\ln x &= \infty,\\
 \lim_{x\to 0^+}\ln x &=-\infty.
 \end{align*}
-\end{corollary}
+\end{theorem}
+
+\ifdefined\SOLUTION
+\SOLUTION[Proof] {
+    Since $\ln{x}$ is always increasing and 
+    \begin{equation*}
+        \lim_{n\to\infty} \ln{(2^n)} 
+		=\lim_{n\to\infty} n\ln 2
+        >\lim_{n\to\infty} \frac{n}{2} = \infty,
+    \end{equation*}
+    we get 
+    \begin{equation*}
+        \lim_{x\to\infty} \ln{x} = \infty.
+    \end{equation*}
+    Also, 
+    \begin{equation*}
+        \lim_{x\to\ 0^+} \ln{x} 
+        = \lim_{t\to\infty} \ln{1/t} 
+        = \lim_{t\to\infty} -\ln{t} = -\infty. 
+    \end{equation*}
+By intermediate value theorem, it now follows that the range of the natural logarithm is $(-\infty, \infty)$.
+}
+\else
 \begin{proof}\,
 
 \vspace{2.5in}
 \end{proof}
+\fi
 
-\begin{corollary}
-The range of the natural logarithm is $(-\infty,\infty)$.
-\end{corollary}
+
+
 
 \begin{definition}
-\textbf{Euler's number} (a.k.a. \textbf{Napier's constant}) is the number $\E$ defined by the equation $\ln(\E)=1$.
+\textbf{Euler's number} (a.k.a. \textbf{Napier's constant}) is the real number $\E$ defined by the equation $\ln(\E)=1$.
 \end{definition}
 
 \newpage
@@ -160,13 +243,52 @@ On any interval not containing zero, we have
 \begin{corollary}
 Where the integrands are continuous, we have
 \begin{align}
-\int\tan x \dee x &= \ln |\sec x| + C,\\
+\int\tan x \dee x &= \ln |\sec x| + C,\label{tan integral}\\
 \int\cot x \dee x &= \ln|\sin x| + C,\\
 \int\sec x \dee x &=\ln |\sec x + \tan x| + C,\\
 \int\csc x \dee x &= -\ln |\csc x + \cot x| + C.
 \end{align}
 \end{corollary}
-\begin{proof}\,
+
+\ifdefined\SOLUTION
+\SOLUTION[Proof of~\eqref{tan integral}]{
+Note that if $u = \cos{x}$, then $\dee u = -\sin{x} \dee x$.  
+Therefore,
+\begin{equation*}
+\begin{split}
+    \int\tan{x} \dee x 
+    &= \int_{}^{} \frac{\sin{x}}{\cos{x}} \dee x \\
+    &= -\int_{}^{} \frac{\dee u}{u} \\
+    &= - \ln{|u|} + C \\
+    &= -\ln{|\cos{x}|} + C\\
+    &= \ln{(|\cos{x}|^{-1})} + C\\
+    &= \ln{|\sec{x}|} + C.
+\end{split}
+\end{equation*}
+}
+\else
+\begin{proof}[Proof of~\eqref{tan integral}]\,
 
 \vspace{5in}
 \end{proof}
+\fi
+
+\newpage
+
+%\section*{Exercises}
+%
+%The following exercises are transcribed from \textit{Thomas' Calculus}, 15e.
+%\begin{enumerate}[label=(\arabic*)]
+%\item Express $\ln 0.125$ in terms of $\ln 2$ and/or $\ln 3$.
+%\item Use the properties of logarithms to simplify the expression $\ln(\sin\theta)-\ln\left(\frac{\sin\theta}{4}\right)$.
+%\item Find the derivative of $y$ with respect to $x$ for $y=\ln(5x)$.
+%\item Find the derivative of $y$ with respect to $t$ for $y=\ln(t^{11})$.
+%\item Find the derivative of $y$ with respect to $x$.
+% \begin{equation*}
+%y=6\ln\left(\frac{12}{x}\right)
+%\end{equation*}
+%\item Find the derivative of $y$ with respect to $x$.
+% \begin{equation*}
+%y=\ln(x^{14})
+%\end{equation*}
+%\end{enumerate}

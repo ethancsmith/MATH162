@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Partial fraction decomposition}{\textit{Thomas' Calculus} \textsection 8.5}
+\lectureheader{162}{Calculus II}{Partial fraction decomposition}{\textit{Thomas' Calculus}  8.5}
 
 \begin{example}
 Use the fact that
@@ -9,7 +9,21 @@ Use the fact that
 \end{equation*}
 to compute $\DS \int\frac{5x-3}{x^2-2x-3} \dee x$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{align*}
+    \int\frac{5x-3}{x^2-2x-3} \dee x 
+    &= \int \frac{3}{x-3}\dee x + \int\frac{2}{x+1} \dee x \\
+\end{align*}
+Let $u = x - 3.$ It follows that $\dee u = \dee x$. Similarly, let $w = x + 1.$  So, $\dee w = \dee x.$  Making both those substitutions gives 
+\begin{equation*}
+    \int\frac{3\dee u}{u} + \int \frac{2\dee w}{w} 
+    = 3\ln{|u|} + 2\ln{|w|} + C
+    = 3\ln{|x-3|} + 2\ln{|x+1|} + C.
+\end{equation*}
+}
+\else
+\fi
 
 \vfill
 \begin{remark}
@@ -51,10 +65,39 @@ then we solve for constants $A_1, A_2,\dots, A_k$ so that
 \begin{example}
 Evaluate $\DS\int\frac{x^2+2x-1}{2x^3+3x^2-2x}\dee x$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{enumerate}
+    \item  Since the degree of the numerator is less than the degree of the denominator, step one (long division) is not needed.
+    \item  $g(x) = 2x^3 + 3x^2 - 2x = x(2x^2 + 3x - 2) = x(2x-1)(x+2).$
+    \item Now we set up the partial fraction decomposition:
+\begin{equation*}
+\frac{x^2 + 2x - 1}{x(2x-1)(x+2)} = \frac{A}{x} + \frac{B}{2x-1} + \frac{C}{x+2}.
+\end{equation*}
+Clearing denominators we get 
+\begin{equation*}
+x^2 + 2x - 1 = A(2x-1)(x+2) + B(x)(x+2) + C(x)(2x-1).
+\end{equation*}
+Now we can recover $A$, $B$, and $C$ via clever substitutions for $x$.
+\end{enumerate}
+\begin{itemize}
+    \item $x = 0$:  $-1 = A(-1)(2) + 0 + 0$ implies that $A = 1/2$. 
+    \item $x = 1/2$:  $1/4 + 1 - 1 = 1/4 = 0 + B(1/2)(5/2) + 0$ implies that $B = (1/4)(2/1)(2/5) = 1/5$.
+    \item $x = -2$:  $4 - 4 - 1 = -1 = 0 + 0 + C(-2)(-5)$ implies that $C = -1/((-2)(-5)) = -1/10$.
+\end{itemize}
+So, it follows that 
+\begin{align*}
+\int\frac{x^2+2x-1}{2x^3+3x^2-2x}\dee x 
+&= \int\frac{(1/2) \dee x}{x} + \int\frac{(1/5) \dee x}{2x-1} + \int\frac{(-1/10) \dee x}{x + 2} \\
+&= \frac{1}{2}\ln{|x|} + \frac{1}{10}\ln{|2x-1|} - \frac{1}{10}\ln|x+2| + C. 
+\end{align*}
+}
+\newpage
+\else
 \newpage
 \,
 \newpage
+\fi
 
 \begin{remark}
 If the denominator $g(x)$ factors into a product of linear factors with some repeated factors, say $(ax+b)^e$ divides $g(x)$, 
@@ -68,9 +111,77 @@ then instead of just the term $\frac{A}{ax+b}$, we must include $e$ terms
 Compute $\DS\int\frac{x^4-2x^2+4x+1}{x^3-x^2-x+1}\dee x$.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION{
+\begin{enumerate}
+\item Since the rational function is not proper, we begin with polynomial long division.
+%\begin{equation*}
+%\polylongdiv{x^4-2x^2+4x+1}{x^3-x^2-x+1} 
+%\end{equation*}
+The result of long division is that
+\begin{equation*}
+\frac{x^4-2x^2+4x+1}{x^3-x^2-x+1} = (x+1) + \frac{4x}{x^3-x^2-x+1}.
+\end{equation*}
+\item Next we factor the denominator
+\begin{align*}
+g(x) &= x^3-x^2-x+1 = (x^3-x^2) -(x-1) \\
+&= x^2(x-1) - (x-1) = (x-1)(x^2-1) \\
+&= (x-1)(x-1)(x+1) = (x-1)^2(x+1). 
+\end{align*}
+\item Third, we set up the partial fraction decomposition
+\begin{equation*}
+\frac{r(x)}{g(x)} = \frac{4x}{(x-1)^2(x+1)} = \frac{A}{x-1} + \frac{B}{(x-1)^2} + \frac{C}{x+1}. 
+\end{equation*}
+Clearing denominators gives
+\begin{equation*}
+4x = A(x-1)(x+1) + B(x+1) + C(x-1)^2. 
+\end{equation*}
+We can recover most of the coefficients by clever substitution.
+\begin{itemize}
+\item $x = -1$: $-4 = 0 + 0 +4C$, and so $C = -1$. 
+\item $x = 1$: $4 = 0 + 2B + 0$, and so $B = 2$.
+\end{itemize}
+Since we know all but one coefficient, we could find it by any other substitution using the known values of $B$ and $C$.
+However, the following method of ``comparing coefficients" is useful to know.
+Using the fact that $B=2$ and $C=-1$, we expand to learn that
+\begin{align*}
+4x &= Ax^2 - A + Bx + B + C(x^2-2x+1) \\
+&= (A+C)x^2 + (B-2C)x + (-A + B + C) \\
+&= (A-1)x^2 + 4x + (-A+1). 
+\end{align*}
+In particular,
+\begin{equation*}
+4x = (A-1)x^2+4x+(-A+1)
+\end{equation*}
+as polynomials.
+We may therefore compare coefficients of like terms.
+\begin{itemize}
+\item coefficient of $x^2$: $0 = A-1$,
+\item coefficient of $x$:   $4 = 4$,
+\item coefficient of $1$:	 $0= -A+1$.
+\end{itemize}
+Thus, we see (in one of two different ways) that $A=1$.
+Therefore we have the partial fraction decomposition
+\begin{align*}
+\frac{x^4-2x^2+4x+1}{x^3-x^2-x+1} 
+&= (x+1) + \frac{4x}{x^3-x^2-x+1} \\
+&= (x+1) + \frac{1}{x-1} + \frac{2}{(x-1)^2} + \frac{-1}{x+1}, 
+\end{align*}
+and hence,
+\begin{align*}
+\int \frac{x^4-2x^2+4x+1}{x^3-x^2-x+1} \dee x 
+&= \int(x+1) \dee x + \int\frac{\dee x}{x-1} + \int\frac{2\dee x}{(x-1)^2} + \int\frac{-\dee x}{x+1} \\
+&= \frac{x^2}{2} + x + \ln{|x-1|} + -2(x-1)^{-1} - \ln{|x+1|} + C.
+\end{align*}
+\end{enumerate}
+}
+\newpage
+\else
 \newpage
 \,
 \newpage
+\fi
+
 
 \begin{remark}
 If $g(x)$ contains a (possibly repeated) irreducible quadratic factor $(ax^2+bx+c)^e$, then we must also include $e$ terms of the form
@@ -82,9 +193,55 @@ If $g(x)$ contains a (possibly repeated) irreducible quadratic factor $(ax^2+bx+
 \begin{example}
 Calculate $\DS\int\frac{\dee x}{x(x^2+1)^2}$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{enumerate}
+    \item The degree of the numerator is 0, which is less than the degree of the denominator, which is 5.  Hence, no long division is needed.
+    \item The denominator $g(x) = x(x^2+1)^2$ is already factored into reducibles.
+    Note that the discriminant of $x^2+1$ is $D = b^2 - 4ac = 0^2 - 4(1)(1) = -4 < 0$.
+    \item Now set up the decomposition:
+\begin{equation*}
+\frac{1}{x(x^2+1)^2} = \frac{A}{x} + \frac{Bx+C}{x^2+1} + \frac{Dx+E}{(x^2+1)^2}, 
+\end{equation*}
+and clear denominators to see that
+\begin{equation*}
+1 = A(x^2+1)^2 + (Bx+C)(x)(x^2+1) + (Dx+E)(x)(x^2+1). 
+\end{equation*}
+Substituting $x=0$ gives
+\begin{align*}
+1 = A + 0 + 0
+\end{align*}
+and so $A=1$.
+\end{enumerate}
+Unless we're very practiced at working with complex (imaginary) numbers, we won't be able to determine the remaining coefficients by clever substitution.
+Instead, substitute $A=1$ and expand to reveal that
+\begin{align*}
+    1 &= 1(x^2+1)^2 + (Bx+C)(x^2+x) + (Dx^2+Ex) \\
+    &= (x^4 + 2x^2 + 1) + (Bx+C)(x^2+x) + (Dx^2+Ex) \\
+    &= (1+B)x^4 + Cx^3 + (2+B+D)x^2 + (C+E)x + 1. 
+\end{align*}
+Comparing coefficients, we have 
+\begin{itemize}
+\item coefficient of $x^4$: $0 = 1 + B$, 
+\item coefficient of $x^3$: $0 = C$,
+\item coefficient of $x^2$: $0 = 2 + B + D$,
+\item coefficient of $x$: $0 = C+E$,
+\item coefficient of $1$: $1 = 1$.
+\end{itemize}
+Thus, we learn that $B=-1$, $C=0$, $D=-(2+B)=-(2-1)=-1$, and $E=-C=0$.
+Therefore,
+\begin{align*}
+\int\frac{\dee x}{x(x^2+1)^2}
+&= \int\frac{\dee x}{x} + \int \frac{(-1)x \dee x}{x^2 + 1} + \int \frac{(-1)x \dee x}{(x^2+1)^2} \\
+&= \ln{|x|} -\frac{1}{2}\ln{|x^2 + 1|} +\frac{1}{2}(x^2+1)^{-1} + C \\
+&= \ln{|x|} -\frac{1}{2}\ln{(x^2 + 1)} +\frac{1}{2}(x^2+1)^{-1} + C. 
+\end{align*}
+}
+\else
 \newpage
 \,
+\newpage
+\fi
 \newpage
 
 \begin{remark}
@@ -95,3 +252,50 @@ Then the method of partial fractions may be used to integrate the result.
 \begin{example}
 Evaluate $\DS\int\frac{\sqrt{x+4}}{x}\dee x$ by first transforming the integrand to a rational expression.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let $u = \sqrt{x+4}$ so that $\dee u = \frac{\dee x}{2\sqrt{x+4}} = \frac{\dee x}{2u}$, i.e., $2u\dee u = \dee x$.  
+Furthermore, $u^2 = x + 4$, and so $x = u^2 - 4$.
+Therefore,
+\begin{equation*}
+\int\frac{\sqrt{x+4}}{x}\dee x 
+= \int \frac{u}{u^2 - 4}2u\dee u
+= 2\int\frac{u^2\dee u}{u^2+4},
+\end{equation*}
+which is ready for partial fraction decomposition.
+\begin{enumerate}
+\item The rational function is not proper, and so we begin with long division.
+%\begin{equation*}
+%\polylongdiv{X^2}{X^2-4}
+%\end{equation*}
+The result of the long division is that
+\begin{equation*}
+\frac{u^2}{u^2-4} = 1 + \frac{4}{u^2-4}
+\end{equation*}
+\item The denominator $u^2-4 = (u+2)(u-2)$. 
+\item The partial fraction decomposition takes the form
+\begin{equation*}
+\frac{4}{u^2-4} = \frac{A}{u-2}+\frac{B}{u+2}.
+\end{equation*}
+Clearing denominators, we have
+\begin{equation*}
+4 =  A(u+2) + B(u-2).
+\end{equation*}
+We determine the coefficients by ``clever substitution."
+\begin{itemize}
+\item $u = -2$: $4 = 0 + (-4)B$, and so $B = -1$. 
+\item $u = 2$: $4 = 4A + 0$, and so $A = 1$.  
+\end{itemize}
+Therefore,
+\begin{align*}
+    \int\frac{\sqrt{x+4}}{x}\dee x &= 2\int \frac{u^2}{u^2-4} \dee u \\
+    &= 2 \int \left[1 + \frac{4}{u^2-4} \right] \dee u \\
+    &= 2\left[ \int \dee u + \int \frac{\dee u}{u-2} + \int \frac{-\dee u}{u+2}
+    \right] \\
+    &= 2u + 2\ln{|u-2|} - 2\ln|u+2| + C \\
+    &= 2\sqrt{x+4} + 2\ln\left|\sqrt{x+4}-2\right| - 2\ln\left|\sqrt{x+4}+2\right| + C.
+\end{align*}
+\end{enumerate}
+}
+\else
+\fi

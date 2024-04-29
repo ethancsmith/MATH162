@@ -1,27 +1,47 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{The ratio and root tests}{\textit{Thomas' Calculus} \textsection 10.5}
+\lectureheader{162}{Calculus II}{The ratio and root tests}{\textit{Thomas' Calculus}  10.5}
 
 \begin{remark}\,
 \begin{itemize}
-\item Both the direct comparison test and the limit comparison test require both sequences of terms to be nonnegative.  
-\item In truth they require all the terms $a_n$ and $b_n$ to have the same sign for all sufficiently large $n$.
-\item This is because both tests rely on an application of the monotone sequence theorem and the presence of terms with different signs prevent the sequence of partial sums from being monotone.
+\item The integral test, the direct comparison test and the limit comparison test all require sequences of terms that are nonnegative.  
+\item In truth they require all the terms of the seqeuences to have the same sign for all sufficiently large $n$.
+\item This is because both tests rely on an application of the monotonic sequence theorem and the presence of terms with different signs prevent the sequence of partial sums from being monotone.
 \end{itemize}
 \end{remark}
 
 \begin{theorem}
-If $\DS\sum_{n=0}^\infty |a_n|$ converges, then $\DS\sum_{n=0}^\infty a_n$ converges.
+If $\DS\sum_{n=k}^\infty |a_n|$ converges, then $\DS\sum_{n=k}^\infty a_n$ converges.
 \end{theorem}
 
+\ifdefined\SOLUTION
+\SOLUTION[Proof]{
+Suppose $\DS\sum_{n=k}^\infty|a_n|$ converges.  Then
+\begin{equation*}
+0 \le a_n + |a_n| \le 2|a_n| \quad (n\ge k),
+\end{equation*}
+and hence
+\begin{equation*}
+0 \le a_n + |a_n| \ll |a_n| \text{ as } n\to\infty.
+\end{equation*}
+Since $\DS\sum_{n=k}^\infty |a_n|$ converges by assumption,  it follows that
+$\DS\sum_{n=k}^\infty\left(a_n+|a_n|\right)$ converges by the direct comparison test.
+Therefore, 
+\begin{equation*}
+\sum_{n=0}^\infty a_n = \sum_{n=0}^\infty \Big[ (a_n + |a_n|) - |a_n|\Big] = \sum_{n=0}^\infty (a_n - |a_n|) - \sum_{n=0}^\infty |a_n|
+\end{equation*}
+converges since it is the difference between 2 convergent series.
+\vfill
+}
+\else
 \begin{proof}\,
 
 \vspace{4in}
-
 \end{proof}
+\fi
 
 \begin{definition}
-We say that the series $\sum a_n$ is \textbf{absolutely convergent} if $\sum |a_n|$ converges.
+We say that the series $\DS\sum_{n\ge k} a_n$ is \textbf{absolutely convergent} if $\DS\sum_{n\ge k} |a_n|$ converges.
 \end{definition}
 
 \newpage
@@ -30,10 +50,46 @@ We say that the series $\sum a_n$ is \textbf{absolutely convergent} if $\sum |a_
 What can you say about the following series?
 \begin{enumerate}
 \item $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n^2}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since 
+\begin{equation*}
+\sum_{n=1}^\infty \left| \frac{(-1)^{n+1}}{n^2}\right| = \sum_{n=1}^\infty \frac{1}{n^2}
+\end{equation*}
+converges by $p$-test (with $p=2$), it follows that
+\begin{equation*}
+\sum_{n=1}^\infty \frac{(-1)^{n+1}}{n^2}
+\end{equation*}
+is absolutely convergent.
+}
+\fi
 \vfill
+
 \item $\DS\sum_{n=1}^\infty\frac{\sin n}{n^2}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $0\le\left|\frac{\sin{n}}{n^2}\right|\le\frac{1}{n^2}$ for all $n \geq 1$,
+and $\DS\sum_{n=1}^\infty \frac{1}{n^2}$ converges by the $p$-test with $p=2$, 
+the series $\DS\sum_{n=1}^\infty \left| \frac{\sin{n}}{n^2} \right|$ converges by DCT.  
+Therefore, $\DS\sum_{n=1}^\infty \frac{\sin{n}}{n^2}$ is absolutely convergent.
+}
+\fi
 \vfill
+
 \item $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Note that
+\begin{equation*}
+\sum_{n=1}^\infty \left| \frac{(-1)^{n+1}}{n} \right| = \sum_{n=1}^\infty \frac{1}{n}
+\end{equation*}
+diverges by $p$-test ($p=1$). So, 
+\begin{equation*}
+    \sum_{n=1}^\infty \frac{(-1)^{n+1}}{n}
+\end{equation*}
+is not absolutely convergent, but it still might converge.
+}
+\fi
 \vfill
 \end{enumerate}
 \end{example}
@@ -44,7 +100,7 @@ What can you say about the following series?
 \begin{itemize}
 \item The easiest series to deal with by far are geometric series.
 \begin{itemize}
-\item We know exactly when the converge/diverge.
+\item We know exactly when they converge/diverge.
 \item When they converge, it is easy to compute their sums.
 \end{itemize}
 \item Could we come up with ``quick and easy methods" to detect when a series is ``comparable" to a geometric series?
@@ -53,12 +109,12 @@ What can you say about the following series?
 \begin{equation*}
 \left|\frac{a_{n+1}}{a_n}\right| \to r\quad (n\to\infty).
 \end{equation*}
-So, $\sum |a_n|$ \textit{should} converge if and only if $\sum r^n$ converges, i.e., when $0\le r < 1$.
+So, $\sum_n |a_n|$ \textit{should} converge if and only if $\sum_n r^n$ converges, i.e., when $0\le r < 1$.
 \item Similarly, if $|a_n|\asymp r^n$ as $n\to\infty$, then
 \begin{equation*}
 \sqrt[n]{|a_n|} \to r\quad (n\to\infty).
 \end{equation*}
-So again, $\sum |a_n|$ \textit{should} converge if and only if $\sum r^n$ converges, i.e., when $0\le r < 1$.
+So again, $\sum_n |a_n|$ \textit{should} converge if and only if $\sum_n r^n$ converges, i.e., when $0\le r < 1$.
 \end{enumerate}
 \item The trouble with these arguments is that we started out assuming what we wanted to prove/detect.
 We want the implications ``going the opposite direction."
@@ -68,18 +124,20 @@ We want the implications ``going the opposite direction."
 \sqrt[n]{|a_n|}\to r &\centernot\implies |a_n|\asymp r^n \quad (n\to\infty),
 \end{align*}
 but it ``almost" works.
-\item The truth is that if $\left|\frac{a_{n+1}}{a_n}\right|\to \rho$ or if $\sqrt[n]{|a_n|}\to \rho$ as $n\to\infty$, then
+\item The truth is that if $\left|\frac{a_{n+1}}{a_n}\right|\to \rho$ or if $\sqrt[n]{|a_n|}\to \rho$ as $n\to\infty$, 
+then all that we can say for sure is that
 \begin{equation*}
 (\rho-\epsilon)^n\ll |a_n|\ll (\rho+\epsilon)^n\quad (n\to\infty)
 \end{equation*}
 for every $\epsilon>0$.
+So the direct comparison test will succeed as long as $\rho\ne 1$.
 \end{itemize}
 \end{remark}
 
 \newpage
 
 \begin{theorem}[Ratio test]
-Let $\sum a_n$ be a series, and let
+Let $\DS\sum_{n\ge k} a_n$ be a series, and let
 \begin{equation*}
 \rho=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|.
 \end{equation*}
@@ -91,7 +149,7 @@ Let $\sum a_n$ be a series, and let
 \end{theorem}
 
 \begin{theorem}[Root test]
-Let $\sum a_n$ be a series, and let
+Let $\DS\sum_{n\ge k} a_n$ be a series, and let
 \begin{equation*}
 \rho=\lim_{n\to\infty}\sqrt[n]{|a_n|}.
 \end{equation*}
@@ -109,47 +167,262 @@ If the logic of our heuristic arguments on the previous page had been reversible
 \newpage
 
 \begin{example}
-Show that the above tests are truly inconclusive when $\rho=1$ by studying the series $\DS\sum_{n=1}^\infty\frac{1}{n}$ and $\DS\sum_{n=1}^\infty\frac{1}{n^2}$.
+Show that the above tests are truly inconclusive when $\rho=1$ by studying $p$-series.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+First, we apply the ratio test (RaT).
+\begin{equation*}
+\begin{split}
+\rho &= \lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|\\
+&=\lim_{n\to\infty} \frac{1}{(n+1)^p}\Big/ \frac{1}{n^p}\\
+&=\lim_{n\to\infty} \frac{n^p}{(n+1)^p}\\
+&=\left(\frac{n}{n+1}\right)^p\\
+&=\left(\frac{1}{1+1/n}\right)^p\\
+&= 1
+\end{split}
+\end{equation*}
+for every (fixed) $p\in\R$.
+However, the $p$-series diverges when $p \le 1$ and converges when $p>1$.
+This shows that the ratio test is inconclusive when $p=1$.
+\vspace{2\baselineskip}
+Next we apply the root test (RoT).
+\begin{equation*}
+\begin{split}
+\rho &=\lim_{n\to\infty} \sqrt[n]{|a_n|}\\
+&=\lim_{n\to\infty} \sqrt[n]{1/n^p} = \lim_{n\to\infty} n^{-p/n}\\  
+&=\lim_{n\to\infty} \exp \left( -\frac{p}{n}\ln{n}\right)\\ 
+&=\lim_{n\to\infty} \exp{\left( -p\cdot \frac{\ln{n}}{n} \right)}\\ 
+&=\lim_{n\to\infty} \exp \left( -p\cdot \frac{1/n}{1} \right)\\
+&=\exp(0)\\
+&=1
+\end{split}
+\end{equation*}
+for every (fixed) $p\in\R$.
+Since the $p$-series diverges when $p \le 1$ and converges when $p>1$, this shows that the root test is inconclusive when $p=1$.
+}
+\else
+\fi
 
 \newpage
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\frac{2^n+5}{3^n}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Let's try the ratio test.
+Observe that
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n}\right|\\
+&=\lim_{n\to\infty} \left( \frac{2^{n+1}+5}{3^{n+1}}\right)\Big/ \left(\frac{2^n + 5}{3^n}\right)\\
+&=\lim_{n\to\infty} \frac{3^n}{3^{n+1}}\left( \frac{2^{n+1}+5}{2^n + 5}\right)\\
+&=\lim_{n\to\infty} \frac{1}{3} \left( \frac{2^{n+1}+5}{2^n + 5}\right)\\
+&=\lim_{n\to\infty} \frac{1}{3} \left( \frac{2+5/2^n}{1 + 5/2^n}\right)\\
+&=2/3 < 1.
+\end{split}
+\end{equation*}
+Therefore $\DS\sum_{n=0}^\infty\frac{2^n+5}{3^n}$ converges absolutely by RaT.\\
+\vspace{2\baselineskip}
+Let's see what happens if we try root test instead.
+Observe that
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty} \sqrt[n]{\left|a_n\right|}\\
+&=\lim_{n\to\infty} \sqrt[n]{\left|\frac{2^n+5}{3^n}\right|}\\
+&=\lim_{n\to\infty} \frac{2}{3}\sqrt[n]{1+5/2^n}\\
+&=2/3 < 1.
+\end{split}
+\end{equation*}
+Therefore $\DS\sum_{n=0}^\infty\frac{2^n+5}{3^n}$ converges absolutely by RoT.\\
+\vspace{2\baselineskip}
+By the way,
+\begin{equation*}
+\sum_{n=0}^\infty\frac{2^n + 5}{3^n} 
+=\sum_{n=0}^\infty\Bigg[(2/3)^n+5(1/3)^n\Bigg] 
+=\sum_{n=0}^\infty (2/3)^n + 5 \sum_{n=0}^\infty (1/3)^n 
+%= \frac{1}{1-2/3} + 5\frac{1}{1-1/3} 
+%=\frac{1}{1/3} + 5\frac{1}{2/3} 
+%=3 + \frac{15}{2} 
+%=\frac{21}{2}
+\end{equation*}
+is the sum of two geometric series.
+Note that both tests identified the $r=2/3$ part as the ``controlling" piece of the series.
+Now that we've run both new tests, you should ask yourself how things would have played out had you used each of the other tests that you know.
+}
+\fi
 \newpage
 
 \begin{example}
-Determine whether the series  $\DS\sum_{n=0}^\infty\frac{4^nn!n!}{(2n)!}$converges or diverges.
+Apply the ratio test to the series $\DS\sum_{n=0}^\infty\frac{4^nn!n!}{(2n)!}$.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Observe that
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n} \right|\\
+&=\lim_{n\to\infty}\left|\frac{4^{n+1}(n+1)!(n+1)!(2n)!}{(2(n+1))!4^n n!n!} \right| \\
+&=\lim_{n\to\infty}\frac{4(n+1)n!(n+1)n!(2n)!}{(2n+2)!n!n!}\\
+&=\lim_{n\to\infty}\frac{4(n+1)(n+1)(2n)!}{(2n+2)!}\\
+&=\lim_{n\to\infty}4\frac{(n+1)^2(2n)!}{(2n+2)(2n+1)(2n)!}\\
+&=\lim_{n\to\infty}4\frac{(n+1)^2}{(2n+2)(2n+1)}\\
+&=\lim_{n\to\infty}4\frac{(1+1/n)^2}{(2+2/n)(2+1/n)}\\
+&=\frac{4\cdot1}{4}\\
+&=1.
+\end{split}
+\end{equation*}
+Unfortunately, the RaT is inconclusive.\\
+\vspace{\baselineskip}\\
+The root test is hard to execute when factorials are involved.
+The integral test is not really feasible given what we know.
+Our best hope would probably be direct comparison.
+}
+\fi
 \newpage
 
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\frac{(2n)!}{n!n!}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Observe that
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty}\left|\frac{a_{n+1}}{a_n}\right|\\
+&=\lim_{n\to\infty}\left|\frac{(2(n+1))!n!n!}{(n+1)!(n+1)!(2n)!}\right|\\
+&=\lim_{n\to\infty}\frac{(2n+2)(2n+1)(2n)!n!n!}{(n+1)n!(n+1)n!(2n)!}\\
+&=\lim_{n\to\infty}\frac{(2n+2)(2n+1)}{(n+1)(n+1)}\\
+&=\lim_{n\to\infty}\frac{2(n+1)(2n+1)}{(n+1)(n+1)}\\
+&=\lim_{n\to\infty}2\frac{2n+1}{n+1}\\
+&=\lim_{n\to\infty}2\frac{2}{1}\\
+&=4>1.
+\end{split}
+\end{equation*}
+Therefore, $\DS\sum_{n=0}^\infty\frac{(2n)!}{n!n!}$ diverges by RaT.
+}
+\fi
 \newpage
 
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\frac{n^2}{2^n}$ converges or diverges.
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+When you're practicing, it is a good idea to try every test you know on every problem.
+That will help you get a feel for which test(s) work better under which circumstances.
+First, we try the ratio test.
+Observe that
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty} \left| \frac{a_{n+1}}{a_n} \right| 
+&=\lim_{n\to\infty} \left| \frac{(n+1)^2}{2^{n+1}}\cdot\frac{2^n}{n^2} \right|\\
+&=\frac{1}{2}\lim_{n\to\infty} \left(\frac{n+1}{n}\right)^2\\
+&=\frac{1}{2}\lim_{n\to\infty} (1+1/n)^2\\ 
+&=\frac{1}{2}\cdot 1\\
+&=\frac{1}{2}.
+\end{split}
+\end{equation*}
+Therefore, $\DS\sum_{n=0}^\infty\frac{n^2}{2^n}$ converges absolutely by RaT.\\
+\vspace{2\baselineskip}
+Now let's try that again with the root test.
+Here we have
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty}\sqrt[n]{|a_n|}\\
+&=\lim_{n\to\infty} \sqrt[n]{\left|\frac{n^2}{2^n}\right|}\\
+&=\lim_{n\to\infty} \frac{n^{2/n}}{2}\\ 
+&=\frac{1}{2}\lim_{n\to\infty} \exp\left(2\frac{\ln n}{n}\right)\\
+&=\frac{1}{2}\lim_{n\to\infty} \exp\left(2\frac{1/n}{1}\right)\\
+&=\frac{1}{2}\exp(0)\\
+&=\frac{1}{2}.
+\end{split}
+\end{equation*}
+Therefore, $\DS\sum_{n=0}^\infty\frac{n^2}{2^n}$ converges absolutely by RoT.
+}
+\fi
 
 \newpage
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=1}^\infty\frac{2^n}{n^3}$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{ 
+Let's try the ratio test first.
+Observe that
+\begin{equation*}
+\rho 
+=\lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right| 
+=\lim_{n\to\infty} \left| \frac{2^{n+1}}{(n+1)^3} \cdot \frac{n^3}{2^n}\right|
+=2\lim_{n\to\infty} \left(\frac{1}{1+1/n}\right)^3 
+=2\cdot 1 
+=2>1.
+\end{equation*}
+Therefore, $\DS\sum_{n=1}^\infty\frac{2^n}{n^3}$ diverges by RaT.\\ 
+\vspace{2\baselineskip}
+Now let's run the root test.
+Observe that
+\begin{equation*}
+\begin{split}
+\rho 
+&=\lim_{n\to\infty}\sqrt[n]{|a_n|}\\
+&=\lim_{n\to\infty} \sqrt[n]{\left|\frac{2^n}{n^2}\right|}\\
+&=\lim_{n\to\infty} \frac{2}{n^{3/n}}\\
+&=2\lim_{n\to\infty} n^{-3/n}\\ 
+&=2\lim_{n\to\infty} \exp\left(-3\frac{\ln n}{n}\right)\\
+&=2\lim_{n\to\infty} \exp\left(-3\frac{1/n}{1}\right)\\
+&=2\exp(0)\\
+&=2>1.
+\end{split}
+\end{equation*}
+Therefore, $\DS\sum_{n=1}^\infty\frac{2^n}{n^3}$ diverges by RoT.\\
+\vspace{2\baselineskip}
+What about the test for divergence?
+Observe that
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty} a_n 
+&=\lim_{n\to\infty} \frac{2^n}{n^3}\\
+&=\lim_{n\to\infty} \frac{2^n(\ln2)}{3n^2}\\
+&=\lim_{n\to\infty} \frac{2^n(\ln 2)^2}{6n}\\
+&=\lim_{n\to\infty} \frac{2^n (\ln 2)^3}{6}\\ 
+&=\infty.
+\end{split}
+\end{equation*}
+Therefore, $\DS\sum_{n=1}^\infty\frac{2^n}{n^3}$ diverges by TFD.
+}
+\else
+\fi
 \newpage
 
 \begin{example}
 Determine whether the series $\DS\sum_{n=0}^\infty\left(\frac{1}{1+n}\right)^n$ converges or diverges.
 \end{example}
-
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{ 
+I bet this one plays nicely with the root test.
+Observe that
+\begin{equation*}
+\rho 
+=\lim_{n\to\infty} \sqrt[n]{|a_n|} 
+=\lim_{n\to\infty} \sqrt[n]{\left| \left(\frac{1}{1+n}\right)^n\right|} 
+=\lim_{n\to\infty} \frac{1}{1+n} 
+=0<1.
+\end{equation*}
+Therefore, $\DS\sum_{n=0}^\infty\left(\frac{1}{1+n}\right)^n$ converges absolutely by RoT.\\  
+\vspace{2\baselineskip}
+Now you should try the ratio test and at least think through all the others on your own.
+}
+\fi
 \newpage
 
 \begin{example}
@@ -162,3 +435,39 @@ n/2^n & \text{if } n \text{ is odd},\\
 \end{equation*}
 Does the series $\DS\sum_{n=0}^\infty a_n$ converge?
 \end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+This looks like a job for the root test, but the piecewise definition of $a_n$ is going to create some extra complication.
+Observe that
+\begin{equation*}
+\sqrt[n]{|a_n|} = \begin{cases}
+\frac{\sqrt[n]{n}}{2} & \text{if } n \text{ is odd},\\
+\frac{1}{2} & \text{if } n \text{ is even},
+\end{cases}
+\end{equation*}
+and so, 
+\begin{equation*}
+    \frac{1}{2} \leq \sqrt[n]{|a_n|} \leq \frac{\sqrt[n]{n}}{2} \text{ if } n\geq 1.
+\end{equation*}
+Now,
+\begin{equation*}
+\lim_{n\to\infty} \frac{1}{2} = \frac{1}{2},
+\end{equation*}
+and 
+\begin{equation*}
+\begin{split}
+\lim_{n\to\infty} \frac{\sqrt[n]{n}}{2} 
+&= \frac{1}{2} \lim_{n\to\infty} n^{1/n}\\
+&= \frac{1}{2}\lim_{n\to\infty} \exp\left( \frac{\ln n}{n}\right)\\
+&= \frac{1}{2}\lim_{n\to\infty} \exp \left( \frac{1/n}{1} \right)\\
+&= \exp(0)\\
+&= \frac{1}{2}.
+\end{split}
+\end{equation*}
+By the squeeze theorem, we have that
+\begin{equation*}
+\rho = \DS\lim_{n\to\infty} \sqrt[n]{|a_n|} = \frac{1}{2} < 1.
+\end{equation*}
+Therefore, $\DS\sum_{n=0}^\infty a_n$ converges by RoT.
+}
+\fi

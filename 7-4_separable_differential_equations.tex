@@ -1,6 +1,6 @@
 %!TEX root =  main.tex
 
-\lectureheader{162}{Calculus II}{Separable differential equations}{\textit{Thomas' Calculus} \textsection 7.4}
+\lectureheader{162}{Calculus II}{Separable differential equations}{\textit{Thomas' Calculus}  7.4}
 
 \begin{definition}
 An \textbf{ordinary differential equation} (ODE) is an equation relating an unknown function $y$, its derivatives, and some given functions of its independent variable.
@@ -31,6 +31,30 @@ Examples of exponential change include unchecked population growth, amount of a 
 Explain the name ``exponential change" by solving the differential equation~\eqref{exponential change de}.
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Explanation] {
+\begin{align*}
+    \dee y &= \frac{\dee y}{\dee t}\dee t \\
+    \dee y &= ky\dee t \\
+    \frac{\dee y}{y} &= k\dee t \\
+    \int_{}^{} \frac{\dee y}{y} \,\ &= \int_{}^{} k \,\dee t\ \\
+    \ln{y} &= kt + C_0 \\    
+    |y| &= \E^{kt + C_0} = C_1\E^{kt}, \text{ where } C_1 = \E^{C_0}.
+\end{align*}
+Thus, it follows that 
+\begin{equation*}
+    y = 
+    \begin{cases}
+        C_1\E^{kt} & \text{if } y > 0\\
+        -C_1\E^{kt} & \text{if } y < 0\\
+    \end{cases}
+\end{equation*}
+So, $y = C\E^{kt}$, where $C \neq 0$ is the full solution set to (9).
+}
+\else
+\fi
+
+
 \newpage
 
 \begin{definition}
@@ -59,6 +83,21 @@ Solve the ODE
 \end{equation*}
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+\begin{align*}
+    \frac{\dee y}{\dee x} &= (1+y)\E^x \\
+    \frac{\dee y}{\dee x}\dee x &= (1+y)\E^x \dee x \\
+    \dee y &= (1+y)\E^x \dee x \\
+    \frac{\dee y}{1+y} &= \E^x \dee x \\
+    \int_{}^{} \frac{\dee y}{1+y} \, \ &= \int_{}^{} \E^x \, \dee x \ \\
+    \ln{|1+y|} &= \E^x + C_0 \\
+    1+y &= \E^{(\E^x + C_0)} = C_1\E^{\E^x}, \text{ where } C_1 = \E^{C_0} > 0.
+\end{align*}
+Since we are given $y>1$, we conclude that $1+y = C_1\E^{\E^x}$.  Therefore, $y = C_1\E^{\E^x}-1, C_1 > 0$ is the full solution set.
+}
+\else
+\fi
 \newpage
 
 \begin{example}
@@ -68,3 +107,23 @@ y(x+1)\frac{\dee y}{\dee x} = x(y^2+1).
 \end{equation*}
 \end{example}
 
+\ifdefined\SOLUTION
+\SOLUTION[Solution] {
+\begin{align*}
+    y(x+1)\frac{\dee y}{\dee x} &= x(y^2+1) \\
+    y(x+1)\frac{\dee y}{\dee x}\dee x &= x(y^2+1) \dee x \\
+    y(x+1)\dee y &= x(y^2+1) \dee x \\
+    \frac{y}{y^2 + 1}\dee y &= \frac{x}{x+1}\dee x \\ 
+    \int_{}^{} \frac{y}{y^2 + 1} \, \dee y\ &= \int{}^{} \frac{x}{x+1} \, \dee x \ \\
+\end{align*}
+Let $u = y^2 + 1$. So, $\dee u = 2y\dee y$.  Let $w = x+1$.  So, $\dee w = \dee x$. Rewriting the integrals with the substitutions gives
+\begin{align*}
+    \frac{1}{2}\int_{}^{} \frac{\dee u}{u} \, \ &= \int{}^{} \frac{w-1}{w} \, \dee w \ \\
+    \frac{1}{2}\int_{}^{} \frac{\dee u}{u} \, \ &= \int{}^{} 1 - \frac{1}{w} \, \dee w \ \\
+    \frac{1}{2}\ln{|u|} &= w - \ln{|w|} + C \\
+    \frac{1}{2}\ln{(y^2 + 1)} &= x+1 - \ln{|x+1|} + C \\
+\end{align*}
+\textit{Note:} this gives y implicitly as a function of x. 
+}
+\else
+\fi
