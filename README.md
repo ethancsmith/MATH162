@@ -1,3 +1,3 @@
 # MATH162
 
-\(\LaTeX\\) project for Calc II notes primarily based on _Thomas' Calculus_.
+$\LaTeX\$ project for Calc II notes primarily based on _Thomas' Calculus_.
