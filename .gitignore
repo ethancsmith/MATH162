@@ -1,5 +1,5 @@
-main.pdf
-main_with_solutions.pdf
+*.pdf
+*.docx
 .DS_Store
 *.idx
 *.ilg
