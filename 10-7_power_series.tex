@@ -71,10 +71,10 @@ Observe that
 &=|2x+3|.
 \end{split}
 \end{equation*}
-By RaT, the power series converges absolutely if and only if $\rho=|2x+3|<1$.
+By RaT, the power series converges absolutely if $\rho=|2x+3|<1$ and it diverges if $|2x+3|>1$.
 Now $|2x+3|<1$ if and only if $2|x+3/2|<1$ if and only if $|x+3/2|<1/2$.
 Thus, the radius of convergence is $R=1/2$, and the center of the interval is $x=-3/2$.
-Therefore, the interval of absolute convergence is $(-2,-1)$.
+At this point, we know that the power series converges absolutely on $(-2,-1)$.
 Convergence at $x=-2$ and at $x=-1$ is still ``up in the air."
 At $x=-2$,
 \begin{equation*}
@@ -89,7 +89,7 @@ At $x=-1$,
 =\sum_{n=1}^\infty (-1)^{n-1}\frac{(1)^n}{n}
 =\sum_{n=1}^\infty \frac{(-1)^{n-1}}{n}
 \end{equation*}
-converges since it is equal to the alternating harmonic series which we know converges.
+converges since it is equal to the alternating harmonic series which we already know converges conditionally.
 Therefore, the power series $\DS\sum_{n=1}^\infty (-1)^{n-1}\frac{(2x+3)^n}{n}$ converges on the interval $(-2,-1]$.
 }
 \fi
@@ -225,7 +225,7 @@ First observe that
 = \lim_{n\to\infty}|x|\frac{1}{1+1/n}
 = |x|.
 \end{equation*}
-By RaT, the power series converges absolutely if and only if $|x|<1$, i.e., $x\in (-1,1)$.
+By RaT, the power series converges absolutely if $|x|<1$, i.e., $x\in (-1,1)$.
 At $x=1$,
 \begin{equation*}
 \sum_{n=1}^\infty\frac{x^n}{n}
@@ -238,7 +238,7 @@ At $x=-1$,
 =\sum_{n=1}^\infty\frac{(-1)^n}{n}
 =-\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}
 \end{equation*}
-is a multiple of the alternating harmonic series, and so converges.
+is a multiple of the alternating harmonic series, and so converges conditionally.
 Therefore, the interval of convergence is $[-1,1)$.
 By the above theorem,
 \begin{equation*}
@@ -286,8 +286,8 @@ Observe that
 = \lim_{n\to\infty}x^2\frac{2+1/n}{2+3/n}
 =x^2.
 \end{equation*}
-By RaT, the power series converges absolutely if and only if $x^2<1$.
-Therefore, the interval of absolute convergence is $(-1,1)$ and the radius of convergence is $R=1$.
+By RaT, the power series converges absolutely if $x^2<1$.
+Therefore, the power series converges absolutely on $(-1,1)$ and the radius of convergence is $R=1$.
 At $x=\pm 1$,
 \begin{equation*}
 \sum_{n=0}^\infty (-1)^n\frac{x^{2n+1}}{2n+1}
