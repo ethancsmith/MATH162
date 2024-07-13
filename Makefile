@@ -13,7 +13,7 @@ $(DOCUMENT)_with_solutions.pdf: $(SOURCES)
 	latexmk $(addsuffix _with_solutions.tex, $(DOCUMENT))
 
 %.pdf: %.tex preamble.tex img/*.png
-	latexmk -pdflatex="pdflatex -recorder -jobname %A '\documentclass[11pt,reqno]{amsart}\input{preamble}\begin{document}\input{%S}\end{document}'" $<
+	latexmk -pdflatex="pdflatex -recorder -jobname %A '\documentclass[11pt,reqno]{amsbook}\input{preamble}\begin{document}\input{%S}\end{document}'" $<
 
 docx: $(SOURCES)
 	pandoc $(addsuffix _with_solutions.tex, $(DOCUMENT)) -o $(addsuffix _with_solutions.docx, $(DOCUMENT)) 
