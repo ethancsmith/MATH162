@@ -22,7 +22,7 @@ To build all lecture notes bound into a single PDF **including solutions to exam
 ```shell
 make main_with_solutions.pdf
 ```
-If `pandoc` is installed on your system, then following will make an MS Word version of the entire set of notes **with solutions included**.
+If `pandoc` is installed on your system, then the following will make an MS Word version of the entire set of notes **with solutions included**.
 ```shell
 make docx
 ```
