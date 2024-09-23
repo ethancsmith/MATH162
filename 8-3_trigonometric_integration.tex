@@ -36,6 +36,34 @@ where $u=\sin x$.
 \end{remark}
 
 \begin{example}
+Calculate $\DS\int\cos^5 x\dee x$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since we have an odd power of cosine, we save one and trade the rest for sines:
+\begin{equation*}
+    \int\cos^5 x\dee x
+    = \int\cos^4x \cos x \dee x
+    = \int (1-\sin^2 x)^2 \cos x \dee x.
+\end{equation*}
+Now let $u = \sin x$.  So, $\dee u = \cos x$.  
+Making the substitution gives 
+\begin{equation*}
+\begin{split}
+    \int\cos^5 x\dee x
+    &=\int (1-u^2)^2\dee u\\
+    &= \int 1 - 2u^2 - u^4 \dee u\\
+    &= u - \frac{2}{3}u^3 - \frac{1}{5}u^5 + C\\
+    &= \sin x - \frac{2}{3}(\sin x)^3 - \frac{1}{5}(\sin x)^5 + C.
+\end{split}
+\end{equation*}
+}
+\fi
+\vfill
+
+\newpage
+
+\begin{example}
 Compute $\DS\int\sin^3 x\cos^2 x\dee x$.
 \end{example}
 \ifdefined\SOLUTION
@@ -59,35 +87,6 @@ Making the substitution gives
 \end{split}
 \end{equation*}
 }
-\else
-\fi
-
-\newpage
-
-\begin{example}
-Calculate $\DS\int\cos^5 x\dee x$.
-\end{example}
-\ifdefined\SOLUTION
-\SOLUTION[Solution]{
-Since we have an odd power of cosine, we save one and trade the rest for sines:
-\begin{equation*}
-    \int\cos^5 x\dee x
-    = \int\cos^4x \cos x \dee x
-    = \int (1-\sin^2 x)^2 \cos x \dee x.
-\end{equation*}
-Now let $u = \sin x$.  So, $\dee u = \cos x$.  
-Making the substitution gives 
-\begin{equation*}
-\begin{split}
-    \int\cos^5 x\dee x
-    &=\int (1-u^2)^2\dee u\\
-    &= \int 1 - 2u^2 - u^4 \dee u\\
-    &= u - \frac{2}{3}u^3 - \frac{1}{5}u^5 + C\\
-    &= \sin x - \frac{2}{3}(\sin x)^3 - \frac{1}{5}(\sin x)^5 + C.
-\end{split}
-\end{equation*}
-}
-\else
 \fi
 \vfill
 
@@ -128,12 +127,13 @@ Making the substitution gives
 \else
 \fi
 \vfill
+\vfill
 
 \newpage
 
 \begin{remark}
 To evaluate $\int\tan^m x\sec^n x\dee x$ we have the following basic strategy.
-\begin{itemize}
+\begin{enumerate}
 \item If $n=2k$ is even, we save a factor of $\sec^2 x\dee x = \dee(\tan x)$ and use $1+\tan^2 x = \sec^2 x$ to write
 \begin{equation*}
 \begin{split}
@@ -154,8 +154,36 @@ where $u=\tan x$.
 where $u=\sec x$.
 \item The situation is not so clear-cut in the remaining cases.
 Integration by parts and a little ingenuity may be required.
-\end{itemize}
+\end{enumerate}
 \end{remark}
+
+\begin{example}
+Evaluate $\DS\int\sec^4 x\tan^4 x\dee x$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+\begin{equation*}
+    \int\sec^4 x\tan^4 x\dee x
+    = \int\sec^2 x\tan^4 x\sec^2 x\dee x 
+    = \int (1+\tan^2 x)\tan^4 x\sec^2 x\dee x. 
+\end{equation*}
+Let $u = \tan x.$  So, $\dee u = \sec^2x\dee x$.  
+Making the substitution gives 
+\begin{equation*}
+\begin{split}
+    \int\sec^4 x\tan^4 x\dee x
+    &=\int(1+u^2)u^4\dee u \\
+    &= \int u^4 + u^6 \dee u\\
+    &= \frac{1}{5}u^5 + \frac{1}{7}u^7 + C\\
+    &= \frac{1}{5}\tan^5x + \frac{1}{7}\tan^7x + C.
+\end{split}
+\end{equation*}
+}
+\else
+\fi
+\vfill
+
+\newpage
 
 \begin{example}
 Compute $\DS\int\tan^3 x\dee x$.
@@ -191,33 +219,6 @@ This leads us to adopt the following:
 \fi
 \vfill
 
-\newpage
-
-\begin{example}
-Evaluate $\DS\int\sec^4 x\tan^4 x\dee x$.
-\end{example}
-\ifdefined\SOLUTION
-\SOLUTION[Solution]{
-\begin{equation*}
-    \int\sec^4 x\tan^4 x\dee x
-    = \int\sec^2 x\tan^4 x\sec^2 x\dee x 
-    = \int (1+\tan^2 x)\tan^4 x\sec^2 x\dee x. 
-\end{equation*}
-Let $u = \tan x.$  So, $\dee u = \sec^2x\dee x$.  
-Making the substitution gives 
-\begin{equation*}
-\begin{split}
-    \int\sec^4 x\tan^4 x\dee x
-    &=\int(1+u^2)u^4\dee u \\
-    &= \int u^4 + u^6 \dee u\\
-    &= \frac{1}{5}u^5 + \frac{1}{7}u^7 + C\\
-    &= \frac{1}{5}\tan^5x + \frac{1}{7}\tan^7x + C.
-\end{split}
-\end{equation*}
-}
-\else
-\fi
-\vfill
 
 \begin{example}
 Evaluate $\DS\int\tan^4 x\dee x$.
