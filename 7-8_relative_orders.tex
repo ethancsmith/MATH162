@@ -8,7 +8,7 @@
 
 \begin{remark}\,
 \begin{itemize}
-\item It is often necessary to compare the relative size of two functions for ``large" $x$.
+\item It is often necessary to compare the relative sizes of two functions for ``large" $x$.
 \item In practice, we are usually comparing a complicated/exotic function to a simpler/more familiar one.
 \item This sort of thing comes up all the time when analyzing the efficiency of algorithms and the long-term behavior of other mathematical models.
 \end{itemize}
@@ -85,6 +85,7 @@ Therefore, taking $M=2$ and $C=1$, we see that $\E^{-x^2/2}\ll \E^{-x}$ as $x\to
 \fi
 
 \vfill
+\vfill
 
 \begin{example}
 Show that $x^2\ll (\ln x)^{\ln x}$ as $x\to\infty$.
@@ -102,6 +103,7 @@ Therefore, $x^2\ll (\ln x)^{\ln x}$ as $x\to\infty$.
 }
 \fi
 
+\vfill
 \vfill
 
 \newpage
@@ -372,5 +374,31 @@ Let's race:
 =\lim_{x\to\infty}\left(1- \E^{-2x}\right) = 1.
 \end{equation*}
 In other words, $\sinh x\sim \frac{1}{2}\E^x$ as $x\to\infty$.
+}
+\fi
+
+\newpage
+
+\begin{example}
+Identify a ``simpler" function $g(x)$ so that 
+\begin{equation*}
+\frac{x+\tanh x}{\sqrt x + \sin x}\asymp g(x) 
+\end{equation*}
+as $x\to\infty$.
+\end{example}
+\ifdefined\SOLUTION
+\SOLUTION{
+Thinking about which term we expect to dominant in both numerator and denominator, we guess that
+\begin{equation*}
+\frac{x+\tanh x}{\sqrt x + \sin x}\asymp \frac{x}{\sqrt x} = \sqrt x
+\end{equation*}
+as $x\to\infty$.
+We then verify that our guess is correct by computing
+\begin{equation*}
+\lim_{x\to\infty}\frac{x+\tanh x}{\sqrt x + \sin x}\cdot\frac{1}{\sqrt x} 
+=\lim_{x\to\infty}\frac{x\left(1+\frac{\tanh x}{x}\right)}{\sqrt x\left(1 + \frac{\sin x}{\sqrt x}\right)}\cdot\frac{1}{\sqrt x} 
+=\lim_{x\to\infty}\frac{1+\frac{\tanh x}{x}}{1 + \frac{\sin x}{\sqrt x}}
+=\frac{1+0}{1+0} = 1.
+\end{equation*}
 }
 \fi
