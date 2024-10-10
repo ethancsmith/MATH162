@@ -263,7 +263,7 @@ n!\ge \E^{n\ln(n+1) - n}
 \else
 \begin{proof}[Proof of lower bound]\,
 
-\vspace{6in}
+\vspace{5in}
 \end{proof}
 \fi
 
@@ -271,14 +271,13 @@ n!\ge \E^{n\ln(n+1) - n}
 
 \begin{remark}\,
 \begin{itemize}
-\item The above bounds on $n!$ are not optimal, but the upper bound is ``close" to optimal.
+%\item The above bounds on $n!$ are not optimal, but the upper bound is ``close" to optimal.
 \item You are encouraged to try to prove the upper bound.
 Hint: The concavity of $\ln x$ implies that the trapezoidal rule gives an underestimate in the step where the right-hand rule gave an overestimate.
 \item Stirling is famous for proving that
 \begin{equation*}
-n!\sim \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n
+n!\sim \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n \text{ as } n\to\infty.
 \end{equation*}
-as $n\to\infty$.
 In other words, he showed that, for every $\epsilon>0$, there is an $N>0$ so that
 \begin{equation*}
 (1-\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n\le n!\le (1+\epsilon) \sqrt{2\pi n}\left(\frac{n}{\E}\right)^n
