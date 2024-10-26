@@ -9,8 +9,8 @@
 \begin{theorem}[Direct comparison test]\,
 Suppose that $a_n,b_n\ge 0$ for all $n$ sufficiently large.
 \begin{enumerate}
-\item If $a_n\ll b_n$ as $n\to\infty$ and $\DS\sum_{n\ge k} b_n$ converges, then $\DS\sum_{n\ge k}a_n$ converges.
-\item If $b_n\ll a_n$ as $n\to\infty$ and $\DS\sum_{n\ge k} b_n$ diverges, then $\DS\sum_{n\ge k}a_n$ diverges.\label{direct comparison test}
+\item If $a_n\ll b_n$ as $n\to\infty$ and $\DS\sum_{n\ge N} b_n$ converges, then $\DS\sum_{n\ge N}a_n$ converges.
+\item If $b_n\ll a_n$ as $n\to\infty$ and $\DS\sum_{n\ge N} b_n$ diverges, then $\DS\sum_{n\ge N}a_n$ diverges.\label{direct comparison test}
 \end{enumerate}
 \end{theorem}
 %\begin{proof}[Proof of~\eqref{direct comparison test}]\,
@@ -112,9 +112,9 @@ the DCT tells us nothing about $\DS\sum_{n=0}^\infty\frac{1}{2^n+\sqrt n}$.
 Suppose that $a_n, b_n>0$ for all $n\ge N$.
 \begin{enumerate}
 \item If $a_n\asymp b_n$ as $n\to\infty$, in particular if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=L\in (0,\infty)$, 
-then $\DS\sum_{n\ge k} a_n$ and $\DS\sum_{n\ge k} b_n$ both converge or both diverge.
-\item If $a_n\lll b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=0$) and $\DS\sum_{n\ge k} b_n$ converges, then $\DS\sum_{n\ge k} a_n$ converges.
-\item If $a_n\ggg b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=\infty$) and $\DS\sum_{n\ge k} b_n$ diverges, then $\DS\sum_{n\ge k} a_n$ diverges.
+then $\DS\sum_{n\ge N} a_n$ and $\DS\sum_{n\ge N} b_n$ both converge or both diverge.
+\item If $a_n\lll b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=0$) and $\DS\sum_{n\ge N} b_n$ converges, then $\DS\sum_{n\ge N} a_n$ converges.
+\item If $a_n\ggg b_n$ as $n\to\infty$ (i.e., if $\DS\lim_{n\to\infty}\frac{a_n}{b_n}=\infty$) and $\DS\sum_{n\ge N} b_n$ diverges, then $\DS\sum_{n\ge N} a_n$ diverges.
 \end{enumerate}
 \end{theorem}
 
