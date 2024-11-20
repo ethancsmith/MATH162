@@ -86,6 +86,41 @@ It follows that
 \fi
 \newpage
 
+\begin{definition}
+Let $a\in\R$, and let $f$, $g$, and $h$ be functions defined in a neighborhood of $a$ (except possibly at $a$ itself).
+We say that $f(x) = g(x) + O\big(h(x)\big)$ as $x\to a$ if there are constants $C, M>0$ so that
+\begin{equation*}
+\left|f(x) - g(x)\right| < C|h(x)|
+\end{equation*}
+whenever $0 < |x-a| < M$.
+\end{definition}
+
+\begin{remark}\,
+\begin{enumerate}
+\item In practice, when we write $f(x) = g(x) + O\big(h(x)\big)$ as $x\to a$, we think of $g(x)$ as an approximation to $f(x)$ for $x\approx a$.
+\item In this situation, the function $h(x)$ plays the role of a ``bounding function" for the error in the approximation $f(x)\approx g(x)$, at least for those $x$ close enough to $a$.
+\end{enumerate}
+\end{remark}
+
+\begin{example}
+What does the previous exercise tell us about the function $f(x) = \sqrt{1+x}$ in a neighborhood of $x=0$?
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+We have that
+\begin{equation*}
+f(x) = 1 + \frac{1}{2}x - \frac{1}{8}x^2 + \frac{1}{16}x^3 - \frac{5}{128}x^4 + O\left(x^5\right)
+\end{equation*}
+as $x\to 0$.
+Note that for $x\approx 0$, $|x|^5 \le |x|^4 \le |x|^3$.
+In particular, higher degree terms contribute less to the total than lower degree terms.
+Thus, when $x$ is close to $0$, we are justified in treating the quartic polynomial as a approximation to $f(x)=\sqrt{1+x}$ with relatively small error.
+}
+\fi
+
+\newpage
+
 \begin{example}
 Use power series to evaluate $\DS\lim_{x\to 1}\frac{\ln x}{x-1}$.
 \end{example}
@@ -224,62 +259,68 @@ with an absolute error that is no worse than $2$.
 
 \begin{remark}\,
 \begin{itemize}
-\item The classical (Newtonian) definition of the kinetic energy $K$ of an object with (a constant) mass $m$ moving with velocity $v$ is
+\item The classical (Newtonian) definition of the \textbf{kinetic energy} $K$ of an object with (a constant) mass $m$ moving with speed $v$ is
 \begin{equation*}
 K= \frac{1}{2}mv^2.
 \end{equation*}
-\item In the modern (Einsteinian) theory, the \textit{relativistic mass} of an object is a function of its velocity, viz.,
+\item In the modern (Einsteinian) theory, the \textbf{rest energy} of an object with (rest) mass $m$ is defined by
 \begin{equation*}
-m = \frac{m_0}{\sqrt{1-(v/c)^2}},
+E_0 = mc^2
 \end{equation*}
-where $m_0$ is the \textit{rest mass} and $c$ is the speed of light (both of which are constant/invariant in every frame of reference).
-\item The kinetic energy of the object is then redefined to be
+while the \textbf{total energy} of the object is defined by
 \begin{equation*}
-K = (m-m_0)c^2.
+E = \gamma mc^2,
+\end{equation*}
+where
+\begin{equation*}
+\gamma = \frac{1}{\sqrt{1-(v/c)^2}}
+\end{equation*}
+is the \textbf{Lorentz factor}
+and $c\approx 2.998\times 10^8$ \si{m/s} is the speed of light.
+\item The \textbf{relativistic kinetic energy} of the object is then defined to be
+\begin{equation*}
+E_K = E-E_0.
 \end{equation*}
 \end{itemize}
 \end{remark}
 
 \begin{theorem}
-As $v/c\to 0$,
+As $v\to 0$,
 \begin{equation*}
-K = \frac{1}{2}m_0v^2 + O\bigg((v/c)^4\bigg).
+E_K = \frac{1}{2}mv^2 + O\big(v^4\big).
 \end{equation*}
+%i.e., there are constants $C,M>0$ so that 
+%\begin{equation*}
+%\left|E_K - \frac{1}{2}mv^2\right| < Cv^4
+%\end{equation*}
+%whenever $|v|<M$.
 \end{theorem}
 \begin{remark}
-In other words, if the velocity $v$ of the object is very small compared to the speed of light $c$, then the classical definition of kinetic energy is a good approximation to the modern definition in the sense that the error goes to zero (rather quickly) as $v/c\to 0$.
+In other words, Newtonian kinetic energy is the ``first order approximation" to relativistic kinetic energy because it is the ``most significant term" in the Taylor series expansion for $E_K$ about $v=0$.
 \end{remark}
 \ifdefined\SOLUTION
 \SOLUTION[Proof]{
 The binomial theorem tell us that 
 \begin{equation*}
-\frac{1}{\sqrt{1+x}}=(1+x)^{-1/2}=\sum_{k=0}^\infty\binom{-1/2}{k}x^k\quad (-1 < x < 1),
+\frac{1}{\sqrt{1+x}}=(1+x)^{-1/2}=\sum_{k=0}^\infty\binom{-1/2}{k}x^k = 1 - \frac{1}{2}x^2 + \frac{3}{8}x^4 + \dots \quad (-1 < x < 1).
 \end{equation*}
-and so if $-1<x<1$, then
+Since the physicists tell us that $0< v < c$, we have that
 \begin{equation*}
-\frac{1}{\sqrt{1-x^2}}=\sum_{k=0}^\infty \binom{-1/2}{k}(-x^2)^k
-=\sum_{k=0}^\infty (-1)^k\binom{-1/2}{k}x^{2k} 
-=1+\frac{1}{2}x^2+\frac{3}{8}x^4+\dots
+\gamma 
+= \frac{1}{\sqrt{1-(v/c)^2}}
+= 1 + \frac{1}{2}(v/c)^2 + O(v^4)
 \end{equation*}
-Whence, if $-1<v/c<1$, then
+as $v\to 0$.
+Whence,
 \begin{equation*}
-m=\frac{m_0}{\sqrt{1-(v/c)^2}} 
-=m_0+\frac{1}{2}m_0(v/c)^2+\frac{3}{8}m_0(v/c)^4+\dots.
+E_K = E - E_0 = (\gamma - 1)mc^2 = \frac{1}{2}mv^2 + O(v^4)
 \end{equation*}
-Therefore, as $v/c\to 0$, we have
-\begin{equation*}
-m-m_0=\frac{1}{2}m_0(v/c)^2 + O\Big((v/c)^4\Big),
-\end{equation*}
-and hence
-\begin{equation*}
-K=(m-m_0)c^2=\frac{1}{2}m_0v^2+O\Big((v/c)^4\Big) 
-\end{equation*}
-as $v/c\to 0$.
+as $v\to 0$.
 }
 \else
 \begin{proof}
 \,
-\vspace{3.7in}
+\vspace{3.1in}
 
 \end{proof}
 \fi
