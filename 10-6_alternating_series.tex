@@ -7,17 +7,17 @@
 \lectureheader{162}{Calculus II}{Alternating series}{\textit{Thomas' Calculus}  \thesection}
 
 \begin{definition}
-We say that $\DS\sum_{n\ge k} a_n$ is an \textbf{alternating series} if the sequence of terms alternates between positive and negative values, 
-i.e., if $a_n = \pm(-1)^n|a_n|$ and $|a_n|>0$ for all $n\ge k$. 
+We say that $\DS\sum_{n\ge 0} a_n$ is an \textbf{alternating series} if the sequence of terms alternates between positive and negative values, 
+i.e., if $a_n = \pm(-1)^n|a_n|$ and $|a_n|>0$ for all sufficiently large $n$.
 \end{definition}
 
 \begin{theorem}[Alternating series test]
-If $\DS\sum_{n=k}^\infty a_n$ is an alternating series so that
+If $\DS\sum_{n=0}^\infty a_n$ is an alternating series so that
 \begin{itemize}
 \item $|a_n|$ is nonincreasing for all $n$ sufficiently large, and
 \item $|a_n|\to 0$ as $n\to\infty$,
 \end{itemize}
-then $\sum a_n$ converges.
+then $\DS\sum_{n\ge 0} a_n$ converges.
 \end{theorem}
 
 \begin{example}
@@ -39,8 +39,8 @@ Therefore, $\DS\sum_{n=1}^\infty\frac{(-1)^{n+1}}{n}$ converges by the alternati
 \vfill
 
 \begin{definition}
-We say that $\DS\sum_{n=k}^\infty a_n$ is \textbf{conditionally convergent} 
-if $\DS\sum_{n=k}^\infty a_n$ is convergent but $\DS\sum_{n=k}^\infty |a_n|$ is divergent. 
+We say that $\DS\sum_{n=0}^\infty a_n$ is \textbf{conditionally convergent} 
+if $\DS\sum_{n=0}^\infty a_n$ is convergent but $\DS\sum_{n=0}^\infty |a_n|$ is divergent. 
 \end{definition}
 
 \newpage
@@ -71,7 +71,7 @@ Therefore, $\DS\sum_{n=0}^\infty\frac{(-1)^n 10n}{n^2+16}$ converges by AST.
 \newpage
 
 \begin{remark}
-Recall that if $\DS\sum_{n=k}^\infty a_n$ is a convergent series, then the $N$th partial sum
+Recall that if $\DS\sum_{n=0}^\infty a_n$ is a convergent series, then the $N$th partial sum
 \begin{equation*}
 S_N = \sum_{n\le N} a_n
 \end{equation*}
@@ -83,20 +83,21 @@ is the error in the approximation.
 \end{remark}
 
 \begin{theorem}[Alternating series estimation theorem]
-If $\DS\sum_{n=k}^\infty a_n$ is an alternating series so that
+If $\DS\sum_{n=0}^\infty a_n$ is a series so that
 \begin{itemize}
-\item $|a_n|$ is nonincreasing for all $n\ge k$, and
+\item $a_n$ alternates for all $n\ge N_0$,
+\item $|a_n|$ is nonincreasing for all $n\ge N_0$, and
 \item $|a_n|\to 0$ as $n\to\infty$,
 \end{itemize}
-then
+then for all $N\ge N_0$, 
+\begin{equation*}
+\Big| R_N \Big| < \Big| a_{N+1}\Big|.
+\end{equation*}
+Moreover, if $N\ge N_0$, then
 \begin{enumerate}
 \item $S_N$ underestimates the sum of the series if $a_{N+1}>0$, and
 \item $S_N$ overestimates the sum of the series if $a_{N+1}<0$.
 \end{enumerate}
-Moreover, 
-\begin{equation*}
-\Big| R_N \Big| = \left| S_N - \sum_{n=k}^\infty a_n\right| < \Big| a_{N+1}\Big|.
-\end{equation*}
 \end{theorem}
 
 \begin{example}
@@ -246,3 +247,14 @@ Then
 \end{equation*}
 }
 \fi
+
+\newpage
+
+\begin{exercise}
+How many terms $N$ are needed to guarantee that the $N$ partial sum approximates the series
+\begin{equation*}
+\sum_{n=0}^\infty(-1)^n\frac{5^n}{200 n!}
+\end{equation*}
+with an error that is strictly less than $10^{-1}$?
+\end{exercise}
+
