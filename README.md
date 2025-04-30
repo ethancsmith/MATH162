@@ -14,6 +14,9 @@ For example, the following call to `make` will build the lecture notes for \text
 make 7-1_inverse_functions.pdf
 ```
 To build all lecture PDFs as individual files (without solutions), run the following.
+```shell
+make lectures
+```
 To build all lecture notes bound into a single PDF (without solutions to examples) run the following.
 ```shell
 make main.pdf
