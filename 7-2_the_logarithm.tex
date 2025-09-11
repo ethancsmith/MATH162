@@ -51,11 +51,12 @@ A lot of interesting functions are ``invented" in this way:
 \end{enumerate}
 \end{remark}
 
+\newpage 
+
 \begin{corollary}
 The natural logarithm is continuous, differentiable, strictly increasing, and concave down on its entire domain $(0,\infty)$.
 \end{corollary}
 
-\newpage 
 
 \begin{theorem}[Properties of the logarithm]
 For all real $a,b>0$ and rational $r$, we have
@@ -141,6 +142,8 @@ Multiplying both sides by y gives
 
 \begin{example}
 Compute $\dee y/\dee x$ if $y=x^x$ for $x>0$.
+Note: You should be asking yourself what does $x^x$ even mean when $x$ is an irrational number.
+We ignore this problem until next lecture and just pretend that we know what we're doing so long as $x$ is positive.
 \end{example}
 \ifdefined\SOLUTION
 \SOLUTION {
@@ -224,16 +227,41 @@ By intermediate value theorem, it now follows that the range of the natural loga
 \else
 \begin{proof}\,
 
-\vspace{2.5in}
+\vspace{3.5in}
 \end{proof}
 \fi
 
 
+\newpage
+
+\begin{remark}
+Since the logarithm is one-to-one on its domain, and its range is $\R$, it follows that the equation
+\begin{equation*}
+\ln x = y
+\end{equation*}
+has an \underline{unique} solution for each $y\in\R$.
+\end{remark}
 
 
 \begin{definition}
-\textbf{Euler's number} (a.k.a. \textbf{Napier's constant}) is the real number $\E$ defined by the equation $\ln(\E)=1$.
+\textbf{Napier's constant} (a.k.a. \textbf{Euler's number}) is the real number $\E$ defined by the equation $\ln(\E)=1$.
 \end{definition}
+
+\begin{example}
+Use properties of the logarithm and Napier's constant to solve the equation $\ln x = y$ when $y\in\R$.
+Note: Technically, our solution doesn't (yet) make sense when $y$ is irrational, but we will fix that in the next lecture.
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+Let $y\in\R$.
+For $y=0$, we already know that $\ln x = 0$ if and only if $x=1$.
+Assume then that $y\ne 0$, and observe that
+\begin{equation*}
+\ln x = y \iff \frac{1}{y}\ln x = 1 \iff \ln(x^{1/y}) = 1 \iff x^{1/y} = \E \iff x=\E^y.
+\end{equation*}
+}
+\fi
 
 \newpage
 
