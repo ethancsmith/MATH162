@@ -6,38 +6,38 @@
 
 \lectureheader{162}{Calculus II}{Integration by parts}{\textit{Thomas' Calculus}  \thesection}
 
-\begin{mdframed}
-\begin{minipage}{0.5\linewidth}
-\begin{enumerate}
-%\item $\DS\int \big(f(x) + g(x)\big)\dee x = \int f(x)\dee x + \int g(x)\dee x$
-\item $\DS\int x^n\dee x = \frac{x^{n+1}}{n+1}+C\quad (n\ne -1)$
-\item $\DS\int\frac{\dee x}{x} = \ln|x| + C$
-\item $\DS\int\E^x\dee x = \E^x + C$
-\item $\DS\int\sinh x\dee x = \cosh x+C$
-\item $\DS\int\cosh x\dee x=\sinh x + C$
-\item $\DS\int\frac{\dee x}{\sqrt{1-x^2}} = \arcsin x + C$
-\item $\DS\int\frac{\dee x}{1+x^2} = \arctan x + C$
-\item $\DS\int\frac{\dee x}{x\sqrt{x^2-1}} = \arcsec|x|+C$
-\item $\DS\int\frac{\dee x}{\sqrt{1+x^2}} = \sinh^{-1} x + C$
-\item $\DS\int\frac{\dee x}{\sqrt{x^2-1}} = \cosh^{-1} x + C$
-\end{enumerate}
-\end{minipage}
-\begin{minipage}{0.5\linewidth}
-\begin{enumerate}
-\setcounter{enumi}{10}
-\item $\DS\int\sin x\dee x=-\cos x + C$
-\item $\DS\int\cos x\dee x=\sin x +C$
-\item $\DS\int\tan x\dee x=\ln|\sec x| + C$
-\item $\DS\int\csc x\dee x=-\ln|\csc x+\cot x| + C$
-\item $\DS\int\sec x\dee x=\ln|\sec x+\tan x|+C$
-\item $\DS\int\cot x\dee x=\ln|\sin x| +C$
-\item $\DS\int\sec^2 x\dee x = \tan x + C$
-\item $\DS\int\csc x\cot x\dee x=-\csc x+C$
-\item $\DS\int\sec x\tan x\dee x = \sec x+C$
-\item $\DS\int\csc^2 x\dee x = -\cot x+C$
-\end{enumerate}
-\end{minipage}
-\end{mdframed}
+%\begin{mdframed}
+%\begin{minipage}{0.5\linewidth}
+%\begin{enumerate}
+%%\item $\DS\int \big(f(x) + g(x)\big)\dee x = \int f(x)\dee x + \int g(x)\dee x$
+%\item $\DS\int x^n\dee x = \frac{x^{n+1}}{n+1}+C\quad (n\ne -1)$
+%\item $\DS\int\frac{\dee x}{x} = \ln|x| + C$
+%\item $\DS\int\E^x\dee x = \E^x + C$
+%\item $\DS\int\sinh x\dee x = \cosh x+C$
+%\item $\DS\int\cosh x\dee x=\sinh x + C$
+%\item $\DS\int\frac{\dee x}{\sqrt{1-x^2}} = \arcsin x + C$
+%\item $\DS\int\frac{\dee x}{1+x^2} = \arctan x + C$
+%\item $\DS\int\frac{\dee x}{x\sqrt{x^2-1}} = \arcsec|x|+C$
+%\item $\DS\int\frac{\dee x}{\sqrt{1+x^2}} = \sinh^{-1} x + C$
+%\item $\DS\int\frac{\dee x}{\sqrt{x^2-1}} = \cosh^{-1} x + C$
+%\end{enumerate}
+%\end{minipage}
+%\begin{minipage}{0.5\linewidth}
+%\begin{enumerate}
+%\setcounter{enumi}{10}
+%\item $\DS\int\sin x\dee x=-\cos x + C$
+%\item $\DS\int\cos x\dee x=\sin x +C$
+%\item $\DS\int\tan x\dee x=\ln|\sec x| + C$
+%\item $\DS\int\csc x\dee x=-\ln|\csc x+\cot x| + C$
+%\item $\DS\int\sec x\dee x=\ln|\sec x+\tan x|+C$
+%\item $\DS\int\cot x\dee x=\ln|\sin x| +C$
+%\item $\DS\int\sec^2 x\dee x = \tan x + C$
+%\item $\DS\int\csc x\cot x\dee x=-\csc x+C$
+%\item $\DS\int\sec x\tan x\dee x = \sec x+C$
+%\item $\DS\int\csc^2 x\dee x = -\cot x+C$
+%\end{enumerate}
+%\end{minipage}
+%\end{mdframed}
 
 %\begin{example}
 %Evaluate $\DS\int_3^5\frac{2x-3}{\sqrt{x^2-3x+1}}\dee x$.
@@ -104,12 +104,9 @@ and then integrated to reveal
 \end{itemize}
 \end{remark}
 
-\newpage
-
 \begin{example}
-Evaluate the following.
-\begin{enumerate}
-\item $\DS\int x\cos x\dee x$
+Evaluate $\DS\int x\cos x\dee x$.
+\end{example}
 \ifdefined\SOLUTION
 \SOLUTION[Solution]{
 Let $u = x$ and $\dee v = \cos{x}.$  It follows that $\dee u = \dee x$ and $v = \sin{x}.$  Making the substitution and using integration by parts gives 
@@ -133,7 +130,11 @@ This is a more complicated integral than the original. So, when you're picking $
 \fi
 \vfill
 
-\item $\DS\int\ln x\dee x$
+\newpage
+
+\begin{example}
+Evaluate $\DS\int\ln x\dee x$.
+\end{example}
 \ifdefined\SOLUTION
 \SOLUTION[Solution]{
 Let $u = \ln{x}$ and let $\dee v = \dee x.$  So, it follows that $\dee u = \frac{\dee x}{x}$ and $v = x.$  Integrating by parts gives 
@@ -147,13 +148,11 @@ Let $u = \ln{x}$ and let $\dee v = \dee x.$  So, it follows that $\dee u = \frac
 \else
 \fi
 \vfill
-\end{enumerate}
-\end{example}
 \begin{remark}\,
 \begin{itemize}
 \item The logarithm is such an important function that it is probably worth memorizing its integral.
 \item The technique of deriving the integral of the logarithm has an even greater lesson to teach us.
-If I know how to differentiate a function, but not how to integrate it, maybe integration by parts can help.
+If we know how to differentiate a function, but not how to integrate it, maybe integration by parts can help.
 \end{itemize}
 \end{remark}
 
