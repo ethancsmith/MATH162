@@ -207,9 +207,17 @@ Making the substitution gives
     &= \frac{1}{2}\sec^2(x) - \ln|\sec x| + C.
 \end{align*}
 Alternatively, we might notice that the power of secant is even.
-This leads us to adopt the following:
+This suggests
 \begin{align*}
-    \int\tan^3(x)\dee x
+\int\tan^3(x)\dee x 
+&= \int\frac{\tan^3 x}{\sec^2 x}\dee x
+=\int\frac{\tan^3 x}{1+\tan^2 x}\dee(\tan x)
+=\int\left(\tan x - \frac{\tan x}{1+\tan^2 x}\right)\dee(\tan x)\\
+&=\frac{1}{2}\tan^2 x -\frac{1}{2}\int\frac{\dee(1+\tan^2 x)}{1+\tan^2 x}
+=\frac{1}{2}\tan^2 x -\frac{1}{2}\ln|1+\tan^2 x| + C.
+\end{align*}
+A third option is 
+\begin{align*}
     &= \int (\sec^2(x)-1)\tan x \dee x \\
     &= \int \sec^2(x)\tan(x)\dee x - \int\tan(x) \dee x \\
     &= \frac{1}{2}\tan^2(x) - \ln|\sec x| + C.
@@ -219,6 +227,7 @@ This leads us to adopt the following:
 \fi
 \vfill
 
+\newpage
 
 \begin{example}
 Evaluate $\DS\int\tan^4 x\dee x$.
@@ -234,11 +243,11 @@ Therefore,
     &= \frac{1}{3}\tan^3x - \int (\sec^2x - 1)\dee x \\
     &= \frac{1}{3}\tan^3x - \tan x + x + C.
 \end{align*}
+Note that all 3 apparently different results are equivalent.
 }
 \else
 \fi
 \vfill
-\newpage
 
 \begin{example}
 Use integration by parts and the ``wrap-around trick" to compute $\DS\int\sec^3 x\dee x$.
