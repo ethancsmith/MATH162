@@ -287,6 +287,30 @@ The integral test is not really feasible given what we know.
 Our best hope would probably be direct comparison.
 }
 \fi
+\vfill
+\vfill
+
+\begin{example}
+In weak form, Stirling's approximation tells us that $n!\asymp \sqrt n\left(\frac{n}{\E}\right)^n$ as $n\to\infty$.
+What does this allow us to conclude about the above series?
+\end{example}
+
+\ifdefined\SOLUTION
+\SOLUTION[Solution]{
+Since $n!\asymp \sqrt n\left(\frac{n}{\E}\right)^n$ as $n\to\infty$, it follows that
+\begin{equation*}
+(2n)!\asymp \sqrt n\left(\frac{2n}{\E}\right)^{2n}
+\end{equation*}
+as $n\to\infty$.
+Thus,
+\begin{equation*}
+\frac{4^nn!n!}{(2n)!} \asymp \frac{4^n\sqrt{n}(n/\E)^{n}\sqrt{n}(n/\E)^{n}}{\sqrt{n}(2n/\E)^{2n}} = \sqrt n
+\end{equation*}
+as $n\to\infty$.
+Therefore, since $\DS\sum_{n=0}^\infty\sqrt{n}$ diverges by TFD, it follows that $\DS\sum_{n=0}^\infty\frac{4^nn!n!}{(2n)!}$ diverges by LCT.
+}
+\fi
+\vfill
 \newpage
 
 
