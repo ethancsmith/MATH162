@@ -253,8 +253,39 @@ Then
 \begin{exercise}
 How many terms $N$ are needed to guarantee that the $N$ partial sum approximates the series
 \begin{equation*}
-\sum_{n=0}^\infty(-1)^n\frac{5^n}{200 n!}
+\sum_{n=0}^\infty(-1)^n\frac{n}{n^2+16}
 \end{equation*}
-with an error that is strictly less than $10^{-1}$?
+with an error that is strictly less than $0.25$?
 \end{exercise}
+
+\ifdefined\SOLUTION
+\SOLUTION{
+First, observe that $a_n = (-1)^n\frac{n}{n^2+16}$ is alternating for $n\ge 0$.
+Now let $f(x) = \frac{x}{x^2+16}$ so that $f(n) = |a_n|$ for $n\ge 0$.
+Then
+\begin{equation*}
+f'(x) = \frac{(x^2+16) - 2x^2}{(x^2+16)^2} = -\frac{x^2-16}{(x^2+16)^2} = -\frac{(x-4)(x+4)}{(x^2+16)^2}.
+\end{equation*}
+Thus, we see that $f$ is decreasing for $x\in (4, \infty)$ and hence $|a_n|$ is nonincreasing for (at least) $n\ge 5$.
+Since 
+\begin{equation*}
+\lim_{n\to\infty}|a_n| = \lim_{n\to\infty}\frac{n}{n^2+16} = \lim_{n\to\infty}\frac{1}{n(1+16/n^2)} = 0,
+\end{equation*}
+the ASET tells us that if $N\ge 5$, then the $N$th remainder has absolute value 
+\begin{equation*}
+|R_N| < |a_{N+1}| = \frac{N+1}{(N+1)^2+16}.
+\end{equation*}
+Therefore, to ensure that the error is less than $1/2$, we need to solve the system of inequalities
+\begin{align*}
+\frac{N+1}{(N+1)^2+16} &\le \frac{1}{4},\\
+N\ge 5.
+\end{align*}
+Note that
+\begin{equation*}
+\frac{N+1}{(N+1)^2+16} \le \frac{1}{4} \iff 0\le (N+1)^2-4(N+1) + 16 = (N-1)^2 + 12,
+\end{equation*}
+and $(N-1)^2+12\ge 0$ for all $N\ge 0$.
+Therefore, we need $N\ge 5$ to enure that the error is smaller than $0.5$.
+}
+\fi
 
